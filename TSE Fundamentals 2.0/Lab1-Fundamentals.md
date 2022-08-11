@@ -54,9 +54,10 @@ msiexec /x <Product Code> /L*v C:\Windows\Temp\SophosConnectUninstall.txt
 
 
 ## Task 1.2: Registry Editor
+![Registry Editor](JPG/Regstry_Editor.png)
 
 In this task we will create and modify a registry key as well as perform
-a backup and restore.  
+a backup and restore.
 
 ![London DC](JPG/London%20DC.png)
 1. Open Registry by typing <inject key="Suffix" />`regedit` in the Run Window
