@@ -28,7 +28,8 @@ click Download Client
 
 4. Open Windows Explorer and navigate to the folder the installer was downloaded to and extract the contents of the zip
 
-5. Hold shift and right click an empty area and select `Open Command window here`
+5. Hold shift and right click an empty area and select:  
+ `Open Command window here`
 6. Run the following command to install Sophos Connect 2.0:
 ```javascript
 msiexec /i SophosConnect_2.0_(IPsec_and_SSLVPN).msi /L*v C:\Windows\Temp\SophosConnectInstall.txt
@@ -41,12 +42,12 @@ msiexec /i SophosConnect_2.0_(IPsec_and_SSLVPN).msi /L*v C:\Windows\Temp\SophosC
  9. Write down the line entry that indicates a successful or failed installation:
  10. Write down the product code of this program
  11. Uninstall PuTTY using the product code in the msiexec command: 
-```bash
+ ```javascript
 msiexec /x <Product Code> /L*v
 
 C:\Windows\Temp\SophosConnectUninstall.txt
 ```
-####  :white_check_mark: You have analyzed MSI logs and used Windows Installer to manage PuTTy.
+:white_check_mark: You have analyzed MSI logs and used Windows Installer to manage PuTTy.
 
 ***
 
@@ -86,7 +87,7 @@ a backup and restore.
 17. In Registry Editor, navigate back to `HKLM\SOFTWARE\WOW6432Node\`
 18. Note down the value data of the **Setting** registry key: 
 
-####  :white_check_mark: You have successfully backed up and restored a registry key.
+:white_check_mark: You have successfully backed up and restored a registry key.
 
 ***
 
