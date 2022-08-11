@@ -76,7 +76,6 @@ a backup and restore.
  `Test Registry Backup <MM-DD-YYYY>`  
  and save this file to the Desktop.
 
-
 11. Double click the **Settings** registry string and modify the value data to `Modified data`
 12. Delete the **LogLevel** `DWORD` registry
 13. Open the Test Registry Backup file in Notepad
