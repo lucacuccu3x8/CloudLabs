@@ -42,11 +42,11 @@ msiexec /i SophosConnect_2.0_(IPsec_and_SSLVPN).msi /L*v C:\Windows\Temp\SophosC
  9. Write down the line entry that indicates a successful or failed installation:
  10. Write down the product code of this program
  11. Uninstall PuTTY using the product code in the msiexec command: 
- ```javascript
+ ````javascript
 msiexec /x <Product Code> /L*v
 
 C:\Windows\Temp\SophosConnectUninstall.txt
-```
+````
 :white_check_mark: You have analyzed MSI logs and used Windows Installer to manage PuTTy.
 
 ***
