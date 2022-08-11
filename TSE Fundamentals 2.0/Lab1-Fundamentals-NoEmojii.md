@@ -29,10 +29,9 @@ Prior to taking this training, you should have:
 
 
 ***
-# **Lab 1: Windows Endpoint -Luca**
+# **Lab 1: Windows Endpoint**
 
-## **Objectives:**
-
+## Objectives
 Upon successful completion of this lab, you will be able to:
 
 1. Install and remove applications
@@ -41,6 +40,8 @@ Upon successful completion of this lab, you will be able to:
 
 ### Lab Diagram:
 ![London DC](JPG/London%20DC%202.png)
+
+***
 
 ## **Task 1.1: MSI logging**
 
