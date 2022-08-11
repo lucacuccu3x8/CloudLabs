@@ -8,10 +8,10 @@
 
 3. Your Environment is hosted in CloudLabs and can be accessed through a secure **Emulated RDP session** in your Web browser or **via native RDP connection**.   
 You can find the native RDP details in the **Environment details** tab in the upper right corner. 
-![Environment Details](JPG/Environment%20Details.png)
+![Environment Details ](JPG/Environment%20Details2%20.png)
 ***
 
-## Network Diagram 
+## Environment Network Diagram 
 
 ![Network Diagram](JPG/Lab%20Diagram34.png) 
 
@@ -39,7 +39,8 @@ Upon successful completion of this lab, you will be able to:
 2. Perform a registry backup and restore
 3. Create a scheduled task to run a script
 
-***
+### Lab Diagram:
+![London DC](JPG/London%20DC%202.png)
 
 ## **Task 1.1: MSI logging**
 
