@@ -1,4 +1,3 @@
-::: WordSection1
 # Lab 1: Windows Endpoint
 
 ## Objectives:
@@ -16,7 +15,7 @@ Upon successful completion of this lab, you will be able to:
 In this task we will be looking at MSI files, their logs as well as use Windows
 Installer to uninstall.
 
-![](JPG/London%20DC.png)
+![London DC](JPG/London%20DC.png)
 1. Open a web browser and navigate to https://172.16.16.16:4444
 
     >**Note:** Proceed through any warnings you receive
@@ -59,7 +58,7 @@ C:\Windows\Temp\SophosConnectUninstall.txt
 In this task we will create and modify a registry key as well as perform
 a backup and restore.  
 
-![On London DC](JPG/London%20DC.png)
+![London DC](JPG/London%20DC.png)
 1. Open Registry by typing <inject key="Suffix" />`regedit` in the Run Window
 2. Navigate to `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\`
 3. Right click **WOW6432Node** and create a new key named `TestRegistry`
@@ -93,7 +92,8 @@ a backup and restore.
 
 ## Task 1.3: Task Scheduler
 In this task we will create a scheduled task to run a script at a specific time and date.
-![On London DC](JPG/London%20DC.png)
+
+![London DC](JPG/London%20DC.png)
 
 1. Open Notepad and write down the following text:
 ```powershell  
