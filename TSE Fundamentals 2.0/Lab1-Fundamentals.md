@@ -1,6 +1,6 @@
-# Lab 1: Windows Endpoint -Luca
+# **Lab 1: Windows Endpoint -Luca**
 
-## Objectives:
+## **Objectives:**
 
 Upon successful completion of this lab, you will be able to:
 
@@ -10,13 +10,13 @@ Upon successful completion of this lab, you will be able to:
 
 ***
 
-## Task 1.1: MSI logging
+## **Task 1.1: MSI logging**
 
 In this task we will be looking at MSI files, their logs as well as use Windows
 Installer to uninstall.
 
 ![London DC](JPG/London%20DC.png)
-1. Open a web browser and navigate to https://172.16.16.16:4444
+1. Open a web browser and navigate to `https://172.16.16.16:4444`
 
     >**Note:** Proceed through any warnings you receive
 2. Login using the username 'admin'
@@ -53,7 +53,7 @@ msiexec /x <Product Code> /L*v C:\Windows\Temp\SophosConnectUninstall.txt
 <div style='page-break-after: always'></div>
 
 
-## Task 1.2: Registry Editor
+## **Task 1.2: Registry Editor**
 ![Registry Editor](JPG/Regstry_Editor.png)
 
 In this task we will create and modify a registry key as well as perform
@@ -91,7 +91,7 @@ a backup and restore.
 
 ***
 
-## Task 1.3: Task Scheduler
+## **Task 1.3: Task Scheduler**
 In this task we will create a scheduled task to run a script at a specific time and date.
 
 ![London DC](JPG/London%20DC.png)
