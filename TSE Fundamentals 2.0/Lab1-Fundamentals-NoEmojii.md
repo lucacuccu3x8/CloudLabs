@@ -1,3 +1,34 @@
+# **Sophos - TSE Fundamentals 2.0 Labs**
+## Getting Started
+#### Instructions
+
+1. **Once** the environment is **provisioned**, a virtual machine (**HostVM**) on the left and lab guide on the right will get loaded in your browser. Use this virtual machine throughout the workshop to perform the lab.
+
+2. **Wait 5 to 10 minutes for all nested VM** in the Hyper-V- Environment to complete startup before to begin.
+
+3. Your Environment is hosted in CloudLabs and can be accessed through a secure **Emulated RDP session** in your Web browser or **via native RDP connection**.   
+You can find the native RDP details in the **Environment details** tab in the upper right corner. 
+![Environment Details](JPG/Environment%20Details.png)
+***
+
+## Network Diagram 
+
+![Network Diagram](JPG/Lab%20Diagram34.png) 
+
+***
+
+## Prerequisites
+These labs accompany the **Sophos TSE Fundamentals Course**.   
+They are estimated to take **10 hours to complete**.
+
+Prior to taking this training, you should have: 
+* General networking knowledge
+* Understanding of operating systems
+* Understanding of Active Directory
+
+
+
+***
 # **Lab 1: Windows Endpoint -Luca**
 
 ## **Objectives:**
