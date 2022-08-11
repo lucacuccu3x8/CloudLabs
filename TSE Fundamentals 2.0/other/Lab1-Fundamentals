@@ -1,0 +1,998 @@
+<section id="lab-1-windows-endpoint" class="WordSection1"
+style="margin-left:5.75pt">
+<h1 style="margin-left:5.75pt"><span id="_Toc77069">Lab 1: Windows
+Endpoint</span><span style="mso-bookmark:_Toc77069"><span
+style="color:black"> </span></span></h1>
+<h2 style="margin-left:5.75pt" id="objectives"><span
+id="_Toc77070">Objectives</span><span
+style="mso-bookmark:_Toc77070"><span style="color:black">
+</span></span></h2>
+<p>Upon successful completion of this lab, you will be able to:</p>
+<p><span
+style="mso-bidi-font-size:9.0pt;line-height:101%;border:none windowtext 1.0pt;
+mso-border-alt:none windowtext 0cm;padding:0cm"><span
+style="mso-list:Ignore">1.<span
+style="font:7.0pt &quot;Times New Roman&quot;">    
+</span></span></span>Use <span class="SpellE">MsiExec</span> to install
+and remove applications</p>
+<p><span
+style="mso-bidi-font-size:9.0pt;line-height:101%;border:none windowtext 1.0pt;
+mso-border-alt:none windowtext 0cm;padding:0cm"><span
+style="mso-list:Ignore">2.<span
+style="font:7.0pt &quot;Times New Roman&quot;">    
+</span></span></span>Perform a registry backup and restore</p>
+<p><span
+style="mso-bidi-font-size:9.0pt;line-height:101%;border:none windowtext 1.0pt;
+mso-border-alt:none windowtext 0cm;padding:0cm"><span
+style="mso-list:Ignore">3.<span
+style="font:7.0pt &quot;Times New Roman&quot;">    
+</span></span></span>Create a scheduled task to run a script</p>
+<p><span style="font-size:11.0pt;
+line-height:106%"><span style="mso-spacerun:yes"> </span></span></p>
+<h2 style="margin-left:5.75pt" id="task-1.1-msi-logging"><span
+id="_Toc77071">Task 1.1: MSI logging</span><span
+style="mso-bookmark:_Toc77071"><span style="color:black">
+</span></span></h2>
+<p>We will be looking at MSI files, their logs as well as use Windows
+Installer to uninstall.</p>
+<p><span
+style="font-size:5.0pt;mso-bidi-font-size:11.0pt;line-height:106%"><span
+style="mso-spacerun:yes"> </span></span></p>
+<table class="TableGrid" data-border="0" data-cellspacing="0"
+data-cellpadding="0" width="728"
+style="width:545.85pt;margin-left:.05pt;border-collapse:collapse;mso-yfti-tbllook:
+ 1184;mso-padding-alt:.2pt 3.65pt 0cm .2pt">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="odd"
+style="mso-yfti-irow:0;mso-yfti-firstrow:yes;height:19.3pt">
+<td colspan="2" width="477" data-valign="top"
+style="width: 357.6pt; border: solid #BEBEBE 1.0pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 3.65pt 0cm .2pt; height: 19.3pt"><p><span
+style="font-size:
+  11.0pt;line-height:106%;color:#005BB5">Instructions</span><span
+style="font-size:11.0pt;line-height:106%"> </span></p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border: solid #BEBEBE 1.0pt; border-left: none; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 3.65pt 0cm .2pt; height: 19.3pt"><p><span
+style="font-size:
+  11.0pt;line-height:106%;color:#005BB5">Notes</span><span
+style="font-size:
+  11.0pt;line-height:106%"> </span></p></td>
+</tr>
+<tr class="even" style="mso-yfti-irow:1;height:63.2pt">
+<td colspan="2" width="477" data-valign="top"
+style="width: 357.6pt; border-top: none; border-left: solid #BEBEBE 1.0pt; border-bottom: solid #BEBEBE 1.0pt; border-right: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-bottom-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 3.65pt 0cm .2pt; height: 63.2pt"><p><span
+style="mso-no-proof:
+  yes"><img src="./Lab1-Fundamentals_files/image002.png"
+v:shapes="Picture_x0020_2677" width="57" height="57"
+alt="Icon Description automatically generated" /></span></p>
+<p><span style="color:white"><span style="mso-spacerun:yes">        
+</span>On <strong>London DC</strong></span> <strong></strong></p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-bottom-alt: solid #BEBEBE .5pt; mso-border-right-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 3.65pt 0cm .2pt; height: 63.2pt"><p> </p></td>
+</tr>
+<tr class="odd" style="mso-yfti-irow:2;height:17.5pt">
+<td width="30" data-valign="top"
+style="width: 22.45pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 3.65pt 0cm .2pt; height: 17.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">1</span><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:Calibri">
+</span></strong></p></td>
+<td width="447" data-valign="top"
+style="width: 335.1pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 3.65pt 0cm .2pt; height: 17.5pt"><p>Open
+a web browser and navigate to <u><span
+style="color:#0092D7">https://172.16.16.16:4444</span></u></p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 3.65pt 0cm .2pt; height: 17.5pt"><p>Proceed
+through any warnings you receive.</p></td>
+</tr>
+<tr class="even" style="mso-yfti-irow:3;height:17.5pt">
+<td width="30" data-valign="top"
+style="width: 22.45pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 3.65pt 0cm .2pt; height: 17.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">2</span><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:Calibri">
+</span></strong></p></td>
+<td width="447" data-valign="top"
+style="width: 335.1pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 3.65pt 0cm .2pt; height: 17.5pt"><p>Login
+using the username ‘admin’</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 3.65pt 0cm .2pt; height: 17.5pt"><p>Password
+is Sophos@1985.</p></td>
+</tr>
+<tr class="odd" style="mso-yfti-irow:4;height:17.5pt">
+<td width="30" data-valign="top"
+style="width: 22.45pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 3.65pt 0cm .2pt; height: 17.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">3 </span></strong></p></td>
+<td width="447" data-valign="top"
+style="width: 335.1pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 3.65pt 0cm .2pt; height: 17.5pt"><p>On
+the left pane, navigate to Configure &gt; VPN &gt; IPsec (remote
+access)</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 3.65pt 0cm .2pt; height: 17.5pt"><p><span
+style="font-family:
+  &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;"><span
+style="mso-spacerun:yes"> </span></span></p></td>
+</tr>
+<tr class="even" style="mso-yfti-irow:5;height:17.5pt">
+<td width="30" data-valign="top"
+style="width: 22.45pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 3.65pt 0cm .2pt; height: 17.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white"><span
+style="mso-spacerun:yes"> </span></span></strong></p></td>
+<td width="447" data-valign="top"
+style="width: 335.1pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 3.65pt 0cm .2pt; height: 17.5pt"><p>Click
+<u>Download client</u></p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 3.65pt 0cm .2pt; height: 17.5pt"><p><span
+style="font-family:
+  &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;"><span
+style="mso-spacerun:yes"> </span></span></p></td>
+</tr>
+<tr class="odd" style="mso-yfti-irow:6;height:31.25pt">
+<td width="30" data-valign="top"
+style="width: 22.45pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 3.65pt 0cm .2pt; height: 31.25pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">4</span><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:Calibri">
+</span></strong></p></td>
+<td width="447" data-valign="top"
+style="width: 335.1pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 3.65pt 0cm .2pt; height: 31.25pt"><p>Open
+Windows Explorer and navigate to the folder the installer was downloaded
+to and extract the contents of the zip</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 3.65pt 0cm .2pt; height: 31.25pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="even" style="mso-yfti-irow:7;height:40.55pt">
+<td width="30" data-valign="top"
+style="width: 22.45pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 3.65pt 0cm .2pt; height: 40.55pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">5</span><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:Calibri">
+</span></strong></p></td>
+<td width="447" data-valign="top"
+style="width: 335.1pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 3.65pt 0cm .2pt; height: 40.55pt"><p>Hold
+shift and right click an empty area and select <strong>Open Command
+window here</strong></p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 3.65pt 0cm .2pt; height: 40.55pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="odd" style="mso-yfti-irow:8;height:37.0pt">
+<td width="30" data-valign="top"
+style="width: 22.45pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 3.65pt 0cm .2pt; height: 37.0pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">6</span><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:Calibri">
+</span></strong></p></td>
+<td width="447" data-valign="top"
+style="width: 335.1pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 3.65pt 0cm .2pt; height: 37.0pt"><p>Run
+the following command to install Sophos Connect 2.0:</p>
+<p><span class="SpellE"><span
+style="font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+  &quot;Courier New&quot;">msiexec</span></span><span
+style="font-family:&quot;Courier New&quot;;
+  mso-fareast-font-family:&quot;Courier New&quot;"> /<span
+class="SpellE">i</span> SophosConnect_2.0_(IPsec_and_SSLVPN).msi /L*v
+C:\Windows\Temp\SophosConnectInstall.txt </span></p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 3.65pt 0cm .2pt; height: 37.0pt"><p>This
+will start the <span class="SpellE">SophosConnect</span> installer and
+generate logs into a file named SophosConnectInstall.txt.</p></td>
+</tr>
+<tr class="even" style="mso-yfti-irow:9;height:17.5pt">
+<td width="30" data-valign="top"
+style="width: 22.45pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 3.65pt 0cm .2pt; height: 17.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">7</span><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:Calibri">
+</span></strong></p></td>
+<td width="447" data-valign="top"
+style="width: 335.1pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 3.65pt 0cm .2pt; height: 17.5pt"><p>Follow
+the on-screen instructions to install Sophos Connect</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 3.65pt 0cm .2pt; height: 17.5pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="odd" style="mso-yfti-irow:10;height:28.5pt">
+<td width="30" data-valign="top"
+style="width: 22.45pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 3.65pt 0cm .2pt; height: 28.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">8 </span></strong></p></td>
+<td width="447" data-valign="top"
+style="width: 335.1pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 3.65pt 0cm .2pt; height: 28.5pt"><p>Use
+Windows Explorer to navigate to C:\Windows\Temp\ and open the <span
+class="SpellE">SophosConnectInstall</span> log file</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 3.65pt 0cm .2pt; height: 28.5pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="even" style="mso-yfti-irow:11;height:65.55pt">
+<td width="30" data-valign="top"
+style="width: 22.45pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 3.65pt 0cm .2pt; height: 65.55pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">9 </span></strong></p></td>
+<td width="447" data-valign="top"
+style="width: 335.1pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 3.65pt 0cm .2pt; height: 65.55pt"><p>Write
+down the line entry that indicates a successful or failed
+installation:</p>
+<p><span style="mso-spacerun:yes"> </span></p>
+<p><span style="mso-spacerun:yes"> </span></p>
+<p><span style="mso-spacerun:yes"> </span></p>
+<p><span style="mso-spacerun:yes"> </span></p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 3.65pt 0cm .2pt; height: 65.55pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="odd" style="mso-yfti-irow:12;height:65.5pt">
+<td width="30" data-valign="top"
+style="width: 22.45pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 3.65pt 0cm .2pt; height: 65.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">10 </span></strong></p></td>
+<td width="447" data-valign="top"
+style="width: 335.1pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 3.65pt 0cm .2pt; height: 65.5pt"><p>Write
+down the product code of this program:</p>
+<p><span style="mso-spacerun:yes"> </span></p>
+<p><span style="mso-spacerun:yes"> </span></p>
+<p><span style="mso-spacerun:yes"> </span></p>
+<p><span style="mso-spacerun:yes"> </span></p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 3.65pt 0cm .2pt; height: 65.5pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="even" style="mso-yfti-irow:13;height:37.0pt">
+<td width="30" data-valign="top"
+style="width: 22.45pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 3.65pt 0cm .2pt; height: 37.0pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">11 </span></strong></p></td>
+<td width="447" data-valign="top"
+style="width: 335.1pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 3.65pt 0cm .2pt; height: 37.0pt"><p>Uninstall
+PuTTY using the product code in the <span class="SpellE">msiexec</span>
+command:</p>
+<p><span class="SpellE"><span
+style="font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Courier New&quot;">msiexec</span></span><span
+style="font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Courier New&quot;">
+/x &lt;Product Code&gt; /L*v </span></p>
+<p><span style="font-family:
+  &quot;Courier New&quot;;mso-fareast-font-family:&quot;Courier New&quot;">C:\Windows\Temp\SophosConnectUninstall.txt
+</span></p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 3.65pt 0cm .2pt; height: 37.0pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="odd"
+style="mso-yfti-irow:14;mso-yfti-lastrow:yes;height:36.95pt">
+<td width="30"
+style="width: 22.45pt; border-top: none; border-left: solid #BEBEBE 1.0pt; border-bottom: solid #BEBEBE 1.0pt; border-right: solid black 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; mso-border-right-alt: solid black .5pt; background: #3EAD29; padding: .2pt 3.65pt 0cm .2pt; height: 36.95pt"><p><span
+style="mso-no-proof:
+  yes"><img src="./Lab1-Fundamentals_files/image004.png"
+v:shapes="Picture_x0020_2679" width="21" height="21" /></span></p></td>
+<td width="447" data-valign="top"
+style="width: 335.1pt; border: none; border-bottom: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid black .5pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid black .5pt; mso-border-bottom-alt: solid #BEBEBE .5pt; padding: .2pt 3.65pt 0cm .2pt; height: 36.95pt"><p><span
+style="font-size:
+  11.0pt;line-height:106%"><span
+style="mso-spacerun:yes"> </span></span></p>
+<p>You have <span class="SpellE">analyzed</span> MSI logs and used
+Windows Installer to manage <span class="SpellE">PuTTy</span>..</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-bottom-alt: solid #BEBEBE .5pt; mso-border-right-alt: solid #BEBEBE .5pt; padding: .2pt 3.65pt 0cm .2pt; height: 36.95pt"><p> </p></td>
+</tr>
+</tbody>
+</table>
+<p><span
+style="font-size:10.0pt;mso-bidi-font-size:11.0pt;line-height:106%"><span
+style="mso-spacerun:yes"> </span></span></p>
+</section>
+<span style="font-size:9.0pt;mso-bidi-font-size:11.0pt;line-height:101%;
+font-family:&quot;Arial&quot;,sans-serif;mso-fareast-font-family:Arial;color:black;
+mso-ansi-language:EN-GB;mso-fareast-language:EN-GB;mso-bidi-language:AR-SA"><br />
+</span>
+<div class="WordSection2">
+<p><span style="font-size:10.5pt;
+mso-bidi-font-size:11.0pt;line-height:106%"><span
+style="mso-spacerun:yes"> </span></span></p>
+<p><span
+style="font-size:16.0pt;mso-bidi-font-size:11.0pt;line-height:106%;color:#005BB5"><span
+style="mso-spacerun:yes"> </span></span></p>
+<h2 style="margin-left:5.75pt" id="task-1.2-registry-editor"><span
+id="_Toc77072">Task 1.2: Registry Editor</span><span
+style="mso-bookmark:_Toc77072"><span style="color:black">
+</span></span></h2>
+<p>In this task we will create and modify a registry key as well as
+perform a backup and restore.<span
+style="font-size:5.0pt;mso-bidi-font-size:
+11.0pt;line-height:101%"> </span></p>
+<table class="TableGrid" data-border="0" data-cellspacing="0"
+data-cellpadding="0" width="728"
+style="width:545.85pt;margin-left:.05pt;border-collapse:collapse;mso-yfti-tbllook:
+ 1184;mso-padding-alt:.2pt 1.05pt .35pt .2pt">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="odd"
+style="mso-yfti-irow:0;mso-yfti-firstrow:yes;height:19.3pt">
+<td colspan="2" width="477" data-valign="top"
+style="width: 357.6pt; border: solid #BEBEBE 1.0pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 19.3pt"><p><span
+style="font-size:
+  11.0pt;line-height:106%;color:#005BB5">Instructions </span></p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border: solid #BEBEBE 1.0pt; border-left: none; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 19.3pt"><p><span
+style="font-size:
+  11.0pt;line-height:106%;color:#005BB5">Notes </span></p></td>
+</tr>
+<tr class="even" style="mso-yfti-irow:1;height:63.2pt">
+<td colspan="3" width="728" data-valign="top"
+style="width: 545.85pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 1.05pt .35pt .2pt; height: 63.2pt"><p><span
+style="mso-no-proof:
+  yes"><img src="./Lab1-Fundamentals_files/image005.png"
+v:shapes="Picture_x0020_3209" width="57" height="57"
+alt="Icon Description automatically generated" /></span></p>
+<p><span style="color:white"><span style="mso-spacerun:yes">        
+</span>On <strong>London DC</strong></span> <strong></strong></p></td>
+</tr>
+<tr class="odd" style="mso-yfti-irow:2;height:17.5pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 1.05pt .35pt .2pt; height: 17.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">1</span><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:Calibri">
+</span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 17.5pt"><p>Open
+Registry by typing ‘<span
+style="font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Courier New&quot;">regedit</span>‘
+in the Run Window</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 17.5pt"><p><span
+style="font-family:
+  &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;"><span
+style="mso-spacerun:yes"> </span></span></p></td>
+</tr>
+<tr class="even" style="mso-yfti-irow:3;height:17.5pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 1.05pt .35pt .2pt; height: 17.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">2</span><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:Calibri">
+</span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 17.5pt"><p>Navigate
+to ‘Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\’</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 17.5pt"><p><span
+style="font-family:
+  &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;"><span
+style="mso-spacerun:yes"> </span></span></p></td>
+</tr>
+<tr class="odd" style="mso-yfti-irow:4;height:17.5pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 1.05pt .35pt .2pt; height: 17.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">3 </span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 17.5pt"><p>Right
+click <strong>WOW6432Node</strong> and create a new key named ‘<span
+class="SpellE">TestRegistry</span>’</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 17.5pt"><p><span
+style="font-family:
+  &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;"><span
+style="mso-spacerun:yes"> </span></span></p></td>
+</tr>
+<tr class="even" style="mso-yfti-irow:5;height:16.5pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 1.05pt .35pt .2pt; height: 16.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">4</span><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:Calibri">
+</span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 16.5pt"><p>Right
+click <span class="SpellE"><strong>TestRegistry</strong></span> and
+create a new String Value named ‘Setting’</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 16.5pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="odd" style="mso-yfti-irow:6;height:20.75pt">
+<td width="33"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 1.05pt .35pt .2pt; height: 20.75pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">5</span><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:Calibri">
+</span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 20.75pt"><p>Double
+click <strong>Setting</strong> and add value data of ‘Original
+data’</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 20.75pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="even" style="mso-yfti-irow:7;height:27.25pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 1.05pt .35pt .2pt; height: 27.25pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">6</span><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:Calibri">
+</span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 27.25pt"><p>Right
+click <span class="SpellE"><strong>TestRegistry</strong></span> and
+create a new DWORD Value named ‘<span
+class="SpellE">LogLevel</span>’<span
+style="font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Courier New&quot;">
+</span></p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 27.25pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="odd" style="mso-yfti-irow:8;height:17.5pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 1.05pt .35pt .2pt; height: 17.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">7</span><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:Calibri">
+</span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 17.5pt"><p>Double
+click <span class="SpellE"><strong>LogLevel</strong></span> and add
+value data of ‘3’</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 17.5pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="even" style="mso-yfti-irow:9;height:43.75pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 1.05pt .35pt .2pt; height: 43.75pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">8 </span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 43.75pt"><p>Select
+<span class="SpellE"><strong>TestRegistry</strong></span> on the left
+pane</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 43.75pt"><p>This
+creates a backup that only include content under</p>
+<p>HKLM\SOFTWARE\WOW6432Node\<span class="SpellE">TestRe</span> <span
+class="SpellE">gistry</span></p></td>
+</tr>
+<tr class="odd" style="mso-yfti-irow:10;height:17.5pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 1.05pt .35pt .2pt; height: 17.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">9 </span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 17.5pt"><p>Click
+on <strong>File</strong> on the top left and select
+<strong>Export</strong></p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 17.5pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="even" style="mso-yfti-irow:11;height:23.5pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 1.05pt .35pt .2pt; height: 23.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">10 </span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 23.5pt"><p>Name
+the file export ‘Test Registry Backup &lt;MM-DD-YYYY&gt;‘and save this
+file to the Desktop</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 23.5pt"><p>Name
+the file accordingly with today’s date</p></td>
+</tr>
+<tr class="odd" style="mso-yfti-irow:12;height:23.55pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 1.05pt .35pt .2pt; height: 23.55pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">11 </span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 23.55pt"><p>Double
+click the <strong>Setting</strong> registry string and modify the value
+data to ‘Modified data’</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 23.55pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="even" style="mso-yfti-irow:13;height:17.5pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 1.05pt .35pt .2pt; height: 17.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">12 </span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 17.5pt"><p>Delete
+the <span class="SpellE"><strong>LogLevel</strong></span> DWORD
+registry</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 17.5pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="odd" style="mso-yfti-irow:14;height:43.75pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 1.05pt .35pt .2pt; height: 43.75pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">13 </span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 43.75pt"><p>Open
+the Test Registry Backup file in Notepad</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 43.75pt"><p>All
+registry backup files can be opened in a text editor. You can confirm
+the contents before importing the keys back into the registry</p></td>
+</tr>
+<tr class="even" style="mso-yfti-irow:15;height:78.5pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 1.05pt .35pt .2pt; height: 78.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">14 </span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 78.5pt"><p>Note
+down the keys that were backed up:</p>
+<p><span style="mso-spacerun:yes"> </span></p>
+<p><span style="mso-spacerun:yes"> </span></p>
+<p><span style="mso-spacerun:yes"> </span></p>
+<p><span style="mso-spacerun:yes">  </span></p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 78.5pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="odd" style="mso-yfti-irow:16;height:17.5pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 1.05pt .35pt .2pt; height: 17.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">15 </span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 17.5pt"><p>Close
+Notepad</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 17.5pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="even" style="mso-yfti-irow:17;height:17.55pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 1.05pt .35pt .2pt; height: 17.55pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">16 </span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 17.55pt"><p>Double
+click the Test Registry Backup file to import its contents to the
+registry<span style="mso-spacerun:yes">  </span></p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 17.55pt"><p>Confirm
+the warning prompt</p></td>
+</tr>
+<tr class="odd" style="mso-yfti-irow:18;height:17.5pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 1.05pt .35pt .2pt; height: 17.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">17 </span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 17.5pt"><p>In
+Registry Editor, navigate back to ‘HKLM\SOFTWARE\WOW6432Node\’</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 17.5pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="even" style="mso-yfti-irow:19;height:65.55pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 1.05pt .35pt .2pt; height: 65.55pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">18 </span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 65.55pt"><p>Note
+down the value data of the <strong>Setting</strong> registry key:</p>
+<p><span style="mso-spacerun:yes"> </span></p>
+<p><span style="mso-spacerun:yes"> </span></p>
+<p><span style="mso-spacerun:yes"> </span></p>
+<p><span style="mso-spacerun:yes"> </span></p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 65.55pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="odd"
+style="mso-yfti-irow:20;mso-yfti-lastrow:yes;height:23.2pt">
+<td width="33" data-valign="bottom"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: .2pt 1.05pt .35pt .2pt; height: 23.2pt"><p><span
+style="mso-no-proof:
+  yes"><img src="./Lab1-Fundamentals_files/image006.png"
+v:shapes="Picture_x0020_3211" width="21"
+height="21" /></span><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;
+  mso-fareast-font-family:Calibri;color:white"><span
+style="mso-spacerun:yes"> </span></span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 23.2pt"><p>You
+have successfully backed up and restored a registry key.</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: .2pt 1.05pt .35pt .2pt; height: 23.2pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+</tbody>
+</table>
+<p><span style="font-size:3.5pt;
+mso-bidi-font-size:11.0pt;line-height:106%"><span
+style="mso-spacerun:yes"> </span></span></p>
+<h2 style="margin-left:5.75pt" id="task-1.3-task-scheduler"><span
+id="_Toc77073">Task 1.3: Task Scheduler</span><span
+style="mso-bookmark:_Toc77073"><span style="color:black">
+</span></span></h2>
+<p>In this task we will create a scheduled task to run a script at a
+specific time and date.<span style="font-size:5.0pt;mso-bidi-font-size:
+11.0pt;line-height:101%"> </span></p>
+<table class="TableGrid" data-border="0" data-cellspacing="0"
+data-cellpadding="0" width="728"
+style="width:545.85pt;margin-left:.05pt;border-collapse:collapse;mso-yfti-tbllook:
+ 1184;mso-padding-alt:0cm 5.75pt 0cm .2pt">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="odd"
+style="mso-yfti-irow:0;mso-yfti-firstrow:yes;height:19.35pt">
+<td colspan="2" width="477" data-valign="top"
+style="width: 357.6pt; border: solid #BEBEBE 1.0pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 19.35pt"><p><span
+style="font-size:
+  11.0pt;line-height:106%;color:#005BB5">Instructions </span></p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border: solid #BEBEBE 1.0pt; border-left: none; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 19.35pt"><p><span
+style="font-size:
+  11.0pt;line-height:106%;color:#005BB5">Notes </span></p></td>
+</tr>
+<tr class="even" style="mso-yfti-irow:1;height:63.2pt">
+<td colspan="2" width="477" data-valign="top"
+style="width: 357.6pt; border-top: none; border-left: solid #BEBEBE 1.0pt; border-bottom: solid #BEBEBE 1.0pt; border-right: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-bottom-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: 0cm 5.75pt 0cm .2pt; height: 63.2pt"><p><span
+style="mso-no-proof:
+  yes"><img src="./Lab1-Fundamentals_files/image007.png"
+v:shapes="Picture_x0020_3753" width="57" height="57"
+alt="Icon Description automatically generated" /></span></p>
+<p><span style="color:white"><span style="mso-spacerun:yes">        
+</span>On <strong>London DC</strong></span> <strong></strong></p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-bottom-alt: solid #BEBEBE .5pt; mso-border-right-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: 0cm 5.75pt 0cm .2pt; height: 63.2pt"><p> </p></td>
+</tr>
+<tr class="odd" style="mso-yfti-irow:2;height:37.05pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: 0cm 5.75pt 0cm .2pt; height: 37.05pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">1 </span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 37.05pt"><p>Open
+Notepad and write down the following text:</p>
+<p><span style="font-family:
+  &quot;Courier New&quot;;mso-fareast-font-family:&quot;Courier New&quot;">echo
+"Hello World" &gt; </span></p>
+<p><span style="font-family:
+  &quot;Courier New&quot;;mso-fareast-font-family:&quot;Courier New&quot;">C:\Users\Administrator\Desktop\scheduledtask.txt
+</span></p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 37.05pt"><p><span
+style="font-family:
+  &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;"><span
+style="mso-spacerun:yes"> </span></span></p></td>
+</tr>
+<tr class="even" style="mso-yfti-irow:3;height:17.25pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: 0cm 5.75pt 0cm .2pt; height: 17.25pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">2 </span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.25pt"><p>Save
+the file with the name script.bat</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.25pt"><p><span
+style="font-family:
+  &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;"><span
+style="mso-spacerun:yes"> </span></span></p></td>
+</tr>
+<tr class="odd" style="mso-yfti-irow:4;height:17.5pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">3 </span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p>Close
+Notepad</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p><span
+style="font-family:
+  &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;"><span
+style="mso-spacerun:yes"> </span></span></p></td>
+</tr>
+<tr class="even" style="mso-yfti-irow:5;height:17.25pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: 0cm 5.75pt 0cm .2pt; height: 17.25pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">4</span><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:Calibri">
+</span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.25pt"><p>Open
+Task Scheduler by typing ‘<span class="SpellE"><span
+style="font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+  &quot;Courier New&quot;">taskschd</span></span>’ in the Run
+Window</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.25pt"><p><span
+style="font-family:
+  &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;"><span
+style="mso-spacerun:yes"> </span></span></p></td>
+</tr>
+<tr class="odd" style="mso-yfti-irow:6;height:17.5pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">5</span><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:Calibri">
+</span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p>In
+the left-hand pane, click on <strong>Task Scheduler
+Library</strong></p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p><span
+style="font-family:
+  &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;"><span
+style="mso-spacerun:yes"> </span></span></p></td>
+</tr>
+<tr class="even" style="mso-yfti-irow:7;height:17.5pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">6 </span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p>In
+the right-hand pane, click <strong>Create Task…</strong></p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p><span
+style="font-family:
+  &quot;Times New Roman&quot;,serif;mso-fareast-font-family:&quot;Times New Roman&quot;"><span
+style="mso-spacerun:yes"> </span></span></p></td>
+</tr>
+<tr class="odd" style="mso-yfti-irow:8;height:16.5pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: 0cm 5.75pt 0cm .2pt; height: 16.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">7</span><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:Calibri">
+</span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 16.5pt"><p>In
+the ‘Name’ field, enter ‘Create txt file’</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 16.5pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="even" style="mso-yfti-irow:9;height:21.0pt">
+<td width="33"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: 0cm 5.75pt 0cm .2pt; height: 21.0pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">8</span><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:Calibri">
+</span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 21.0pt"><p>Select
+Run whether user is logged in or not</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 21.0pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="odd" style="mso-yfti-irow:10;height:17.5pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">9</span><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:Calibri">
+</span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p>Select
+the Triggers tab</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="even" style="mso-yfti-irow:11;height:17.5pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">10 </span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p>Click
+<strong>New…</strong></p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="odd" style="mso-yfti-irow:12;height:17.5pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">11 </span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p>In
+the ‘Settings’ section set the start time 5 minutes from the current
+time</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="even" style="mso-yfti-irow:13;height:17.5pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">12 </span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p>Click
+<strong>OK</strong></p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="odd" style="mso-yfti-irow:14;height:17.5pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">13 </span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p>Select
+the Actions tab</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="even" style="mso-yfti-irow:15;height:17.55pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: 0cm 5.75pt 0cm .2pt; height: 17.55pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">14 </span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.55pt"><p>Click
+<strong>New…</strong></p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.55pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="odd" style="mso-yfti-irow:16;height:21.75pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: 0cm 5.75pt 0cm .2pt; height: 21.75pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">15 </span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 21.75pt"><p>In
+the Program/script field browse to the previously created
+script.bat<span style="font-family:&quot;Courier New&quot;;
+  mso-fareast-font-family:&quot;Courier New&quot;"> </span></p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 21.75pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="even" style="mso-yfti-irow:17;height:17.5pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">16 </span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p>Click
+<strong>OK</strong></p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="odd" style="mso-yfti-irow:18;height:17.5pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">17 </span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p>Select
+the Settings tab</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="even" style="mso-yfti-irow:19;height:17.5pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">18 </span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p>Select
+Run task as soon as possible after as scheduled start is missed</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="odd" style="mso-yfti-irow:20;height:17.5pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">19 </span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p>Click
+<strong>OK</strong></p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="even" style="mso-yfti-irow:21;height:17.5pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">20 </span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p>Enter
+the Administrator password <span
+style="font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Courier New&quot;">Sophos1985</span>,
+then click <strong>OK</strong></p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 17.5pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="odd" style="mso-yfti-irow:22;height:23.5pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: 0cm 5.75pt 0cm .2pt; height: 23.5pt"><p><strong><span
+style="font-family:&quot;Calibri&quot;,sans-serif;mso-fareast-font-family:
+  Calibri;color:white">21 </span></strong></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 23.5pt"><p>Wait
+for the scheduled start time and confirm a file named <span
+class="SpellE">scheduledtask</span> is created on the Desktop</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 23.5pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+<tr class="even"
+style="mso-yfti-irow:23;mso-yfti-lastrow:yes;height:19.45pt">
+<td width="33" data-valign="top"
+style="width: 24.65pt; border: solid #BEBEBE 1.0pt; border-top: none; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; background: #3EAD29; padding: 0cm 5.75pt 0cm .2pt; height: 19.45pt"><p><span
+style="mso-no-proof:
+  yes"><img src="./Lab1-Fundamentals_files/image008.png"
+v:shapes="Picture_x0020_3755" width="21" height="21" /></span></p></td>
+<td width="444" data-valign="top"
+style="width: 332.95pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 19.45pt"><p>You
+have successfully created a basic scheduled task</p></td>
+<td width="251" data-valign="top"
+style="width: 188.25pt; border-top: none; border-left: none; border-bottom: solid #BEBEBE 1.0pt; border-right: solid #BEBEBE 1.0pt; mso-border-top-alt: solid #BEBEBE .5pt; mso-border-left-alt: solid #BEBEBE .5pt; mso-border-alt: solid #BEBEBE .5pt; padding: 0cm 5.75pt 0cm .2pt; height: 19.45pt"><p><span
+style="mso-spacerun:yes"> </span></p></td>
+</tr>
+</tbody>
+</table>
+<p><span style="font-size:10.0pt;
+mso-bidi-font-size:11.0pt;line-height:106%"><span
+style="mso-spacerun:yes"> </span></span></p>
+<h2 style="margin-left:5.75pt" id="review"><span
+id="_Toc77074">Review</span><span style="mso-bookmark:_Toc77074"><span
+style="color:black"> </span></span></h2>
+<p>You have now successfully:</p>
+<p><span
+style="mso-bidi-font-size:9.0pt;line-height:101%;border:none windowtext 1.0pt;
+mso-border-alt:none windowtext 0cm;padding:0cm"><span
+style="mso-list:Ignore">1.<span
+style="font:7.0pt &quot;Times New Roman&quot;">    
+</span></span></span>Used <span class="SpellE">MsiExec</span> to install
+and remove applications</p>
+<p><span
+style="mso-bidi-font-size:9.0pt;line-height:101%;border:none windowtext 1.0pt;
+mso-border-alt:none windowtext 0cm;padding:0cm"><span
+style="mso-list:Ignore">2.<span
+style="font:7.0pt &quot;Times New Roman&quot;">    
+</span></span></span>Performed a registry backup and restore</p>
+<p><span
+style="mso-bidi-font-size:9.0pt;line-height:101%;border:none windowtext 1.0pt;
+mso-border-alt:none windowtext 0cm;padding:0cm"><span
+style="mso-list:Ignore">3.<span
+style="font:7.0pt &quot;Times New Roman&quot;">    
+</span></span></span>Created a scheduled task to launch Notepad</p>
+<p> </p>
+</div>
