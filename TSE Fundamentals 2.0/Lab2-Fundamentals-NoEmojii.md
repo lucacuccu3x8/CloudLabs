@@ -48,7 +48,7 @@ Upon successful completion of this lab, you will be able to:
 In this task we will be looking at MSI files, their logs as well as use Windows
 Installer to uninstall.
 
-![](JPG/London%20DC%204.png)
+![London DC](JPG/London%20DC.png)
 1. Open a web browser and navigate to `https://172.16.16.16:4444`
 
     >**Note:** Proceed through any warnings you receive
@@ -92,7 +92,7 @@ msiexec /x <Product Code> /L*v C:\Windows\Temp\SophosConnectUninstall.txt
 In this task we will create and modify a registry key as well as perform
 a backup and restore.
 
-![](JPG/London%20DC%204.png)
+![London DC](JPG/London%20DC.png)
 1. Open Registry by typing <inject key="Suffix" />`regedit` in the Run Window
 2. Navigate to `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\`
 3. Right click **WOW6432Node** and create a new key named `TestRegistry`
@@ -128,7 +128,7 @@ a backup and restore.
 ## **Task 1.3: Task Scheduler**
 In this task we will create a scheduled task to run a script at a specific time and date.
 
-![](JPG/London%20DC%204.png)
+![London DC](JPG/London%20DC.png)
 
 1. Open Notepad and write down the following text:
 <small>
@@ -141,20 +141,20 @@ echo "Hello World" > C:\Users\Administrator\Desktop\scheduledtask.txt
 3. Close Notepad
 4. Open Task Scheduler by typing `taskschd` in the Run Window 
 5. In the left-hand pane, click on **Task Scheduler Library** 
-6. In the right-hand pane, click **Create Task…** 
-7. In the ‘Name’ field, enter **Create txt file** 
+6. In the right-hand pane, click **`Create Task…`** 
+7. In the ‘Name’ field, enter **`Create txt file`** 
 8. Select `Run` whether user is logged in or not 
-9. Select the **Triggers tab** 
-10. Click **New** 
+9. Select the Triggers tab 
+10. Click `New…` 
 11. In the **Settings** section set the start time 5 minutes from the current time 
-12. Click **OK**
+12. Click `OK` 
 13. Select the Actions tab 
-14. Click **New** 
+14. Click `New…` 
 15. In the `Program/script` field browse to the previously created `script.bat` 
-16. Click **OK** 
+16. Click `OK` 
 17. Select the **Settings** tab 
 18. Select Run task as soon as possible after as scheduled start is missed 
-19. Click **OK** 
+19. Click `OK` 
 20. Enter the Administrator password `Sophos1985`, then click **OK** 
 21. Wait for the scheduled start time and confirm a file named scheduledtask is created on the Desktop 
   
