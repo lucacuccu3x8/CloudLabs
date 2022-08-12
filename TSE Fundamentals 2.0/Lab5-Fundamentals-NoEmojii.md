@@ -39,6 +39,8 @@ You have been asked to debug information using the command prompt with the help 
 ![](JPG/London%20DC%204.png)  
 1. Open the **Process Explorer** and run Command Prompt 
 
+![Process Explorer](JPG/Process%20Explorer.jpeg)
+
 2. Find the Command Prompt process and check all the information   
 > **i.e.,** PID, Company Name, CPU, Memory Usage 
 
