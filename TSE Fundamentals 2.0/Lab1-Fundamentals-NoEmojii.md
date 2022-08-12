@@ -1,5 +1,5 @@
-# **Sophos - TSE Fundamentals 2.0 Labs**
-## Getting Started
+# ![labs](JPG/Sophos%20LAbs.png)**TSE Fundamentals 2.0** 
+### Getting Started with the LAB 
 #### Instructions
 
 1. **Once** the environment is **provisioned**, a virtual machine (**HostVM**) on the left and lab guide on the right will get loaded in your browser. Use this virtual machine throughout the workshop to perform the lab.
