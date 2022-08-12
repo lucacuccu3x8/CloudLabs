@@ -72,14 +72,15 @@ You have been asked to obtain the following information from a Wireshark capture
 *	**Filter out** Destination IP address
 
 ![London DC](JPG/London%20DC%204.png)
+1. Open Wireshark start a **packet capture** and access any **HTTPs** based Website.
 
-1. Open Wireshark start a **packet capture** and access any **HTTPs** based Website. 
 
 ![Wireshark](JPG/Wireshark.png)
 
-2.	Note down and verify the commands used to filter for the information outlined in the task above. 
+2. Note down and verify the commands used to filter for the information outlined in the task above.
  
-3. 	Save the capture in **PCAP format** after validating. 
+3. Save the capture in **PCAP format** after validating.
+
 
 ##### ![check](JPG/pngegg%20(1).png) You have successfully utilized filters with Wireshark 
 
@@ -89,9 +90,10 @@ You have been asked to obtain the following information from a Wireshark capture
 ## ![review](JPG/Review%2048.png) Review  ##
 
 You have now successfully: 
-1.	Debugged using Process Monitor Tool  
-2.	Debugged using Process Explorer Tool  
-3.	Wireshark Debugging 
+* Debugged using Process Monitor Tool
+* Debugged using Process Explorer Tool
+* Wireshark Debugging
+
 
 ***
 
