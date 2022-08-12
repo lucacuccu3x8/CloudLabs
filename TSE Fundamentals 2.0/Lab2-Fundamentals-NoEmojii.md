@@ -12,19 +12,20 @@ Upon successful completion of this lab, you will be able to:
 ***
 
 ## **Task 2.1** Group Policies
-You have recently been given access to the Domain Controller. Your task is to force all users to set a password with a minimum length of 10. 
-![London DC](JPG/London%20DC.png)
-1. Open Server Manager and select Manage > Add Roles and Features  
+You have recently been given access to the Domain Controller. Your task is to force all users to set a password with a minimum length of 10.   
 
-2. Read the ‘Before you begin’ message and click Next  
+![](JPG/London%20DC%204.png)
+1. Open Server Manager and select **Manage > Add Roles and Features**  
 
-3. Keep ‘Role-based or feature-based installation’ selected and click Next twice  
+2. Read the **‘Before you begin’** message and click **Next** 
+
+3. Keep **‘Role-based or feature-based installation’** selected and click **Next** twice  
 
 4. Note down the server roles installed on this server.  
 
-5. Click Cancel to exit out of Add Roles and Features  
+5. Click **Cancel** to exit out of Add Roles and Features 
 
-6. Open Group Policy Management  
+6. Open **Group Policy Management** 
 
 7. Navigate to Forest: `SOPHOS.LOCAL > Domains > SOPHOS.LOCAL`
 
