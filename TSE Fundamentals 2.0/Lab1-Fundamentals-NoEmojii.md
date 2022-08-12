@@ -113,7 +113,7 @@ a backup and restore.
 12. Delete the **LogLevel** `DWORD` registry
 13. Open the Test Registry Backup file in Notepad
 
->**Note:** All registry backup files can be opened in a text editor. You can confirm the contents before importing the keys back into the registry .
+> **Note:** All registry backup files can be opened in a text editor. You can confirm the contents before importing the keys back into the registry.
 
 14. Note Down the keys that were backed up
 15. Close Notepad
@@ -155,7 +155,7 @@ echo "Hello World" > C:\Users\Administrator\Desktop\scheduledtask.txt
 20. Enter the Administrator password `Sophos1985`, then click **OK** 
 21. Wait for the scheduled start time and confirm a file named scheduledtask is created on the Desktop 
   
-##### ![check](JPG/pngegg%20(1).png) You have successfully created a basic scheduled task 
+##### ![check](JPG/pngegg%20(1).png) You have created a basic scheduled task 
 
 ***
 
