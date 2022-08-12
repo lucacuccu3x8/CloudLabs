@@ -1,3 +1,5 @@
+# Lab Number 2
+
 ![Main Title - TSE Fundamentals](JPG/Sophos-Support---TSE-Fundamentals.png)
 ### Getting Started with the LAB
 #### Instructions
