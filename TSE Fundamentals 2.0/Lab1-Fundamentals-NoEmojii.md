@@ -79,7 +79,7 @@ msiexec /i SophosConnect_2.0_(IPsec_and_SSLVPN).msi /L*v C:\Windows\Temp\SophosC
 msiexec /x <Product Code> /L*v C:\Windows\Temp\SophosConnectUninstall.txt
 ```
 
-:white_check_mark: You have analyzed MSI logs and used Windows Installer to manage PuTTy.
+##### ![check](JPG/pngegg%20(1).png) You have analyzed MSI logs and used Windows Installer to manage PuTTy.
 
 ***
 
@@ -121,7 +121,7 @@ a backup and restore.
 17. In Registry Editor, navigate back to `HKLM\SOFTWARE\WOW6432Node\`
 18. Note down the value data of the **Setting** registry key: 
 
-:white_check_mark: You have successfully backed up and restored a registry key.
+##### ![check](JPG/pngegg%20(1).png) You have successfully backed up and restored a registry key.
 
 ***
 
@@ -155,11 +155,11 @@ echo "Hello World" > C:\Users\Administrator\Desktop\scheduledtask.txt
 20. Enter the Administrator password `Sophos1985`, then click **OK** 
 21. Wait for the scheduled start time and confirm a file named scheduledtask is created on the Desktop 
   
-####  :white_check_mark: You have successfully created a basic scheduled task 
+##### ![check](JPG/pngegg%20(1).png) You have successfully created a basic scheduled task 
 
 ***
 
-## :beginner: Review  ##
+## ![review](JPG/Review%2048.png) Review  ##
 
 You have now successfully: 
 1.	Used MsiExec to install and remove applications 
