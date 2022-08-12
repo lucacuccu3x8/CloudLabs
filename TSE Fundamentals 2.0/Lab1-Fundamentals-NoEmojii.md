@@ -136,6 +136,7 @@ In this task we will create a scheduled task to run a script at a specific time 
 echo "Hello World" > C:\Users\Administrator\Desktop\scheduledtask.txt
 ```
 </small>
+
 2. Save the file with the name `script.bat`
 3. Close Notepad
 4. Open Task Scheduler by typing `taskschd` in the Run Window 
