@@ -64,7 +64,7 @@ click Download Client
 5. Hold shift and right click an empty area and select:  
  `Open Command window here`
 6. Run the following command to install Sophos Connect 2.0:
-```javascript
+```bash
 msiexec /i SophosConnect_2.0_(IPsec_and_SSLVPN).msi /L*v C:\Windows\Temp\SophosConnectInstall.txt
 ```
  
@@ -75,7 +75,7 @@ msiexec /i SophosConnect_2.0_(IPsec_and_SSLVPN).msi /L*v C:\Windows\Temp\SophosC
  9. Write down the line entry that indicates a successful or failed installation:
  10. Write down the product code of this program
  11. Uninstall PuTTY using the product code in the msiexec command: 
-```javascript
+```bash
 msiexec /x <Product Code> /L*v C:\Windows\Temp\SophosConnectUninstall.txt
 ```
 
