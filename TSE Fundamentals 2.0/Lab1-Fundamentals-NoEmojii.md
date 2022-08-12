@@ -1,4 +1,5 @@
-# ![Sophos](JPG/output-onlinepngtools.png)**TSE Fundamentals 2.0 -  Labs Workshop** 
+![Main title Right](JPG/Sophos-Support---TSE-Fundamentals2.png)
+
 ### Getting Started with the LAB
 #### Instructions
 
