@@ -1,5 +1,4 @@
-![Main title Right](JPG/Sophos-Support---TSE-Fundamentals2.png)
-
+![Main Title - TSE Fundamentals](JPG/Sophos-Support---TSE-Fundamentals.png)
 ### Getting Started with the LAB
 #### Instructions
 
