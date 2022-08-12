@@ -194,18 +194,70 @@ Disable-Netadapter -Name “Ethernet 3”
 Enable-NetAdapter -Name "[your network adapter name]"
  ```
 
-
-
 ##### ![check](JPG/pngegg%20(1).png)  You have now successfully analyzed DHCP requests and created a DHCP scope 
-
 
 ***
 
 ## **Task 6.3:** <small>Lookup and resolve several types of DNS records using nslookup </small> 
 
+You have been given a task to display the routing table on two clients to validate which interfaces are being used. This must be verified on both London Client and Linux Client. 
+
+##### On the same Virtual Machine:
+![London Client](JPG/London%20Client.png)
+
+1. Open Wireshark and run a packet capture on ‘Ethernet 2’ 
+ 
+2. Open a command prompt and write down the DNS queries used for the following scenarios, using nslookup: 
+ 
+|           |                                  |
+|----------|------------------------------------|
+|Destination |	Record Type | 	Query Used |
+| sophos.local |	A |	 Nslookup -type A Sophos.local |
+|sophos.local using DNS 8.8.8.8 |	A 	| Nslookup -type A 8.8.8.8|
+| sophos.com |	TXT 	 |Nslookup -type TXT Sophos.com|
+ 
+ 
+3. Stop the Wireshark capture and run a filter to display only DNS queries and replies 
+ Filter: dns
+ 
+4. Which DNS server was used to query sophos.com for txt records? 
+ 
+> Server: **LON-DC-SOPHOS.LOCAL**
+
+> Address: `172.16.16.10`
+
+#### Why was this DNS server used? 
+The first available DNS holding the information, however it is a Non-Authoritative DNS server for the zone.
+ 
+ 
+ 
+ 
+5. What server provided the authoritative answer that sophos.local is not responsible when using DNS 8.8.8.8? 
+When querying: 
+ ```bash
+ Nslookup -type=soa dns.google
+ ```
+Querying the non authoritative ns1.zdns.google:
+```bash
+Nslookup -type=soa ns1.zdns.google
+```
+The answer comes from:    
+ ```bash
+ dns.google
+ ```
+ 
+ ###### What does this mean? 
+ 
+ An authoritative answer is when the DNS server hosting the primary copy of the DNS record responses to your lookup. 
+ When nslookup provided results by a server that is not the authoritative (primary) source. Typically, this means the result was provided by a server  that held a cached copy of the DNS record. This is important because the DNS record may have been changed recently and the cached copy may not reflect the most up-to-date information.
 
 
-##### ![check](JPG/pngegg%20(1).png) You have successfully utilized filters with Wireshark 
+See more information here:
+https://www.meridianoutpost.com/resources/articles/command-line/nslookup.php#AuthoritativeResponse
+ 
+ 
+ 
+##### ![check](JPG/pngegg%20(1).png) You have now successfully made various DNS request types and analyzed their packets. 
 
 
 ***
@@ -213,9 +265,9 @@ Enable-NetAdapter -Name "[your network adapter name]"
 ## ![review](JPG/Review%2048.png) Review  ##
 
 You have now successfully: 
-1.	Debugged using Process Monitor Tool  
-2.	Debugged using Process Explorer Tool  
-3.	Wireshark Debugging 
+1.	Displayed the routing table from a Windows and Linux Client  
+2.	Configured a DHCP server and observed the various negotiations and behavior 
+3.	Looked up and resolved several types of DNS records using nslookup 
 
 ***
 

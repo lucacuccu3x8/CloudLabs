@@ -71,11 +71,9 @@ You have been asked to obtain the following information from a Wireshark capture
 *	**Trace TCP Stream** for website communication 
 *	**Filter out** Destination IP address
 
+![London DC](JPG/London%20DC%204.png)
 
-![](JPG/London%20DC%204.png)  
-
-
-1. 	Open Wireshark start a **packet capture** and access any **HTTPs** based Website. 
+1. Open Wireshark start a **packet capture** and access any **HTTPs** based Website. 
 
 ![Wireshark](JPG/Wireshark.png)
 
