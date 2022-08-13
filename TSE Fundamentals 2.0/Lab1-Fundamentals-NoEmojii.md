@@ -9,8 +9,9 @@ You can find the native RDP details in the **Environment details** tab in the up
 
 2. **Once** the environment is **provisioned**, a virtual machine (**HostVM**) on the left and **Lab Guide** on the right will load in your browser.   
 
-3. Make sure the **HostVM** is currently running.  
+3. Make sure the **HostVM** is currently running.
 You can verify the **Status** in the **Resource** tab:
+
 ![](JPG/Resource%20Running.png)
 
 3. The **HostVM** on the left of this portal will have several nested Virtual Machines running inside Hyper-V that you will use throughout the workshop to perform the lab. 
