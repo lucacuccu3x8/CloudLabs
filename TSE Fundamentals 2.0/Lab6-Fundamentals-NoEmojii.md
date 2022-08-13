@@ -133,7 +133,7 @@ and compare the current details of `Ethernet 3` details to when this command was
  
 4. Open up Wireshark and filter for the DHCP traffic only. Open each packet in the DHCP sequence to be familiar with each type of packet's being requested. 
  
-> **DORA** request: 
+### **D.O.R.A.** request: 
 > * **Discovery** – Client sending Broadcast
 > *	**Offer** – Server sending a reply
 > *	**Request** – client requesting ip Broad
@@ -158,7 +158,7 @@ and compare the current details of `Ethernet 3` details to when this command was
 |Destination MAC Address 	 |ff:ff:ff:ff:ff:ff|
 
  
-##### Why are these addresses used? 
+### ![Knowledge](JPG/Knowledge%203.png) Why are these addresses used? 
 > `0.0.0.0`	means “any” or “unassigned”, since the source mac address (client) does not have an associated/configured IP address.
 
 ‌‌ 
@@ -166,7 +166,6 @@ and compare the current details of `Ethernet 3` details to when this command was
 > `255.255.255.255` It floods a DHCP Request message over the IP network using a broadcast IP address (255.255. 255.255) in order to deliver the DHCP Request message to all the DHCP servers on the same subnet
 
 ‌‌ 
-
 
 > `Source Mac Address` – The Mac address of the client looking to get an ip assigned by any available DHCP server in the broadcast domain.
 
