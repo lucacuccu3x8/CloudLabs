@@ -3,18 +3,29 @@
 ### Getting Started with the LAB
 #### Instructions
 
-1. **Once** the environment is **provisioned**, a virtual machine (**HostVM**) on the left and lab guide on the right will get loaded in your browser. Use this virtual machine throughout the workshop to perform the lab.
-
-2. **Wait 5 to 10 minutes for all nested VM** in the Hyper-V- Environment to complete startup before to begin.
-
-3. Your Environment is hosted in CloudLabs and can be accessed through a secure **Emulated RDP session** in your Web browser or **via native RDP connection**.   
+1. Your Lab Environment is hosted in CloudLabs and can be accessed through a secure **Emulated RDP session** in your Web browser or **via native RDP connection**.   
 You can find the native RDP details in the **Environment details** tab in the upper right corner. 
 ![Environment Details ](JPG/Environment%20Details2%20.png)
+
+2. **Once** the environment is **provisioned**, a virtual machine (**HostVM**) on the left and **Lab Guide** on the right will load in your browser.   
+
+3. Make sure the **HostVM** is currently running.  
+You can verify the **Status** in the **Resource** tab:
+![](JPG/Resource%20Running.png)
+
+3. The **HostVM** on the left of this portal will have several nested Virtual Machines running inside Hyper-V that you will use throughout the workshop to perform the lab. 
+
+> **Note:** Do not use the **HostVM** to perform the lab exercises.
+
+4. **Wait 5 to 10 minutes for all nested VM** in the Hyper-V-Environment to complete startup before to begin.
+
+
+
 ***
 
 ## Environment Network Diagram 
 
-![Network Diagram](JPG/Lab%20Diagram34.png) 
+![](JPG/Lab%20Diagram-%20Nice.png)
 
 ***
 
