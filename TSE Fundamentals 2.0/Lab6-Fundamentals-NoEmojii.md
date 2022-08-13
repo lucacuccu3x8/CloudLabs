@@ -216,7 +216,8 @@ You have been given a task to display the routing table on two clients to valida
 | sophos.com |	TXT 	 |Nslookup -type TXT Sophos.com|
  
  
-3. Stop the Wireshark capture and run a filter to display only DNS queries and replies 
+ 
+3. Stop the Wireshark capture and run a filter to display only DNS queries and replies
  Filter: dns
  
 4. Which DNS server was used to query sophos.com for txt records? 
