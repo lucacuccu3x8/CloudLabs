@@ -217,8 +217,8 @@ You have been given a task to display the routing table on two clients to valida
  
  
  
-3. Stop the Wireshark capture and run a filter to display only DNS queries and replies
- Filter: dns
+3. Stop the Wireshark capture and run a filter to display only DNS queries and replies Filter: **dns**
+
  
 4. Which DNS server was used to query sophos.com for txt records? 
  
