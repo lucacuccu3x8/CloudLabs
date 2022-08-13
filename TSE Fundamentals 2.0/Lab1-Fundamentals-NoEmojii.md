@@ -1,5 +1,15 @@
 ![Main Title - TSE Fundamentals](JPG/Sophos-Support---TSE-Fundamentals.png)
+
+These labs accompany the **Sophos TSE Fundamentals Course**.   
+They are estimated to take **10 hours to complete**.
+
+Prior to taking this training, you should have: 
+* General networking knowledge
+* Understanding of operating systems
+* Understanding of Active Directory
+
 ***
+
 ### Getting Started with the LAB
 #### Instructions
 
@@ -20,24 +30,38 @@ You can verify the **Status** in the **Resource** tab:
 
 4. **Wait 5 to 10 minutes for all nested VM** in the Hyper-V-Environment to complete startup before to begin.
 
+***
+## Accessing the nested Virtual machines:
 
+You can use either
+* Hyper-V, or
+* The Lab Access shortcut on the Desktop   
+![](JPG/HyperV.png)
+
+This shortcut opens the Remote Desktop Connection Manager and allows you to initiate, manage and control
+each of the virtual machines from a central location.
+
+![Remote Desktop Connection](JPG/Remote%20Desktop%20connection.png)
+
+> **Note:** If the shortcut asks "How do you want to open .rdg files?"   
+![RDPMan](JPG/RDPMan3.png)
+
+You can find the Remote Desktop Manager application under: 
+
+```bash
+C:\RDCMan\RDCMan.exe
+```
+For further guidance, please download the guide from the LMS here:
+https://supportlms.sophos.net/totara/mod/resource/view.php?id=6198
 
 ***
 
-## Environment Network Diagram 
+# Environment Network Diagram 
 
 ![](JPG/Lab%20Diagram-%20Nice.png)
 
-***
-
-## Prerequisites
-These labs accompany the **Sophos TSE Fundamentals Course**.   
-They are estimated to take **10 hours to complete**.
-
-Prior to taking this training, you should have: 
-* General networking knowledge
-* Understanding of operating systems
-* Understanding of Active Directory
+Download a copy of the Diagram:
+https://supportlms.sophos.net/totara/mod/resource/view.php?id=6860
 
 
 
