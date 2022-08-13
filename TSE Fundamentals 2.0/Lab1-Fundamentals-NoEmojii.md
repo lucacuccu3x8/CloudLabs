@@ -3,7 +3,7 @@
 ### Getting Started with the LAB
 #### Instructions
 
-1. Your Lab Environment is hosted in CloudLabs and can be accessed through a secure **Emulated RDP session** in your Web browser or **via native RDP connection**.   
+1. Your Lab Environment is hosted in CloudLabs and can be accessed through a secure **Emulated RDP session** in your Web browser or **via native RDP connection**. 
 You can find the native RDP details in the **Environment details** tab in the upper right corner. 
 ![Environment Details ](JPG/Environment%20Details2%20.png)
 
