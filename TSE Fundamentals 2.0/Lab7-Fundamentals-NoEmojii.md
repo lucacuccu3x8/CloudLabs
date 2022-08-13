@@ -85,7 +85,7 @@ cp task7a/file1.log task7b/ && mv task7b/file1.log task7b/file1b.log
 
 ***
 
-## **Task 7.2:** <small>Make Edits and searches using VI</small> 
+## **Task 7.2:** <small>Make Edits and searches using **`vi`**</small> 
 You have been given a task where the administrator requires you to add additional lines to the file `‘/var/file1b.log’` to diagnose an issue.   
 It was suggested to use vi as there is no GUI on the Linux machine.   
 Once complete, you must then search the file using a string and make a final line edit.  
@@ -96,8 +96,8 @@ Once complete, you must then search the file using a string and make a final lin
 
 ```csharp
 This is Line 3 
-This is LINE 4 This 
-is line 5
+ This is LINE 4 This 
+ is line 5
 ```
 >**Note:**Case sensitivity is important in Linux. 
 
