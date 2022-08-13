@@ -124,7 +124,7 @@ This content is from file1b.log
 
 ***
 
-## **Task 7.3:** <small>Search using various grep commands through system files </small> 
+## **Task 7.3:** <small>Search using various **`grep`** commands through system files </small> 
 You have been asked to gather all system logs for an event on January 22nd. The issue was reported at 7:15 AM but to ensure all the relevant logs are collected, you were tasked to gather everything that occurred on between 0700 and 0759. Understanding that it is your first-time searching content, your manager has provided you with a series of grep commands for practice. 
 
 ![![London ](JPG/London%20Client.png)](JPG/London%20Client.png)
@@ -142,7 +142,7 @@ grep ‘line 4’ file1b.log
 grep -i ‘line 4’ file1b.log
 ```
 
-> **Output:**-i tells grep to skip case sensitive search in arguments
+> **Output:** `-i` tells grep to skip case sensitive search in arguments
 
 ```csharp
 grep -v file1b.log
