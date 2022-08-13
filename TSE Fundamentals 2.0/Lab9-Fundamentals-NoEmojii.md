@@ -1,5 +1,5 @@
 
-# ![Milestone](JPG/BlackMilestone%20100.png) **Congratulations**
+# ![Milestone](JPG/BlackMilestone%20100.png) ‌‌ **Congratulations**
 
 ### You have successfully completed this Lab Workshop.
 
