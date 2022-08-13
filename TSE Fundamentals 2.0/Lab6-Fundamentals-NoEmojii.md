@@ -17,12 +17,14 @@ You have been given a task to review the routing table on two clients to validat
 
 #### Let's begin:
 ![London Client](JPG/London%20Client.png)
+1. Open a command prompt and type in the following:
 
-1. 	Open a command prompt and type in the following: 
+
 ```javascript
 route print 
 ```
-2. 	Write down what will be the next-hop to reach the following hosts: 
+
+2. Write down what will be the next-hop to reach the following hosts: 
  
 | Host | 	Next Hop |
 |------|-------------|
@@ -30,7 +32,7 @@ route print
 |172.17.17.34 | 	On link|
 |8.8.8.8 |	 172.17.17.16|
 
-3. 	Open PuTTY and SSH to the ‘**Linux Client**’:
+3. Open PuTTY and SSH to the ‘**Linux Client**’:
 > user: `172.17.17.22`  password: `sophos` 
 
 4. After login run the following command: 
@@ -41,7 +43,7 @@ also, you can run:
 ```javascript
 netstat -r
 ```
-5. 	Write down what will be the next-hop to reach the following hosts: 
+5. Write down what will be the next-hop to reach the following hosts: 
  
 |Host| 	Next Hop |
 |----|-----------|
@@ -60,7 +62,7 @@ You have been given a task to set up a new DHCP scope for the network 172.16.16.
 
 
 ![London Client](JPG/London%20Client.png) 
-1. 	Open a windows command prompt and type in the following: 
+1. Open a windows command prompt and type in the following: 
 ```javascript
 ipconfig /all 	  
 ```
@@ -82,9 +84,9 @@ ipconfig /all
 
 ![London DC](JPG/London%20DC%204.png)
 
-1. 	Open the Windows ‘Administrative Tools’ from the Windows Start menu and select DHCP  
+1. Open the Windows ‘Administrative Tools’ from the Windows Start menu and select DHCP  
  
-2. 	Under the IPv4 dropdown, right click and create a new scope. 
+2. Under the IPv4 dropdown, right click and create a new scope. 
 Using the following information: 
 
 > * Name: `Task6` 
@@ -105,7 +107,7 @@ DHCP Options configure only the following:
 >*	DNS Parent domain: **SOPHOS.LOCAL** 
 >*	DNS Servers: **8.8.8.8**  
 
-3. 	Within Scope [**172.16.16.0**] Task6, select **Scope Options** 
+3. Within Scope [**172.16.16.0**] Task6, select **Scope Options** 
 
 4. then right click and select **Configure Options**.   
 Look and familiarize yourself with the available options.
@@ -116,10 +118,10 @@ Look and familiarize yourself with the available options.
  
 ![London Client](JPG/London%20Client.png)
  
-1. 	Open Wireshark and run a capture on ‘Ethernet 3’ 	 
+1. Open Wireshark and run a capture on ‘Ethernet 3’ 	 
 > (had to Enabler the Ethernet 3)
 
-2. 	Open Command prompt and initiate a DHCP release/renew 	 
+2. Open Command prompt and initiate a DHCP release/renew 	 
 > (had to give it a static ip address, then selecting the “**obtain ip automatically**” from the GUI
 
 3. 	Run:
@@ -129,9 +131,7 @@ ipconfig /all
 and compare the current details of `Ethernet 3` details to when this command was previously run. 
 
  
- 
- 	 
-4. 	Open up Wireshark and filter for the DHCP traffic only. Open each packet in the DHCP sequence to be familiar with each type of packet's being requested. 
+4. Open up Wireshark and filter for the DHCP traffic only. Open each packet in the DHCP sequence to be familiar with each type of packet's being requested. 
  
 > **DORA** request: 
 > * **Discovery** – Client sending Broadcast
@@ -191,8 +191,8 @@ or with **PowerShell** type:
 ```Powershell
 get-net-adapter
 Disable-Netadapter -Name “Ethernet 3”
-Enable-NetAdapter -Name "[your network adapter name]"
- ```
+Enable-NetAdapter -Name "[your adapter name]"
+```
 
 ##### ![check](JPG/pngegg%20(1).png)  You have now successfully analyzed DHCP requests and created a DHCP scope 
 
@@ -207,7 +207,7 @@ You have been given a task to display the routing table on two clients to valida
 
 1. Open Wireshark and run a packet capture on ‘Ethernet 2’ 
  
-2. Open a command prompt and write down the DNS queries used for the following scenarios, using nslookup: 
+2. Open a command prompt and write down the DNS queries used for the following scenarios, using **nslookup**: 
  
 |           |                                  |
 |----------|------------------------------------|
@@ -246,7 +246,7 @@ The answer comes from:
  dns.google
  ```
  
- ###### What does this mean? 
+## ![Knowledge](JPG/Knowledge%203.png) What does this mean? 
  
  An authoritative answer is when the DNS server hosting the primary copy of the DNS record responses to your lookup. 
  When nslookup provided results by a server that is not the authoritative (primary) source. Typically, this means the result was provided by a server  that held a cached copy of the DNS record. This is important because the DNS record may have been changed recently and the cached copy may not reflect the most up-to-date information.
