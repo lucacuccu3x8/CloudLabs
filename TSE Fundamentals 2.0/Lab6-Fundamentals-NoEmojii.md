@@ -102,7 +102,7 @@ Using the following information:
  
 >* Lease Duration: **8 days** 
  
-DHCP Options configure only the following: 
+##### In DHCP Options configure only the following: 
 >*	Default Gateway (Router): **172.16.16.16** 
 >*	DNS Parent domain: **SOPHOS.LOCAL** 
 >*	DNS Servers: **8.8.8.8**  
@@ -158,7 +158,7 @@ and compare the current details of `Ethernet 3` details to when this command was
 |Destination MAC Address 	 |ff:ff:ff:ff:ff:ff|
 
  
-### ![Knowledge](JPG/Knowledge%203.png) Why are these addresses used? 
+### ![Knowledge](JPG/output-onlinepngtools.png) Why are these addresses used? 
 > `0.0.0.0`	means “any” or “unassigned”, since the source mac address (client) does not have an associated/configured IP address.
 
 ‌‌ 
@@ -243,7 +243,7 @@ The answer comes from:
  dns.google
  ```
  
-## ![Knowledge](JPG/Knowledge%203.png) What does this mean? 
+## ![](JPG/output-onlinepngtools.png) What does this mean? 
  
  An authoritative answer is when the DNS server hosting the primary copy of the DNS record responses to your lookup. 
  When nslookup provided results by a server that is not the authoritative (primary) source. Typically, this means the result was provided by a server  that held a cached copy of the DNS record. This is important because the DNS record may have been changed recently and the cached copy may not reflect the most up-to-date information.
