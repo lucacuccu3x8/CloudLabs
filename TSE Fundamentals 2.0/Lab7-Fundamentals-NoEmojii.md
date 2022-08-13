@@ -158,7 +158,8 @@ grep -e ‘Line’ -e ‘LINE’ file1b.log
 > **Output:** Show multiple matching searches in one command.	
  
 	
-4. Run a search to find all the syslog messages that occurred on January 22nd on the 7th hour. Send this output to the file `‘/var/task7a/syslogJan22.log’`
+4. Run a search to find all the syslog messages that occurred on **January 22nd on the 7th hour**.   
+Send this output to the file `‘/var/task7a/syslogJan22.log’`
 
 > **Note:** Confirm this file only contains syslog messages between 7 AM to 8 AM on Jan 22nd. 
 
