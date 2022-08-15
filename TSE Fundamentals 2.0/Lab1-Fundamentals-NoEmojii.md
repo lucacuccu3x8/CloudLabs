@@ -153,11 +153,11 @@ In this task we will create and modify a registry key as well as perform
 a backup and restore.
 
 ![](JPG/London%20DC%204.png)
-1. Open Registry by typing <inject key="Suffix" />`regedit` in the Run Window
-2. Navigate to `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\`
+1. Open Registry by typing `regedit` in the **Run** window
+2. Navigate to: `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\`
 3. Right click **WOW6432Node** and create a new key named `TestRegistry`
 4. Right click **TestRegistry** and create a new String Value named ‘Setting’
-5. Double click **Setting** and add value data of **Original data**
+5. Double click **Setting** and in the "**Value data**" add this: `Original data`
 6. Right click **TestRegistry** and create a new `DWORD` Value named `LogLevel`
 7. Double click **LogLevel** and add value data of `3`
 8. Select **TestRegistry** on the left pane 
@@ -169,18 +169,20 @@ a backup and restore.
  `Test Registry Backup <MM-DD-YYYY>`  
  and save this file to the Desktop.
 
-11. Double click the **Settings** registry string and modify the value data to `Modified data`
+11. Double click the **Settings** registry string and modify the **Value data** to `Modified data`
 12. Delete the **LogLevel** `DWORD` registry
-13. Open the Test Registry Backup file in Notepad
+13. Open the Test Registry Backup file in Notepad++
 
 > **Note:** All registry backup files can be opened in a text editor. You can confirm the contents before importing the keys back into the registry.
 
 14. Note Down the keys that were backed up
-15. Close Notepad
-16. Double click the **Test Registry Backup** file to import its contents to the registry
-17. In Registry Editor, navigate back to `HKLM\SOFTWARE\WOW6432Node\`
-18. Note down the value data of the **Setting** registry key: 
-
+![](JPG/Registry.png)
+15. Close Notepad++
+16. from the Dekstop, Double click the **Test Registry Backup** file to import its contents to the registry. Ignore the Warning and continue.
+17. In Registry Editor, navigate back to the same `HKLM\SOFTWARE\WOW6432Node\`
+18. Note down the value data of the **Setting** registry key.  
+The String and the DWORD should be restored by the backup file.
+![](JPG/Backup%20restored.png)
 ##### ![check](JPG/pngegg%20(1).png) You have successfully backed up and restored a registry key.
 
 ***
