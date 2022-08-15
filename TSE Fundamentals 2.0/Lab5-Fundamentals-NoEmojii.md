@@ -75,12 +75,16 @@ You have been asked to obtain information about active peers in the network from
 
 
 ![London DC](JPG/London%20DC%204.png)
-1. Open Wireshark start a **packet capture** and access any **HTTPs** based Website.
+1. Open **Wireshark**, and start a packet capture from the "**Ethernet**" interface.
 
+2. Now, open **Chrome or Firefox** and attempt to access any **HTTPs** based Website.
+> **e.g.,** `https://www.sophos.com`
+
+3. Go back to Wireshark and observe the packets being captured in the "**Packet List Pane**" as soon as they leave/enter the Ethernet interface.
 
 ![Wireshark](JPG/Wireshark.png)
 
-2. Research and Note down the filters and their respective syntax you can use in Wireshark to quickly highlight and extract the following information:
+4. Research and Note down the Display-Filters and the respective syntax to quickly highlight and extract the following information:
 *	Wireshark Filter **by IP** 
 *	Wireshark Filter **by Port**  
 *	Wireshark Filter **by IP** and Port 
@@ -91,7 +95,7 @@ You have been asked to obtain information about active peers in the network from
  >**Note:** You can find a useful cheat list of Display-Filters here:
  https://packetlife.net/media/library/13/Wireshark_Display_Filters.pdf
  
-3. Save the capture in **PCAP format** after validating.
+5. Save the capture in **PCAP format** after validating.
 
 
 ##### ![check](JPG/pngegg%20(1).png) You have successfully utilized filters with Wireshark 
