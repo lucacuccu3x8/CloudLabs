@@ -17,15 +17,19 @@ You have been given a task where you need to capture all events i.e., Registry a
 #### Let's begin:
 ![](JPG/London%20DC%204.png)  
 
-1. Open Process Monitor and start a capture
+1. Open **Process Monitor** and start a capture;   
+use the shortcut in the Desktop: "**Procmon64**"
 ![procmon](JPG/procmon-app.png)
 
 
 2. Open **Google Chrome** and browse any website
-3. Filter for Google Chrome processes and all its **subtrees**.
-4. Note down all the **PIDs** used by Google Chrome:
+3. Go back to **Procmon64** and in the "Filter" tab on top, apply a filter for all "chrome.exe" processes and all its **subtrees**.
+
+> **Note:**  You could also apply a similar filter by right-click "chrome.exe" in the list of all captured processes. ![](JPG/Procmon.png)
+
+4. Once the filter is up, note down all the **PIDs** used by Google Chrome associates.
 5. Save the filtered capture as a **PML** file  
- and write down all the distinct types of events:
+ and write down all the distinct types of events.
 
 ##### ![check](JPG/pngegg%20(1).png) You have successfully debugged using the Process Monitor Tool
 
@@ -37,39 +41,38 @@ You have been asked to debug information using the command prompt with the help 
 
 
 ![](JPG/London%20DC%204.png)  
-1. Open the **Process Explorer** and run Command Prompt 
+1. Open the **Process Explorer** using the shortcut from the Desktop.
 
 ![Process Explorer](JPG/Process%20Explorer.jpeg)
 
-2. Find the Command Prompt process and check all the information   
-> **i.e.,** PID, Company Name, CPU, Memory Usage 
+2. Open the Windows CMD prompt.
+
+3. Back in the **Process Explorer**, now find the Command Prompt process, right click and select "**Properties**" to check all the information about **PID**, **Company Name**, **CPU**, **Memory Usage** 
+
+![](JPG/ProcessExplorer2.png)
 
 
-3. Review all the available options
+4. Review all the available options and tabs from the dialog box
 
-> **Note:** These options include Kill Process, Create 
-Dump, Virus Total check, Restart, Suspend, 
-Properties and Verify Image Signatures 
+> These options include:
+> * Kill Process, 
+> * Create Dump, 
+> * Virus Total check (Brand New Feature!) 
+> * Restart, Suspend a process
+> * Verify Image Signatures 
 
 
-4. Save the filtered capture for Command prompt in Process Explorer Data (.txt) format  
+5. Save the filtered capture for Command prompt in Process Explorer Data (**.txt**) **format** 
 
-##### ![check](JPG/pngegg%20(1).png)  You have successfully performed a debug using Process Explorer 
+#### ![check](JPG/pngegg%20(1).png)  You have successfully performed a debug using Process Explorer 
 
 
 ***
 
 ## **Task 5.3:** <small>Wireshark Debugging</small> 
 
-You have been asked to obtain the following information from a Wireshark capture: 
+You have been asked to obtain information about active peers in the network from a Wireshark capture.
 
-*	Wireshark Filter **by IP** 
-*	Wireshark Filter **by Port**  
-*	Wireshark Filter **by IP** and Port 
-*	**Mac Address** Filter 
-*	Filter **by URL** 
-*	**Trace TCP Stream** for website communication 
-*	**Filter out** Destination IP address
 
 ![London DC](JPG/London%20DC%204.png)
 1. Open Wireshark start a **packet capture** and access any **HTTPs** based Website.
@@ -77,7 +80,16 @@ You have been asked to obtain the following information from a Wireshark capture
 
 ![Wireshark](JPG/Wireshark.png)
 
-2. Note down and verify the commands used to filter for the information outlined in the task above.
+2. Research and Note down the filters and their respective syntax you can use in Wireshark to quickly highlight and extract the following information:
+*	Wireshark Filter **by IP** 
+*	Wireshark Filter **by Port**  
+*	Wireshark Filter **by IP** and Port 
+*	**Mac Address** Filter 
+*	Filter **by URL** 
+*	**Trace TCP Stream** for website communication 
+*	**Filter out** Destination IP address
+ >**Note:** You can find a useful cheat list of Display-Filters here:
+ https://packetlife.net/media/library/13/Wireshark_Display_Filters.pdf
  
 3. Save the capture in **PCAP format** after validating.
 
