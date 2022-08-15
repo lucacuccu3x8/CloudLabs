@@ -5,7 +5,7 @@ Upon successful completion of this lab, you will be able to:
 1.	Create OUs, groups, and users in Active Directory 
 2.	Modify and identify both user and group attributes 
 
-
+***
 
 ### Lab Diagram:
 ![London DC](JPG/London%20DC%202.png)
@@ -17,32 +17,45 @@ Upon successful completion of this lab, you will be able to:
 You have been assigned a task to setup a user, group and an OU in Active Directory: 
   
 ![](JPG/London%20DC%204.png)
-1. Create three OUs with the following names: UK, Canada, and India 
-> Create these OUs under `SOPHOS.LOCAL`
+1. From the **Server Manager > Tools** open the **Active Directory Users and Computers** console, 
+![](JPG/Active%20directory%20Users%20and%20Groups.png)
+**right-click** `SOPHOS.LOCAL`, and select **New** to create three **OUs** with the following names: 
+>* `UK` 
+>* `Canada`
+>* `India` 
 
-2. Create three sub-OUs with the following names:
+
+2. Using the same steps above, under the previously created **OUs**, create three new **sub-OUs** with the following names:
   
 | OU | Sub-OU   |
 |----|----------|
-| UK | Abingdon |
-|Canada| Vancouver |
-| India | Ahmedabad |
+| UK | `Abingdon` |
+|Canada| `Vancouver` |
+| India | `Ahmedabad` |
 
- 3. Create two users in each sub-OU:
+ 3. Now, create two **users** in each **sub-OU**:
  
 | OU |	User  |
 |----|--------|
-| Abingdon | UserA, UserB |
-| Vancouver |	UserC, UserD |
-| Ahmedabad |	UserE, UserF |
+| Abingdon | `UserA`, `UserB` |
+| Vancouver |	`UserC`, `UserD` |
+| Ahmedabad |	`UserE`, `UserF` |
+> **Note:** leave the password field empty and press **Finish** to create the user
+![](JPG/New%20User2.png)
+
+4. Create the Group "**Sales-UK**" in the "**Abingdon OU**" 
+
+5. Right-click "**UserA**" and select **"Add to a group..."**    
+Type `Sales-UK` in the search box and confirm with **"Check Names"**
+
+6. Press **OK** twice; a confirm prompt should appear:
+![](JPG/confirm.png)
+
+5. Use the same steps above to create another Group "**Finance**" in the "**Ahmedabad OU**" and add "**UserF**" to it.
 
 
-4. Create the user group ‘Sales’ in the Abingdon OU and add UserA to it
-5. Create the user group, ‘Finance’ in the India OU and add UserF to it
 
-
-
-##### ![check](JPG/pngegg%20(1).png) You have created OUs, Users, and Groups in Active Directory
+#### ![check](JPG/pngegg%20(1).png) You have succesfully created OUs, Users, and Groups in Active Directory
 
 ***
 
