@@ -240,7 +240,11 @@ You have now successfully:
 3.	Created a scheduled task to launch Notepad 
 
 ***
+***
 
+> Please remember to "Deallocate" the "HostVM" in the "Resource Tab" before closing this LAB, 
+![](JPG/Deallocate%20the%20VM.png)
+otherwise please continue to the next LAB.
 
 
 

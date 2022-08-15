@@ -79,8 +79,9 @@ You have been asked to troubleshoot the following task in Active Directory
 ***
 
 2. Write down the **Mail**, **UserPrincipalName** and the **sAMAccountName** attribute for user ‘**Jane Doe**’:
-3. Write down the displayName, GroupID and **Common Name** for user ‘**Lucy Fox**’:
-4. Write down the **objectGUID** and **Distinguished name** for group ‘**Sales**’:
+3. Write down the displayName, GroupID and **Common Name** for user ‘**Lucy Fox**’
+4. Write down the **objectGUID** and **Distinguished name** for group ‘**Sales**’
+5. You can now close down the **"Active Directory users and Computers"**
 
 
 ##### ![check](JPG/pngegg%20(1).png) You have successfully verified user and group attributes 
@@ -94,6 +95,12 @@ You have now successfully:
 * Created OUs, groups, and users in Active Directory 
 * Modified and identified both user and group attributes 
 
+***
+***
+
+> Please remember to "Deallocate" the "HostVM" in the "Resource Tab" before closing this LAB, 
+![](JPG/Deallocate%20the%20VM.png)
+otherwise please continue to the next LAB.
 
 
 
