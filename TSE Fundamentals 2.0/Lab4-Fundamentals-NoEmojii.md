@@ -30,7 +30,7 @@ A customer wants to perform the following tasks with the help of PowerShell:
 > * Sent / Received Bytes, 
 > * Received / Sent Unicast Packets.
 
-A good cmdlet to start with is:
+> A good cmdlet to start with is:
 ```powershell
 Get-NetIpConfiguration
 ```
@@ -57,6 +57,7 @@ Get-Help Measure-Object
 ## **Task 4.2:** <small>Troubleshoot PowerShell Script not executing </small> 
 A customer has created a test script ‘`Script.ps1`’ and wants to validate it by executing it before running the actual debug. However, when the customer tries to executes the script they are getting an error. Verify why the customer is not able to execute the script. 
 
+![](JPG/London%20Client.png)
 #### Access the **London Client Virtual** Machine:
 
 1. Within the "**Remote Desktop Connection Manager**" window, move your pointer to the left corner of your screen and from the pop-up menu, select the "02 - London Client"
@@ -65,9 +66,9 @@ A customer has created a test script ‘`Script.ps1`’ and wants to validate it
 
 3. Enter the following credentials: 
 
-|       |          |
+|  User     |   Password    |
 |-------|----------|
-| User: `SOPHOS\jsmith` | Password: `Sophos1985` |
+|  `SOPHOS\jsmith` | `Sophos1985` |
 
 4. Accept the certificate warnings and proceed further.
 > **Note:** *Skip Step1 if you are accessing the London Client using the Hyper-V console.*
