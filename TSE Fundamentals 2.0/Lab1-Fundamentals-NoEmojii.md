@@ -182,7 +182,9 @@ a backup and restore.
 17. In Registry Editor, navigate back to the same `HKLM\SOFTWARE\WOW6432Node\`
 18. Note down the value data of the **Setting** registry key.  
 The String and the DWORD should be restored by the backup file.
+
 ![](JPG/Backup%20restored.png)
+
 ##### ![check](JPG/pngegg%20(1).png) You have successfully backed up and restored a registry key.
 
 ***
@@ -192,12 +194,11 @@ In this task we will create a scheduled task to run a script at a specific time 
 
 ![](JPG/London%20DC%204.png)
 
-1. Open Notepad and write down the following text:
-<small>
+1. Open Notepad++ and write down the following text:
+
 ```powershell  
 echo "Hello World" > C:\Users\Administrator\Desktop\scheduledtask.txt
 ```
-</small>
 
 2. Save the file with the name `script.bat`
 3. Close Notepad
