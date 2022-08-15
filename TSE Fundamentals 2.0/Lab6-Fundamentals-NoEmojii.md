@@ -267,8 +267,11 @@ You have now successfully:
 3.	Looked up and resolved several types of DNS records using nslookup 
 
 ***
-
-
+***
+### Before closing this page:
+> Please remember to "Deallocate" the "HostVM" in the "Resource Tab" before closing this LAB, 
+![](JPG/Deallocate%20the%20VM.png)
+otherwise please continue to the next LAB.
 
 
 
