@@ -100,8 +100,7 @@ password: `Sophos1985`
 
     >**Note:** Password is `Sophos@1985`
     
-3. On the left pane, navigate to **Remote Access VPN > IPsec** (remote access)    
-click **Download Client**
+3. On the left pane, navigate to **Remote Access VPN > IPsec** and click **Download Client**
 ![IPsec](JPG/Download%20IPsec%20Client.png)
 
 4. Open Windows Explorer and navigate to the folder the installer was downloaded to and **extract** the contents of the **zip archive**.  
@@ -111,6 +110,7 @@ click **Download Client**
 5. **Hold shift** and **right click** an empty area and select:  
  `Open Powershell window here`
 6. In PowerShell, Run the following command to install Sophos Connect 2.0:
+
 ```Powershell
 msiexec /i 'SophosConnect_2.2.75_(IPsec_and_SSLVPN).msi'  /L*v C:\Windows\Temp\SophosConnectInstall.txt
 ```
