@@ -58,7 +58,9 @@ gpupdate /force
 
 16. Now the next time a user is asked to change the password, the policy enforces the use of a minimum of 10 characters length.
 
-17. Close the PowerShell terminal and all the windows in the LondonDC.  
+17. Close the PowerShell terminal and all the windows in the LondonDC.
+
+18. see more information about the PowerShell command here: https://activedirectorypro.com/gpupdate-command/
 
 ### ![check](JPG/pngegg%20(1).png) You have successfully noted down the installed features on a server and created a group policy
 
