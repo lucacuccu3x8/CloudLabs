@@ -216,7 +216,7 @@ echo "Hello World" > C:\Users\Administrator\Desktop\scheduledtask.txt
 12. Click **OK**
 13. Select the Actions tab 
 14. Click **New** 
-15. In the `Program/script` field browse to the previously created `script.bat` 
+15. In the **Program/script** field browse to the previously created `script.bat` 
 16. Click **OK** 
 17. Select the **Settings** tab 
 18. Select **Run task as soon as possible after as scheduled start is missed** 
@@ -224,7 +224,9 @@ echo "Hello World" > C:\Users\Administrator\Desktop\scheduledtask.txt
 20. Enter the Administrator password `Sophos1985`, then click **OK** 
 21. Wait for the scheduled start time, and confirm a file named **scheduledtask.txt** is created on the Desktop.
 > **Note:** You may want to refresh the Desktop
+22. Validate the "Last Run Time" in the Task Scheduler Console
 
+![](JPG/Screenshot_1.png)
   
 #### ![check](JPG/pngegg%20(1).png) You have created a basic scheduled task 
 
