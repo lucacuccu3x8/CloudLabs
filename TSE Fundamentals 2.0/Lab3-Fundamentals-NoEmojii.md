@@ -71,6 +71,7 @@ You have been asked to troubleshoot the following task in Active Directory
 #### How to find the **"distinguishedName"** of an OU**</u>:
 
 > * In the "**Active Directory Users and Computers**" console, select **View > Advanced Features**.
+![](JPG/Advanced%20View.png)
 > * Navigate and right-click the **OU** where you want to read users information, then select **Properties**.
 > * In the **OU Properties**, select the **Attribute Editor** tab.   
 > * Click on **distinguishedName** to highlight it, then click **View**
