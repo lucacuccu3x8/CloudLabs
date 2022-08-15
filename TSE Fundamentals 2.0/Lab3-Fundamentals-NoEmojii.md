@@ -67,12 +67,15 @@ You have been asked to troubleshoot the following task in Active Directory
 ![](JPG/London%20DC%204.png)  
 1. List the **distinguished name** for **‘UserA’** and **‘UserD’**.
 
-> <u>**How to find the "distinguishedName" of an OU**</u>:
+***
+#### How to find the **"distinguishedName"** of an OU**</u>:
+
 > * In the "**Active Directory Users and Computers**" console, select **View > Advanced Features**.
 > * Navigate and right-click the **OU** where you want to read users information, then select **Properties**.
 > * In the **OU Properties**, select the **Attribute Editor** tab.   
 > * Click on **distinguishedName** to highlight it, then click **View**
 > * Example: ![](JPG/Attreibutes.png)
+***
 
 2. Write down the **Mail**, **UserPrincipalName** and the **sAMAccountName** attribute for user ‘**Jane Doe**’:
 3. Write down the displayName, GroupID and **Common Name** for user ‘**Lucy Fox**’:
