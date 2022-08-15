@@ -194,19 +194,22 @@ In this task we will create a scheduled task to run a script at a specific time 
 
 ![](JPG/London%20DC%204.png)
 
-1. Open Notepad++ and write down the following text:
+1. Open Notepad++, create a new file and write down the following text:
 
-```powershell  
+```powershell
 echo "Hello World" > C:\Users\Administrator\Desktop\scheduledtask.txt
 ```
 
-2. Save the file with the name `script.bat`
-3. Close Notepad
+2. **Save** the file in the **Desktop** with the name `script.bat`
+3. Close Notepad++
 4. Open Task Scheduler by typing `taskschd` in the Run Window 
 5. In the left-hand pane, click on **Task Scheduler Library** 
-6. In the right-hand pane, click **Create Task…** 
-7. In the ‘Name’ field, enter **Create txt file** 
-8. Select `Run` whether user is logged in or not 
+6. Right click and select **Create Task…** 
+
+![](JPG/Task%20Scheduler.png)
+
+7. In the **Name** field, enter `Create txt file`
+8. Select **Run whether user is logged in or not** 
 9. Select the **Triggers tab** 
 10. Click **New** 
 11. In the **Settings** section set the start time 5 minutes from the current time 
@@ -216,12 +219,14 @@ echo "Hello World" > C:\Users\Administrator\Desktop\scheduledtask.txt
 15. In the `Program/script` field browse to the previously created `script.bat` 
 16. Click **OK** 
 17. Select the **Settings** tab 
-18. Select Run task as soon as possible after as scheduled start is missed 
+18. Select **Run task as soon as possible after as scheduled start is missed** 
 19. Click **OK** 
 20. Enter the Administrator password `Sophos1985`, then click **OK** 
-21. Wait for the scheduled start time and confirm a file named scheduledtask is created on the Desktop 
+21. Wait for the scheduled start time, and confirm a file named **scheduledtask.txt** is created on the Desktop.
+> **Note:** You may want to refresh the Desktop
+
   
-##### ![check](JPG/pngegg%20(1).png) You have created a basic scheduled task 
+#### ![check](JPG/pngegg%20(1).png) You have created a basic scheduled task 
 
 ***
 
