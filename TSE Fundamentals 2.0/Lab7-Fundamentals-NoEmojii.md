@@ -233,7 +233,7 @@ You have now successfully:
 5.	Searched through system files using various grep commands 
 
 ***
-‌‌ 
+***
 
 ### Before closing this page:
 > Please remember to "Deallocate" the "HostVM" in the "Resource Tab" before closing this LAB, 
