@@ -1,10 +1,6 @@
 
 ![](JPG/milestone%20congratulations.jpg)
-
-
-# **Congratulations** ![Milestone](JPG/milestone%2080.png) 
-
-### You have successfully completed this Lab Workshop.
+## **You have successfully completed this Lab Workshop.**
 
 #### <u>Before you close this page:</u>  
 1. Please, make sure to **Stop** the **"HostVM"** 
