@@ -89,13 +89,19 @@ ipconfig /all
 >* Subnet Mask, and 
 >* DNS Servers 
 
+5. **Run Wireshark as Administrator** and start a capture on **‘Ethernet 3’** 
+
+> ![](JPG/output-onlinepngtools.png)**Note:** In case the `Ethernet 3` is not available you'd need to enable it in:
+> Control Panel > Network and Internet > Network Connections
+
+
 #### Now, move to another Virtual Machine:
 
 ![London DC](JPG/London%20DC%204.png)
 
-1. Open the Windows ‘Administrative Tools’ from the Windows Start menu and select DHCP  
- 
-2. Under the IPv4 dropdown, right click and create a new scope. 
+6. Open the Windows **‘Administrative Tools’** from the Windows Start menu and select **DHCP**  
+ ![](JPG/Administrative%20Tools.png)
+7. Under the IPv4 dropdown, right click and **create a new scope**. 
 Using the following information: 
 
 > * Name: `Task6` 
@@ -116,58 +122,49 @@ Using the following information:
 >*	DNS Parent domain: **SOPHOS.LOCAL** 
 >*	DNS Servers: **8.8.8.8**  
 
-3. Within Scope [**172.16.16.0**] Task6, select **Scope Options** 
+8. Within Scope [**172.16.16.0**] Task6, select **Scope Options** 
 
-4. then right click and select **Configure Options**.   
+9. then right click and select **Configure Options**.   
 Look and familiarize yourself with the available options.
 
-5. Identify and write down 5 different predefined options and their uses.
+10. Identify and write down 5 different predefined options and their uses.
 
 #### Moving back to the previous Virtual Machine:
  
 ![London Client](JPG/London%20Client.png)
  
-1. Open Wireshark and run a capture on ‘Ethernet 3’ 	 
-> (had to Enabler the Ethernet 3)
 
-2. Open Command prompt and initiate a DHCP release/renew 	 
-> (had to give it a static ip address, then selecting the “**obtain ip automatically**” from the GUI
-
-3. 	Run:
-```javascript
-ipconfig /all
-```
-and compare the current details of `Ethernet 3` details to when this command was previously run. 
-
+11. Open up **Wireshark** and filter for the **DHCP traffic only**. Open each packet in the DHCP sequence to be familiar with each type of packet's being requested. 
  
-4. Open up Wireshark and filter for the DHCP traffic only. Open each packet in the DHCP sequence to be familiar with each type of packet's being requested. 
- 
-### **D.O.R.A.** request: 
+### ![](JPG/output-onlinepngtools.png) **D.O.R.A.** request: 
 > * **Discovery** – Client sending Broadcast
 > *	**Offer** – Server sending a reply
 > *	**Request** – client requesting ip Broad
 > *	**ACK** – From server
 
-5. Write down what the server replied with for Option 51, Option 6, and Option 54: 
+![](JPG/Dora%20Process.png)
+
+12. Write down what the server replied with for **Option 51**, **Option 6**, and **Option 54**: 
 
 |           |                                  |
 |----------|------------------------------------|
-| Option 51 |	 IP Address Lease Time – 8Days |
-|Option 6 |	 Specify the DNS Server 8.8.8.8|
-|Option 54 |	 Specify IP DHCP Server Identity|
+| Option 51 |	e.g., *IP Address Lease Time – 8Days* |
+|Option 6 |e.g.,	*Specify the DNS Server 8.8.8.8*|
+|Option 54 |e.g.,	 *Specify IP DHCP Server Identity*|
 
  
-6. Write down the source IP, destination IP, source mac address and destination mac address of the DHCP Request: 
+13. Write down the source IP, destination IP, source mac address and destination mac address of the DHCP Request: 
  
 |           |                                  |
 |----------|------------------------------------|
-|Source IP| 	 0.0.0.0 (Not assigned yet)|
-|Destination IP 	| 255.255.255.255 (broadcast)|
-|Source MAC Address |	 00155d02057a|
-|Destination MAC Address 	 |ff:ff:ff:ff:ff:ff|
+|Source IP|         	?|
+|Destination IP 	|             ?|
+|Source MAC Address |           	 ?|
+|Destination MAC Address |              ?|
 
- 
+ ***
 ### ![Knowledge](JPG/output-onlinepngtools.png) Why are these addresses used? 
+
 > `0.0.0.0`	means “any” or “unassigned”, since the source mac address (client) does not have an associated/configured IP address.
 
 ‌‌ 
@@ -180,10 +177,12 @@ and compare the current details of `Ethernet 3` details to when this command was
 
 ‌‌ 
 
-`ff-ff-ff-ff-ff-ff` or `Destination MAC Address` – A frame with a DHCP discovery/request is delivered and flooded to all available devices in the network (broadcast), in hope that a DHCP will reply and acknowledge the request for ip assignment. 
+> `ff-ff-ff-ff-ff-ff` or `Destination MAC Address` – A frame with a DHCP discovery/request is delivered and flooded to all available devices in the network (broadcast), in hope that a DHCP will reply and acknowledge the request for ip assignment. 
 
-
-7.	Disable interface **‘Ethernet 3’** 
+***
+Now, moving back to the London Client:
+![](JPG/London%20Client.png)
+13.	Disable interface **‘Ethernet 3’** 
 
 > **Note** here is a useful link:  
 <a href="https://winaero.com/disable-network-adapter-windows-10/" target="_blank">https://winaero.com/disable-network-adapter-windows-10/</a>
@@ -201,6 +200,12 @@ get-net-adapter
 Disable-Netadapter -Name “Ethernet 3”
 Enable-NetAdapter -Name "[your adapter name]"
 ```
+ ‌‌ 
+ ‌‌ 
+ 
+ or with the Control Panel:
+**Control Panel > Network and Internet > Network Connections**
+![](JPG/Disable%20ethernet3.png)
 
 ##### ![check](JPG/pngegg%20(1).png)  You have now successfully analyzed DHCP requests and created a DHCP scope 
 
@@ -208,31 +213,30 @@ Enable-NetAdapter -Name "[your adapter name]"
 
 ## **Task 6.3:** <small>Lookup and resolve several types of DNS records using nslookup </small> 
 
-You have been given a task to display the routing table on two clients to validate which interfaces are being used. This must be verified on both London Client and Linux Client. 
+You have been given a task to display the routing table on two clients to validate which interfaces are being used. This must be verified on both **London Client** and **Linux Client**. 
 
-##### On the same Virtual Machine:
+##### First, in the London-Client:
 ![London Client](JPG/London%20Client.png)
 
-1. Open Wireshark and run a packet capture on ‘Ethernet 2’ 
+1. **Run Wireshark as administrator** and launch a packet capture on ‘**Ethernet**’ interface. 
  
-2. Open a command prompt and write down the DNS queries used for the following scenarios, using **nslookup**: 
+2. Open a command prompt and experiment with the DNS queries listed below using **nslookup** utility: 
  
-|           |                                  |
-|----------|------------------------------------|
 |Destination |	Record Type | 	Query Used |
+|----------|------------------------------------|
 | sophos.local |	A |	 Nslookup -type A Sophos.local |
 |sophos.local using DNS 8.8.8.8 |	A 	| Nslookup -type A 8.8.8.8|
 | sophos.com |	TXT 	 |Nslookup -type TXT Sophos.com|
 
-3. Stop the Wireshark capture and run a filter to display only DNS queries and replies Filter: **dns**
+3. **Stop** the **Wireshark** capture and run a **Display-filter** to display only **DNS queries**
 
-4. Which DNS server was used to query sophos.com for txt records? 
+4. Which DNS server was used to query **sophos.com** for `txt` records? 
  
 > Server: **LON-DC-SOPHOS.LOCAL**
 
 > Address: `172.16.16.10`
 
-#### Why was this DNS server used? 
+#### ![](JPG/output-onlinepngtools.png)Why was this DNS server used? 
 The first available DNS holding the information, however it is a Non-Authoritative DNS server for the zone.
  
  
