@@ -71,7 +71,8 @@ You have been asked to debug information using the command prompt with the help 
 
 ## **Task 5.3:** <small>Wireshark Debugging</small> 
 
-You have been asked to obtain information about active peers in the network from a Wireshark capture.
+You have been asked to obtain information about active peers in the network from a Wireshark capture.  
+Start practicing using the advanced **Wireshark Display-Filters** to quickly analyze and extract valuable information about network traffic.
 
 
 ![London DC](JPG/London%20DC%204.png)
@@ -84,7 +85,7 @@ You have been asked to obtain information about active peers in the network from
 
 ![Wireshark](JPG/Wireshark.png)
 
-4. Research and Note down the Display-Filters and the respective syntax to quickly highlight and extract the following information:
+4. Research and Note down the **Display-Filters** and the respective syntax to quickly highlight and extract the following information:
 *	Wireshark Filter **by IP** 
 *	Wireshark Filter **by Port**  
 *	Wireshark Filter **by IP** and Port 
@@ -92,14 +93,14 @@ You have been asked to obtain information about active peers in the network from
 *	Filter **by URL** 
 *	**Trace TCP Stream** for website communication 
 *	**Filter out** Destination IP address
- >**Note:** You can find a useful cheat list of Display-Filters here:
- https://packetlife.net/media/library/13/Wireshark_Display_Filters.pdf
+
+>**Note:** You can find a useful **cheat list** of Display-Filters here:
+> https://packetlife.net/media/library/13/Wireshark_Display_Filters.pdf
  
 5. Save the capture in **PCAP format** after validating.
 
 
 ##### ![check](JPG/pngegg%20(1).png) You have successfully utilized filters with Wireshark 
-
 
 ***
 
