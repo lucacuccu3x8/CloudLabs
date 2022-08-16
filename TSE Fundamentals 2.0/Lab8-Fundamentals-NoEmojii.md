@@ -34,15 +34,15 @@ https://mail.internet.www
  
  
  
-4. Write down the **signature algorithm**, **expiration date** and how many bits were used for the signing **CA** of **‘*.internet.www’**
+4. Write down the **signature algorithm**, **expiration date** and how many bits were used for the signing **CA** of ***.internet.www**
 
 **e.g.,**
 
-|         |	          |                 	|
-|----------|------------------------------------|
-| Signature algorithm: | sha256RSA |
-| RSA                  |  2048bits |
-| Validity:            | Wednesday, 5-10-2022 |
+|                                |
+|--------------------------------|
+|  Signature algorithm:sha256RSA |
+|  RSA 2048bits                  |
+|  Validity:Wednesday, 5-10-2022 |
 
 
 
@@ -68,7 +68,7 @@ Select: **Certificates** and click **Add > Computer Account > Local Computer**.
 
 
 ## **Task 8.2:** <small>Generate a CSR using OpenSSL to prepare a certificate</small> 
-You have been given a task where the administrator requires you to add additional lines to the file `‘/var/file1b.log’` to diagnose an issue.   
+You have been given a task where the administrator requires you to add additional lines to the file `/var/file1b.log` to diagnose an issue.   
 It was suggested to use vi as there is no GUI on the Linux machine.   
 Once complete, you must then search the file using a string and make a final line edit.  
 
