@@ -16,6 +16,12 @@ Upon successful completion of this lab, you will be able to:
 You have been given a task to review the routing table on two clients to validate which interfaces are in use and what path is taken. It was noticed that some clients were getting unresponsive pages and it is suspected there is a potential routing issue. In order to confirm what path is being taken it was advised to investigate the individual routing tables of two problematic clients as the DHCP server was confirmed to be set correctly. 
 
 #### Let's begin:
+Login in the London Client with:
+
+|   |   |
+|---------|----------|
+|User: `jsmith` | Password: `Sophos1985`|
+
 ![London Client](JPG/London%20Client.png)
 1. Open a command prompt and type in the following:
 
@@ -28,14 +34,17 @@ route print
  
 | Host | 	Next Hop |
 |------|-------------|
-|10.1.40.3 | 172.17.17.16|
-|172.17.17.34 | 	On link|
-|8.8.8.8 |	 172.17.17.16|
+|10.1.40.3 | ? |
+|172.17.17.34 | ?	 |
+|8.8.8.8 |	?  |
 
-3. Open PuTTY and SSH to the ‘**Linux Client**’:
-> user: `172.17.17.22`  password: `sophos` 
+3. Open PuTTY and SSH to the ‘**Linux Client**’ `172.17.17.22`:
 
-4. After login run the following command: 
+|   |   |
+|---------|----------|
+|User: `sophos` | Password: `Sophos1985`| 
+
+4. After login, run the following command: 
 ```javascript
 ip route
 ```
@@ -47,9 +56,9 @@ netstat -r
  
 |Host| 	Next Hop |
 |----|-----------|
-|10.1.40.3 |	 172.17.17.22 (host not there)|
-|172.17.17.34 	| 172.17.17.16 (host not there)|
-|8.8.8.8 	 | 172.17.17.16|
+|10.1.40.3 |	 ?|
+|172.17.17.34 	| ?|
+|8.8.8.8 	 | ?|
 
 
 ##### ![check](JPG/pngegg%20(1).png) You have successfully analyzed and understood routing tables on both Linux and Windows. 
@@ -66,9 +75,9 @@ You have been given a task to set up a new DHCP scope for the network 172.16.16.
 ```javascript
 ipconfig /all 	  
 ```
-> **Note** Ensure interface ‘Ethernet 3’ is enabled. 
+> **Note** Ensure interface ‘Ethernet’ is enabled. 
 
-2. Here below is a a screenshoot of the details about the Ethernet adapter `Ethernet 2`:
+2. Here below is a a screenshoot of the details about the Ethernet adapter `Ethernet`:
 
 ![Ethernet Adapter](JPG/ipconfig%20all.png)
 > **Note** some values may differ a little in your Lab.
