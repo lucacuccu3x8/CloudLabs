@@ -34,12 +34,14 @@ You can verify the **Status** in the **Resource** tab:
 ## Accessing the nested Virtual machines:
 
 You can use either
-* Hyper-V, or
-* The Lab Access shortcut on the Desktop   
+* **Hyper-V**, or
+* The **LabAccess** shortcut on the Desktop   
 ![](JPG/HyperV.png)
 
-This shortcut opens the Remote Desktop Connection Manager and allows you to initiate, manage and control
-each of the virtual machines from a central location.
+The **LabAccess** shortcut on the Desktop opens the **Remote Desktop Connection Manager** and allows you to initiate, manage and control each of the virtual machines from a central location.
+
+![](JPG/Remote%20Desktop%20Manager.png)
+
 
 ![Remote Desktop Connection](JPG/Remote%20Desktop%20connection.png)
 
