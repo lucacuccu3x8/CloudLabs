@@ -42,8 +42,12 @@ The **LabAccess** shortcut on the Desktop opens the **Remote Desktop Connection 
 
 ![](JPG/Remote%20Desktop%20Manager.png)
 
+The **left-Dock** displays the tree-list of all the Nested Virtual Machines to be used for this Workshop:
 
 ![Remote Desktop Connection](JPG/Remote%20Desktop%20connection.png)
+
+![](JPG/output-onlinepngtools.png)**Tip:** For better display view, auto-hide the Dock in:
+> **Tools > Options > Tree > Visibility > AutoHide**
 
 > **Note:** If the shortcut asks "How do you want to open .rdg files?"   
 ![RDPMan](JPG/RDPMan3.png)
