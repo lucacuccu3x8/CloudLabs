@@ -7,7 +7,7 @@ Upon successful completion of this lab, you will be able to:
 3.	Utilize **Wireshark** to capture and filter traffic 
 
 ### Lab Diagram:
-![London DC](JPG/London%20DC%202.png)
+![](JPG/Lab6%20Diagram.png)
 
 ***
 
