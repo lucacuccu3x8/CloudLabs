@@ -38,11 +38,11 @@ You can use either
 * The **LabAccess** shortcut on the Desktop   
 ![](JPG/HyperV.png)
 
-The **LabAccess** shortcut on the Desktop opens the **Remote Desktop Connection Manager** and allows you to initiate, manage and control each of the virtual machines from a central location.
+The **"LabAccess"** shortcut on the Desktop opens the **"Remote Desktop Connection Manager"** and allows you to initiate, manage and control each of the virtual machines from a central location.
 
-![](JPG/Remote%20Desktop%20Manager.png)
+![](JPG/Virtual%20Machines.png)
 
-The **left-Dock** displays the tree-list of all the Nested Virtual Machines to be used for this Workshop:
+The left **Dock** displays the tree-list of all the Nested Virtual Machines to be used for this Workshop:
 
 ![Remote Desktop Connection](JPG/Remote%20Desktop%20connection.png)
 
