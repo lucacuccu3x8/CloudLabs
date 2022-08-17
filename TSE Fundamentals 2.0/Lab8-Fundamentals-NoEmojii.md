@@ -5,8 +5,7 @@ Upon successful completion of this lab, you will be able to:
  
 1.	Analyze and locate the Certificate Authority (CA) of a website using the Windows Certificate Store 
 2.	Generate a Certificate Signing Request (CSR) 
-
-
+3.  Packet Sniffing unencrypted HTTP traffic for Passwords
 
 ### Lab Diagram:
 ![](JPG/Lab%20Diagram5.png)
@@ -126,12 +125,97 @@ Although the warnings, proceed further into the page.
 
 
 ***
+## **Task 8.3:** Packet Sniffing for Passwords
+
+Many protocols display information in plaintext which is not a secure method for
+transmission. Telnet is one of the primary communication and application protocols
+used for establishing a connection to any enabled computing device. Most Routers,
+Switches, and Servers will have this function. However, that doesn’t mean it’s been
+enabled.
+In this task, we will be sniffing out traffic crossing the network and primarily looking
+for the telnet password.
+Now a quick recap, Telnet is an application layer TCP/IP protocol which connects to
+telnet services. Where a telnet application is listening it operates on port 23.
+
+
+#### Let's get back on the London-Client:
+![](JPG/London%20Client.png)
+
+1. Launch **Wireshark as administrator** and have it begin listening to traffic on the **Ethernet** interface.
+![](JPG/password1.png)
+
+
+#### Move to the Linux-client:
+![](JPG/Linux%20Client%201.png)
+1. On the "**Remote Desktop Connection Manager**" left pane, 
+click on the VM "**03 - Linux Client**" 
+
+![](JPG/Screenshot_2.png)
+
+2. You'll be presented with the "**Ubuntu Log-in screen**"; At the center of the screen, select the user "**Sophos**" and type the password: `Sophos1985`
+![](JPG/password2.png)
+
+> ![](JPG/output-onlinepngtools.png) **Note:** You may want to toggle the "Full-Screen View" in your browser to fit the Linux Desktop in your browser window.
+
+
+3. Once login, move your pointer to the **Application Dock** on the bottom of the Linux Desktop and launch the **Terminal Emulator**. 
+![](JPG/Linux%20Terminal.png)
+
+
+4. In the terminal, initiate a Telnet connection to the London-Client by typing the following commands:
+
+```bash
+telnet 172.17.17.20
+```
+
+5. Use the following credentials and hit enter.  
+As we enter the Username and then the password, it might take a few
+moments for the credentials to be authenticated so be patient.
+> * User: `sophos` 
+> * Password: `Sophos1985`
+
+6. You should be now greeted with the **Windows cmd prompt** of the remote **London-Client**.
+![](JPG/password%205.png)
+Close the Linux Terminal and move back to the **London-Client**
+
+
+![](JPG/London%20Client.png)
+
+7. Now let’s **stop Wireshark** to capture any further packets by clicking on the **Red Square icon**.
+![](JPG/password%206.png)
+Once again there is a lot of information and before we learned that **telnet** operates on **Port 23**
+and it was a **TCP/IP protocol**.
+
+8. With this information let's set the appropriate **Display-filter** by simply typing `telnet` into the filter-bar and hit enter.
+![](JPG/telnet1.png)
+This will single out the traffic for telnet protocol only.
+
+9. Right-click any of the **TELNET** packet and **Follow the TCP stream**.
+![](JPG/telnet2.png)
+This will collect the stream together and present the output of those packets.
+
+10. We can clearly see really important details here that were transmitted in plaintext.
+First, we can confirm that Telnet Service was being used. It literally says this in the
+read out of the Wireshark Top Pane. Further more the Login information under user `sophos` and the Password `Sophos1985` was captured.
+![](JPG/telnet3.png)
+In fact, were we to continue using Wireshark we could record every action the
+user `sophos` or even an administrator takes on the network so longing as he/she uses telnet!!
+
+#### This is a small demonstration to understand how important **encryption** is in today's communications.  
+Telnet should be used strictly in isolated and secured networks and **never to be used** for remote connections over public networks like the **Internet**.
+**SSH** or **MOSH** is a great and **secure alternative** to Telnet, for users who need access to remote servers over untrusted networks.  
+
+#### ![check](JPG/pngegg%20(1).png) You have used Wireshark to sniff and capture unencrypted HTTP traffic.
+
+
+***
 
 ## ![review](JPG/Review%2048.png) Review  ##
 
 You have now successfully: 
 * Analyzed and located the Certificate Authority (CA) of a website using the Windows Certificate Store 
 * Generated a Certificate Signing Request (CSR) 
+* Packet Sniffing for Passwords
 
 
 ***
