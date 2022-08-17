@@ -202,7 +202,9 @@ find / -type f -name syslog* 2>/dev/null
 ```
 >![](JPG/output-onlinepngtools.png) **Note** `2>/dev/null` It prevents from showing too many errors in the search that could overpopulate your terminal. 
 
-5. In your **search output** there should be a `syslog.tar` archive containing some relevant log files necessary for the next step. **extract** or **"Untar"** **the content of the archive** in the Documents directory with the following command:
+5. In your **search output** there should be a `syslog.tar` archive containing some relevant log files necessary for the next step. 
+![](JPG/tar.png)
+**Extract** or **"Untar"** **the content of the archive** in the Documents directory using the following command:
 
 ```bash
 tar -xvf </var/archive name> /home/sophos/Documents
