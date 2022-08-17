@@ -198,7 +198,7 @@ grep -e 'line' -e 'LINE' file1b.log
 	
 4. Run a search to find all the files named `syslog` with:
 ```bash
-find / -type -f -name syslog* 2>/dev/null
+find / -type f -name syslog* 2>/dev/null
 ```
 >![](JPG/output-onlinepngtools.png) **Note** `2>/dev/null` It prevents from showing too many errors in the search that could overpopulate your terminal. 
 
@@ -207,7 +207,7 @@ find / -type -f -name syslog* 2>/dev/null
 ```bash
 tar -xvf </var/archive name> /home/sophos/Documents
 ```
-6. Now locate the files extracted from the archive and perform a search in the files you have just extracted, using the  grep  command to find all the syslog messages that occurred on * 22 January at the 7th hour *. Send this output to a file called `syslogJan22.log` by typing the following command:
+6. Now within the terminal, navigate where you extracted the files and **perform a search** using the **grep** command to find all the syslog messages that occurred on **22 January at the 7th hour**. Send this output to a file called `syslogJan22.log` by typing the following command:
 ```csharp
 grep “Jan 22 07:[0-5][0-9]:[0-5][0-9]" <file or directory location> > syslogJan22.log
 ```
