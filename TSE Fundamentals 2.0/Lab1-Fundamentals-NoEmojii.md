@@ -26,16 +26,17 @@ You can verify the **Status** in the **Resource** tab:
 
 3. The **HostVM** on the left of this portal will have several nested Virtual Machines running inside Hyper-V that you will use throughout the workshop to perform the lab. 
 
-> **Note:** Do not use the **HostVM** to perform the lab exercises.
+> **Note:** The **HostVM** is not to be used for lab exercises.
 
-4. **Wait 5 to 10 minutes for all nested VM** in the Hyper-V-Environment to complete startup before to begin.
+4. **Before starting** the exercises, **allow 5 to 10 minutes** for all nested VMs in the Hyper-V environment to complete the boot-up.
 
 ***
 ## Accessing the nested Virtual machines:
 
-You can use either
+You can use either:
 * **Hyper-V**, or
 * The **LabAccess** shortcut on the Desktop   
+
 ![](JPG/HyperV.png)
 
 The **"LabAccess"** shortcut on the Desktop opens the **"Remote Desktop Connection Manager"** and allows you to initiate, manage and control each of the virtual machines from a central location.
@@ -64,9 +65,9 @@ https://supportlms.sophos.net/totara/mod/resource/view.php?id=6198
 
 # Environment Network Diagram 
 
-![](JPG/Lab%20Diagram-%20Nice.png)
+![London HQ Diagram](JPG/Lab%20Diagram-London%20Only3.png)
 
-Download a copy of the Diagram:
+Download a copy of the full Diagram:
 https://supportlms.sophos.net/totara/mod/resource/view.php?id=6860
 
 
