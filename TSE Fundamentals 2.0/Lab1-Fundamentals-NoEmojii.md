@@ -110,13 +110,15 @@ password: `Sophos1985`
 3. On the left pane, navigate to **Remote Access VPN > IPsec** and click **Download Client**
 ![IPsec](JPG/Download%20IPsec%20Client.png)
 
-4. Open Windows Explorer and navigate to the folder the installer was downloaded to and **extract** the contents of the **zip archive**.  
+4. Open Windows **File Explorer** and navigate into the folder where the installer was downloaded.  
+
+5. **extract** the content of the **zip archive**.  
 > **Note:** Inspect the content of the archive and check the file extensions of each object extracted.   In the Windows File-Explorer check in **View > File name Extension**
 ![](JPG/File%20Extensions.png)
 
-5. **Hold shift** and **right click** an empty area and select:  
+6. **Hold shift** and **right click** an empty area and select:  
  `Open Powershell window here`
-6. In PowerShell, Run the following command to install Sophos Connect 2.0:
+7. In PowerShell, Run the following command to install Sophos Connect 2.0:
 
 ```Powershell
 msiexec /i 'SophosConnect_2.2.75_(IPsec_and_SSLVPN).msi'  /L*v C:\Windows\Temp\SophosConnectInstall.txt
@@ -130,21 +132,21 @@ msiexec /i SophosConnect_2.2.75_(IPsec_and_SSLVPN).msi /L*v C:\Windows\Temp\Soph
  > This will start the SophosConnect installer and generate logs into a file named SophosConnectInstall.txt.
 
  
- 7. Follow the on-screen instructions to install Sophos Connect
+ 8. Follow the on-screen instructions to install Sophos Connect
   ![Msi](JPG/Msi.png)
  
  
- 8. Use Windows Explorer to navigate to `C:\Windows\Temp\` and with Notepad++ open the **SophosConnectInstall.txt** log file.
+ 9. Use Windows Explorer to navigate to `C:\Windows\Temp\` and with Notepad++ open the **SophosConnectInstall.txt** log file.
 
- 9. Write down the line entry that indicates a successful or failed installation.
- 10. Write down the product code of this program.
- 11. Uninstall SophosConnect using the same product code with the msiexec command: 
+ 10. Write down the line entry that indicates a successful or failed installation.
+ 11. Write down the product code of this program.
+ 12. Uninstall SophosConnect using the same product code with the msiexec command: 
 ```bash
 msiexec /x <Product Code> /L*v C:\Windows\Temp\SophosConnectUninstall.txt
 ```
-12. Follow the instructions
+13. Follow the instructions
 ![](JPG/Uninstall.png)
-13. Reopen the same log file with Notepad++ and identify any errors while and after uninstalling the application.
+14. Reopen the same log file with Notepad++ and identify any errors while and after uninstalling the application.
 
 ##### ![check](JPG/pngegg%20(1).png) You have analyzed MSI logs and used Windows Installer to manage SophosConnect.
 
