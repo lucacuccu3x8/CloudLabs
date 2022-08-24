@@ -146,7 +146,7 @@ msiexec /x <Product Code> /L*v C:\Windows\Temp\SophosConnectUninstall.txt
 ![](JPG/Uninstall.png)
 13. Reopen the same log file with Notepad++ and identify any errors while and after uninstalling the application.
 
-##### ![check](JPG/pngegg%20(1).png) You have analyzed MSI logs and used Windows Installer to manage PuTTy.
+##### ![check](JPG/pngegg%20(1).png) You have analyzed MSI logs and used Windows Installer to manage SophosConnect.
 
 ***
 
