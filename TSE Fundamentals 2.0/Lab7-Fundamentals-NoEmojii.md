@@ -27,7 +27,7 @@ click on the VM "**03 - Linux Client**"
 
 2. You'll be presented with the "**Ubuntu Log-in screen**"; At the center of the screen, select the user "**Sophos**" and type the password: `Sophos1985`
 
-![](JPG/Ubuntu.png)
+![](JPG/Ubuntuxxxx.png)
 
 > ![](JPG/output-onlinepngtools.png) **Note:** You may want to toggle the "Full-Screen View" in your browser to fit the Linux Desktop in your browser window.
 
