@@ -11,7 +11,7 @@ Upon successful completion of this lab, you will be able to:
 ![](JPG/Lab%20Diagram5.png)
 ***
 
-## **Task 8.1:** Analyze the difference between connection to the untrusted site and to a trusted site. 
+## **Task 8.1:** Analyze the difference between the connection to an untrusted site and to a trusted site. 
 SSL/TLS certificates can be divided into trusted and untrusted, based on the issuing certification authority. The importance of using a certificate from a trusted certification authority lies in the completely error-free use of the certificate in users' browsers and an incomparably higher level of trust and authentication.  
 In this exercise, you are tasked with understanding and learning what requirements a certificate must meet to be valid.
 
@@ -24,20 +24,24 @@ In this exercise, you are tasked with understanding and learning what requiremen
 https://expired.badssl.com/
 ```
 
-
-2. 2.	Note down the **warning** being received and hit **"Advanced"**:
+2.	Note down the **warning** being received and hit **"Advanced"**:
  
 3.	Click on Not secure and write down the reason for the certificate warning.
 
+
 4.	Write down the:
+
 * **signature algorithm**, 
 * **expiration date** , and 
 * **how many bits** were used for the signing CA of **“*.badssl.com”**
 
 5.	Click Proceed to **expired.badssl.com** (unsafe)
+![](JPG/badssl.png)
 
-
-6.	Now, Open another tab in Google Chrome and type `https://sophostest.com/`
+6.	Now, open another tab in Google Chrome and type 
+```csharp
+https://sophostest.com/
+```
 
 7.	Click on the **Padlock** -> **Connection is secure** -> **Certificate is valid**
 ![](JPG/Sophos%20Certificate%20is%20Secure.png)
@@ -50,50 +54,40 @@ https://expired.badssl.com/
 
 |           |                   |
 |-----------|-------------------|
-|Trusted Connection: | |
-| Untrusted Connection.: | |
+|Trusted Connection: |.    .   .|
+|Untrusted Connection: |.  .  .|
+
+---
+
+## **Task 8.2:** How to verify if a certificate is trusted in Windows (Computer?)
 
 
- 
-3. Write down the reason for the **certificate warning** and how this error can be resolved: 
- 
+1. Connect to the **London Client**:
 
- 
- 
-4. Write down the **signature algorithm**, **expiration date** and how many bits were used for the signing **CA** of ***.internet.www**
+![](JPG/London%20Client.png)
 
-**e.g.,**
+2.	Click **Start** > **Run**, type `MMC` and then press Enter.
+![](JPG/Console2.png)
+This will launch the "**Management Console**", which provides system administrators and advanced users with an interface for configuring and monitoring the system with administration tools called "**snap-ins**."
 
-|                                |
-|--------------------------------|
-|  Signature algorithm:sha256RSA |
-|  RSA 2048bits                  |
-|  Validity:Wednesday, 5-10-2022 |
+3.	On the File menu, click **Add/Remove Snap-in**.
 
+4.	Select "**Certificates**", click **Add**, select "**Computer account**", and then click **Next**.
+![](JPG/Add%20Remove%20Snap%20ins.png)
+5.	Select **Local computer** (the computer this console is running on), and then click **Finish**.
+![](JPG/Local%20Computer.png)
+6.	On the "**Add or Remove Snap-ins**" click **OK**.
+7.	Expand **"Certificates"** (Local Computer) in the management console, 
+8. Browse around all the entries and try to locate the certificate of the **Root CA** used by **https://sophostest.com/**
+![](JPG/Console1.png)
+9. Take note of your findings.
 
+#### ![check](JPG/pngegg%20(1).png) You have successfully verified if a certificate is trusted in Windows 
 
-
- 
-5. Press the **Windows key + R** to launch the **Run** applet 
-
-6. Type `mmc` and hit enter, to launch the **Microsoft Management Console** 
-
-7. Select ‘**File**’ on the top menu and select ‘**Add or Remove Snap-ins**’.   
-Select: **Certificates** and click **Add > Computer Account > Local Computer**. 
-
-8. Make the necessary changes in the **Certificate snap-in** to resolve the certificate warning and restart **Google Chrome** to apply these changes 
-
-9. Open **sophos.com** in **Google Chrome** and read the certificate and all its issuers 
-
-10. Write down **why** this certificate is **considered trusted** and provide any evidence for this reasoning using the **mmc console**: 
-
-
-##### ![check](JPG/pngegg%20(1).png) You have successfully reviewed and resolved a website certificate issue. 
- 
 ***
 
 
-## **Task 8.2:** <small>Generate a CSR using OpenSSL to prepare a certificate</small> 
+## **Task 8.3:** Generate a CSR using OpenSSL to prepare a certificate
 You have been given a task where the administrator requires you to add additional lines to the file `/var/file1b.log` to diagnose an issue.   
 It was suggested to use vi as there is no GUI on the Linux machine.   
 Once complete, you must then search the file using a string and make a final line edit.  
@@ -152,7 +146,7 @@ Although the warnings, proceed further into the page.
 
 
 ***
-## **Task 8.3:** Packet Sniffing for Passwords
+## **Task 8.4:** Packet Sniffing for Passwords
 
 Many protocols display information in plaintext which is not a secure method for
 transmission. Telnet is one of the primary communication and application protocols
