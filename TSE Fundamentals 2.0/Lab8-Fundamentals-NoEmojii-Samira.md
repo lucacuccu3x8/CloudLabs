@@ -97,7 +97,7 @@ In this scenario, you have been assigned to use the Domain Controller as a trust
 2. Log in as `Josh Noble`.
 
 3.	Open Google Chrome and type the following URL: https://lon-dc.sophos.local/certsrv . The browser will show you the Privacy error:
-![](JPG/Privacy%20Errors.png)
+![](JPG/Connection%20isn't%20private.jpg)
 
 4.	What does this error mean? 
  ____________________________________________
