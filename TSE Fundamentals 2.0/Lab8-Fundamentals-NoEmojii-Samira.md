@@ -50,12 +50,13 @@ https://sophostest.com/
 
 9.	Verify the **purpose**, **validity**, and **version** of the certificate.
 
-10.	Out of the both the sites,  assess which of the two gets a Trusted/Untrusted Connection: 
+10.	Out of the both the sites,  assess which of the two gets a **Trusted/Untrusted Connection**: 
 
-|           |                   |
-|-----------|-------------------|
-|Trusted Connection: |.    .   .|
-|Untrusted Connection: |.  .  .|
+
+
+* `Trusted Connection`:
+
+* `Untrusted Connection`: 
 
 ---
 
