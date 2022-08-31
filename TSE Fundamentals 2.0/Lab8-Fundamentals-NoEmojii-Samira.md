@@ -3,9 +3,11 @@
 ## Objectives
 Upon successful completion of this lab, you will be able to: 
  
-1.	Analyze and locate the Certificate Authority (CA) of a website using the Windows Certificate Store 
-2.	Generate a Certificate Signing Request (CSR) 
-3.  Packet Sniffing unencrypted HTTP traffic for Passwords
+* Understand the difference between the connection to an untrusted site and to a trusted site.
+* Verify if a certificate is trusted in Windows (Computer?)
+* Create a trust with a Private CA.
+* Generate a Certificate Signing Request (CSR) 
+* Packet Sniffing for Passwords
 
 ### Lab Diagram:
 ![](JPG/Lab%20Diagram5.png)
@@ -272,7 +274,9 @@ Telnet should be used strictly in isolated and secured networks and **never to b
 ## ![review](JPG/Review%2048.png) Review  ##
 
 You have now successfully: 
-* Analyzed and located the Certificate Authority (CA) of a website using the Windows Certificate Store 
+* Understood the difference between the connection to an untrusted site and to a trusted site.
+* Verified if a certificate is trusted in Windows (Computer?)
+* Created a trust with a Private CA.
 * Generated a Certificate Signing Request (CSR) 
 * Packet Sniffing for Passwords
 
