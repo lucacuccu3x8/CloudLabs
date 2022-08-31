@@ -120,9 +120,7 @@ https://lon-dc.sophos.local/certsrv
 
 
 ## **Task 8.3:** Generate a CSR using OpenSSL to prepare a certificate
-You have been given a task where the administrator requires you to add additional lines to the file `/var/file1b.log` to diagnose an issue.   
-It was suggested to use vi as there is no GUI on the Linux machine.   
-Once complete, you must then search the file using a string and make a final line edit.  
+You have been tasked with creating a new certificate using the company's CA, which will be used in the future deployment of a web server. The private key must be saved and password protected.
 
 ### Moving back to the Domain Controller VM:
 ![London DC](JPG/London%20DC%204.png)
