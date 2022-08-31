@@ -115,6 +115,8 @@ https://lon-dc.sophos.local/certsrv
 
 8.  Close all the open windows except the MMC console.
 
+#### ![check](JPG/pngegg%20(1).png) You have successfully established a trust with a Private CA and Google Chrome Browser. 
+
 
 ***
 
