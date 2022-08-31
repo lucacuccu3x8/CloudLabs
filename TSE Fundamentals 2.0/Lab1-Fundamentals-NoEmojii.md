@@ -24,11 +24,11 @@ You can verify the **Status** in the **Resource** tab:
 
 ![](JPG/Resource%20Running.png)
 
-3. The **HostVM** on the left of this portal will have several nested Virtual Machines running inside Hyper-V that you will use throughout the workshop to perform the lab. 
+4. The **HostVM** on the left of this portal will have several nested Virtual Machines running inside Hyper-V that you will use throughout the workshop to perform the lab. 
 
 > **Note:** The **HostVM** is not to be used for lab exercises.
 
-4. **Before starting** the exercises, **allow 5 to 10 minutes** for all nested VMs in the Hyper-V environment to complete the boot-up.
+5. **Before starting** the exercises, **allow 5 to 10 minutes** for all nested VMs in the Hyper-V environment to complete the boot-up.
 
 ***
 ## Accessing the nested Virtual machines:
