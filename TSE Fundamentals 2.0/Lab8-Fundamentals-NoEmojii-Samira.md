@@ -161,21 +161,23 @@ Although the warnings, proceed further into the page.
 ![](JPG/Issue%20the%20certificate.png)
 
 
-8. Now, the certificate are accepted and moved under the **Issued Certificates**, in here find the new certificates. 
+9. Now, the certificate are accepted and moved under the **Issued Certificates**, in here find the new certificates. 
 ![](JPG/Issued%20certificates%202.png)
 
-9. **Right click** the certificate and select **Open** to analyze the newly generated certificate details.
-![](JPG/issued%20certificate%203.png)
+9.	Switch to **Google Chrome** and click Home.
+10.	Click on "**View the status of a pending certificate request**".
+11.	Click **Saved-Request Certificate Link**.
+12.	Download and install the certificate for the current user 
+13.	Use the **MMC** and verify that the certificate is installed for the current user.
+14.	Write down where the information in the newly generated certificate came from.
+15.	Who is the issuer of the certificate?
+16.	How was the issuer decided?
+17.	Switch to Google Chrome and hit **Home**.
+18.	Click on **Download a CA certificate, certificate chain or CRL**.
+19.	Click on **Install CA Certificate** to trust certificates from this **CA**.
 
-10. Write down why the **private key** was not required by the **CA** signer.
 
-11. Write down where the information in the newly generated certificate came from.
-
-12. **Who is the issuer** of the certificate? 
- 
-13. How was the issuer decided? 
-
-#### ![check](JPG/pngegg%20(1).png)  You have created a CSR and certificate pair 
+### ![check](JPG/pngegg%20(1).png)  You have created a CSR and certificate pair 
 
 
 ***
