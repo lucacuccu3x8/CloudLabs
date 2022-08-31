@@ -122,7 +122,7 @@ https://lon-dc.sophos.local/certsrv
 
 
 
-## **Task 8.3:** Generate a CSR using OpenSSL to prepare a certificate
+## **Task 8.4:** Generate a CSR using OpenSSL to prepare a certificate
 You have been tasked with creating a new certificate using the company's CA, which will be used in the future deployment of a web server. The private key must be saved and password protected.
 
 ### Moving back to the Domain Controller VM:
@@ -184,7 +184,7 @@ Although the warnings, proceed further into the page.
 
 
 ***
-## **Task 8.4:** Packet Sniffing for Passwords
+## **Task 8.5:** Packet Sniffing for Passwords
 
 Many protocols display information in plaintext which is not a secure method for
 transmission. Telnet is one of the primary communication and application protocols
