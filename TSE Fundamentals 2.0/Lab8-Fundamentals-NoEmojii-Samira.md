@@ -105,9 +105,9 @@ In this scenario, you have been assigned to use the Domain Controller as a trust
 5.	How can we resolve this error?
  ____________________________________________
 
-6.	Use Google Chrome to create the trust with  **SOPHOS-LON-DC-CA** Certificate Authority for the User account and Computer account. Use the following link: 
+6.	Use Google Chrome to create the trust with  **SOPHOS-LON-DC-CA** Certificate Authority for the User account and Computer account. To connect, use the following link: 
 ```bash
-https://lon-dc.sophos.local/certsrv to connect
+https://lon-dc.sophos.local/certsrv
 ```
 
 7.	Use the MMC console and verify that **SOPHOS-LON-DC-CA**, is trusted for both the **User Account** and **Computer Account**. 
