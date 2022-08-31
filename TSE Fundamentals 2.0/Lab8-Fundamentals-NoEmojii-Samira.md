@@ -59,7 +59,7 @@ https://sophostest.com/
 
 ---
 
-## **Task 8.2:** How to verify if a certificate is trusted in Windows (Computer?)
+## **Task 8.2:** Verify if a certificate is trusted in Windows (Computer?)
 
 
 1. Connect to the **London Client**:
@@ -84,7 +84,39 @@ This will launch the "**Management Console**", which provides system administrat
 
 #### ![check](JPG/pngegg%20(1).png) You have successfully verified if a certificate is trusted in Windows 
 
+
 ***
+## **Task 8.3:** Create a trust with a Private CA.
+
+In this scenario, you have been assigned to use the Domain Controller as a trusted private certification authority, so that all its certificates issued are automatically trusted by the client.
+
+1.	Switch to London Client
+
+![](JPG/London%20Client.png)
+
+2. Log in as `Josh Noble`.
+
+3.	Open Google Chrome and type the following URL: https://lon-dc.sophos.local/certsrv . The browser will show you the Privacy error:
+![](JPG/Privacy%20Errors.png)
+
+4.	What does this error mean? 
+ ____________________________________________
+
+5.	How can we resolve this error?
+ ____________________________________________
+
+6.	Use Google Chrome to create the trust with  **SOPHOS-LON-DC-CA** Certificate Authority for the User account and Computer account. Use the following link: 
+```bash
+https://lon-dc.sophos.local/certsrv to connect
+```
+
+7.	Use the MMC console and verify that **SOPHOS-LON-DC-CA**, is trusted for both the **User Account** and **Computer Account**. 
+
+8.  Close all the open windows except the MMC console.
+
+
+***
+
 
 
 ## **Task 8.3:** Generate a CSR using OpenSSL to prepare a certificate
@@ -109,7 +141,10 @@ req -new -newkey rsa:4096 -nodes -keyout private.key -out certificate.csr
 3. Open the "**certificate.csr**" file with **Notepad++** and leave it open.
 ![](JPG/certificate.png)
 
-4. Now, open **Google Chrome** and navigate to:  `https://localhost/certsrv/`
+4. Now, open **Google Chrome** and navigate to:  
+```csharp
+https://localhost/certsrv/
+```
 Although the warnings, proceed further into the page.
 
 > **Note:** We are accessing a certificate Authority to generate a certificate. In our case the CA is the London-DC
