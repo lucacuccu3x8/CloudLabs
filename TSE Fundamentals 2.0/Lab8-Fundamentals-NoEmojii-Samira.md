@@ -96,8 +96,7 @@ This will launch the "**Management Console**", which provides system administrat
 
 10. Minimize the  Console, 
 
-11. Open the browser and type this URL:  
-**https://sophos.com/**
+11. Open the browser and type this URL: **https://sophos.com/**
 
 12. Note the Root CA for **https://sophos.com/**
 
@@ -122,13 +121,18 @@ This will launch the "**Management Console**", which provides system administrat
 
 In this scenario, you have been assigned to use the Domain Controller as a trusted private certification authority, so that all its certificates issued are automatically trusted by the client.
 
-1.	Switch to London Client
+1. Login in the London Client as "**jsmith**":
+* User: `SOPHOS\jsmith`
+* Password: `Sophos1985`
 
 ![](JPG/London%20Client.png)
 
-2. Log in as `Josh Noble`.
+2. 
 
-3.	Open Google Chrome and type the following URL: https://lon-dc.sophos.local/certsrv . The browser will show you the Privacy error:
+3.	Open Google Chrome and type the following URL: 
+https://lon-dc.sophos.local/certsrv . 
+
+The browser will show you the Privacy error:
 ![](JPG/Connection%20isn't%20private.jpg)
 
 4.	What does this error mean? 
