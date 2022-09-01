@@ -21,8 +21,8 @@ In this exercise, you are tasked with understanding and learning what requiremen
 
 ### Let's begin:
 ![London Client](JPG/London%20Client.png)
-1. Login in the London Client as:
-* User: `jsmith`
+1. Login in the London Client as "jsmith":
+* User: `SOPHOS\jsmith`
 * Password: `Sophos1985`
 
 2. Open **Google Chrome** and navigate to: 
