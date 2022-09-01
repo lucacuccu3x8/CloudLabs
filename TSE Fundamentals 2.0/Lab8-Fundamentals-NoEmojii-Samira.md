@@ -21,38 +21,42 @@ In this exercise, you are tasked with understanding and learning what requiremen
 
 ### Let's begin:
 ![London Client](JPG/London%20Client.png)
-1. Open **Google Chrome** and navigate to: 
+1. Login in the London Client as:
+* User: `jsmith`
+* Password: `Sophos1985`
+
+2. Open **Google Chrome** and navigate to: 
 ```csharp
 https://expired.badssl.com/
 ```
 
-2.	Note down the **warning** being received and hit **"Advanced"**:
+3.	Note down the **warning** being received and hit **"Advanced"**:
  
-3.	Click on Not secure and write down the reason for the certificate warning.
+4.	Click on Not secure and write down the reason for the certificate warning.
 
 
-4.	Write down the:
+5.	Write down the:
 
 * **signature algorithm**, 
 * **expiration date** , and 
 * **how many bits** were used for the signing CA of **“*.badssl.com”**
 
-5.	Click Proceed to **expired.badssl.com** (unsafe)
+6.	Click Proceed to **expired.badssl.com** (unsafe)
 ![](JPG/badssl.png)
 
-6.	Now, open another tab in Google Chrome and type 
+7.	Now, open another tab in Google Chrome and type 
 ```csharp
 https://sophostest.com/
 ```
 
-7.	Click on the **Padlock** -> **Connection is secure** -> **Certificate is valid**
+8.	Click on the **Padlock** -> **Connection is secure** -> **Certificate is valid**
 ![](JPG/Sophos%20Certificate%20is%20Secure.png)
 
-8.	Write down the **CA** that issued the certificate.
+9.	Write down the **CA** that issued the certificate.
 
-9.	Verify the **purpose**, **validity**, and **version** of the certificate.
+10.	Verify the **purpose**, **validity**, and **version** of the certificate.
 
-10.	Out of the both the sites,  assess which of the two gets a **Trusted/Untrusted Connection**: 
+11.	Out of the both the sites,  assess which of the two gets a **Trusted/Untrusted Connection**: 
 
 
 
