@@ -84,12 +84,23 @@ This will launch the "**Management Console**", which provides system administrat
 4.	Select "**Certificates**", click **Add**, select "**My user account**", and then click **Finish**.
 
 5.	Select "**Certificates**", click **Add**, select "**Computer account**", and then click **Next**.
-![![](JPG/Add%20Remove%20Snap%20ins.png)](JPG/Console3.jpg)
-6.	Select **Local computer** (the computer this console is running on), and then click **Finish**.
 ![](JPG/Local%20Computer.png)
-6.	On the "**Add or Remove Snap-ins**" click **OK**.
-7.	Expand **"Certificates"** (Local Computer) in the management console, 
-8. Browse around all the entries and try to locate the certificate of the **Root CA** used by **https://sophostest.com/**
+6.	Select **Local computer** (the computer this console is running on), and then click **Finish**.
+![![](JPG/Add%20Remove%20Snap%20ins.png)](JPG/Console3.jpg)
+7.	On the "**Add or Remove Snap-ins**" click **OK**.
+
+8. Click File > Save > Desktop > CertificateConsole.msc
+
+9. Click Save
+
+
+10.	Expand **"Certificates - Current User"** in the management console, 
+
+11. Browse on Trusted Root Certification Authorities > Certificates 
+![](JPG/Console4.jpg)
+
+
+11. Browse around all the entries and try to locate the certificate of the **Root CA** used by **https://sophostest.com/**
 ![](JPG/Console1.png)
 9. Take note of your findings.
 
