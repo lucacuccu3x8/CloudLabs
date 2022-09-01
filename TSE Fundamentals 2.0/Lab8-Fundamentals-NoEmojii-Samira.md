@@ -117,7 +117,7 @@ This will launch the "**Management Console**", which provides system administrat
 ***
 
 
-## **Task 8.3:** Create a trust with a Private CA.
+## **Task 8.3:** Create a trust with a Private CA and the user .
 
 In this scenario, you have been assigned to use the LON-DC as a trusted private certification authority, so that all its certificates issued are automatically trusted by the client.
 
@@ -137,6 +137,62 @@ https://lon-dc.sophos.local/certsrv .
 
 4. Now click "Not secure" > Certificate is not Valid >
 ![](JPG/Certificate%20Error.jpg)
+
+5. Note down the fields of 
+* "Issued to" 
+* "Issued by"
+
+6. Hit "Certification Path" tab and click the **"SOPHOS-LON-DC-CA"** (This is the root CA)
+![](JPG/Certificate%20error%202.jpg)
+
+
+7. Note Down what is written in the **"Certificate Status"** dialog box:
+![](JPG/Certificate%20error%203.jpg)
+
+
+8. Click ok
+
+9. Back to the browser, click **"Advanced"**
+
+10. Click on `"Proceed to lon-dc-sophos.local (unsafe)"`
+
+11. Select the task: "Download a CA certificate , certificate chain , or CRL"
+
+12. Click **"Install CA Certificate"**, that will download the certificate
+![](JPG/Install%20a%20certificate.jpg)
+
+13. Open the certificate you just downloaded 
+
+14. Verify the name of the CA as "SOPHOS_LON_DC_CA"
+
+15. Install the certificate by clicking "Install Certificate..."
+
+16. Select "Current User" and then hit "Next"
+
+17. Select "Place all certificates in the following store" and then hit "Next"
+
+18. Hit "Browse", select "Trusted Root Certification Authority" and press "OK"
+
+19. Hit "Next" and "Finish" and a dialog box should appear.
+
+20. Click "Yes" on the security warning to install the Certificate in the Trusted Root Certificate Store" 
+![](JPG/Import%20Success.jpg)
+
+21. Click "Ok" and then close and reopen the browser
+
+22. Reopen the same URL:
+```bash
+https://lon-dc.sophos.local/certsrv
+```
+23. Now you should see a solid grey padlock that confirms that the connection is secure and that the certificate is now trusted.
+
+
+
+18. Now go back to the "Certificate Console"
+
+
+
+
 
 What does this error mean? 
  ____________________________________________
