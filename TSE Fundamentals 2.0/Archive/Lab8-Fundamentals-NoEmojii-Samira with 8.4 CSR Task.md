@@ -21,7 +21,7 @@ In this exercise, you are tasked with understanding and learning what requiremen
 
 ### Let's begin:
 ![London Client](JPG/London%20Client.png)
-1. Login in the London Client as "**John Smith**":
+1. Login in the London Client as "jsmith":
 * User: `SOPHOS\jsmith`
 * Password: `Sophos1985`
 
@@ -121,7 +121,7 @@ This will launch the "**Management Console**", which provides system administrat
 
 In this scenario, you have been assigned to use the LON-DC as a trusted private certification authority, so that all its certificates issued are automatically trusted by the client.
 
-1. Login in the London Client as "**John Smith**":
+1. Login in the London Client as "**jsmith**":
 * User: `SOPHOS\jsmith`
 * Password: `Sophos1985`
 
@@ -165,7 +165,7 @@ https://lon-dc.sophos.local/certsrv .
 
 14. Verify the name of the CA as **SOPHOS-LON-DC-CA**
 
-15. Install the certificate by clicking "**Install Certificate...**"
+15. Install the certificate by clicking "Install Certificate..."
 
 16. Select "Current User" and then hit "Next"
 
@@ -190,12 +190,76 @@ https://lon-dc.sophos.local/certsrv
 
 25. Close all the open windows except the MMC console.
 
-#### ![check](JPG/pngegg%20(1).png) You have successfully established a trust with a Private CA.
-
+#### ![check](JPG/pngegg%20(1).png) You have successfully established a trust with a Private CA and the user **"john smith"**. 
 
 
 ***
-## **Task 8.4:** Packet Sniffing for Passwords
+
+
+
+## **Task 8.4:** Generate a CSR using OpenSSL to prepare a certificate
+You have been tasked with creating a new certificate using the company's CA, which will be used in the future deployment of a web server. The private key must be saved and password protected.
+
+### Moving back to the Domain Controller VM:
+![London DC](JPG/London%20DC%204.png)
+
+1. Use **openssl.exe** through Windows command prompt to generate a **CSR**.  
+> **OpenSSL** is in C:\Users\Administrator\Downloads\OpenSSL\bin\openssl.exe 
+
+ 
+2. Use the following command with **openssl.exe** to generate a **CSR** and **private key pairing**. Fill in the requested fields with the information of your choosing: 
+
+```csharp
+req -new -newkey rsa:4096 -nodes -keyout private.key -out certificate.csr
+```
+> The **private key** is generated during CSR creation. Treat this **like a password**. Take note of the `.csr` and `.key` location for future use. 
+
+3. Open the "**certificate.csr**" file with **Notepad++** and leave it open.
+![](JPG/certificate.png)
+
+4. Now, open **Google Chrome** and navigate to:  
+```csharp
+https://localhost/certsrv/
+```
+Although the warnings, proceed further into the page.
+
+> **Note:** We are accessing a certificate Authority to generate a certificate. In our case the CA is the London-DC
+
+4. From "**Select a task**", Hit **"Request a certificate"** 
+ 
+5. Go to ‘**Advanced certificate request**’ and **copy/paste** the contents of the `certificate.csr` file you have opened with **Notepad++**.
+![](JPG/content%20certificate.png)
+
+6. **Submit** and take note of the **Request ID**: 
+![](JPG/submit%20ID.png)
+
+7. Minimize Google Chrome and Notepad++ and from the **Windows Administrative Tools**, launch the ‘**Certification Authority**console’, and find the newly requested certificate under ‘**Pending Requests**’.  
+
+8. Select the certificate and right click and select **All Tasks > Issue** 
+![](JPG/Issue%20the%20certificate.png)
+
+
+9. Now, the certificate are accepted and moved under the **Issued Certificates**, in here find the new certificates. 
+![](JPG/Issued%20certificates%202.png)
+
+9.	Switch to **Google Chrome** and click Home.
+10.	Click on "**View the status of a pending certificate request**".
+11.	Click **Saved-Request Certificate Link**.
+12.	Download and install the certificate for the current user 
+13.	Use the **MMC** and verify that the certificate is installed for the current user.
+14.	Write down where the information in the newly generated certificate came from.
+15.	Who is the issuer of the certificate?
+16.	How was the issuer decided?
+17.	Switch to Google Chrome and hit **Home**.
+18.	Click on **Download a CA certificate, certificate chain or CRL**.
+19.	Click on **Install CA Certificate** to trust certificates from this **CA**.
+
+
+### ![check](JPG/pngegg%20(1).png)  You have created a CSR and certificate pair 
+
+
+***
+## **Task 8.5:** Packet Sniffing for Passwords
 
 Many protocols display information in plaintext which is not a secure method for
 transmission. Telnet is one of the primary communication and application protocols
