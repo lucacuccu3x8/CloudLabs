@@ -163,7 +163,7 @@ https://lon-dc.sophos.local/certsrv .
 
 13. Open the certificate you just downloaded 
 
-14. Verify the name of the CA as "SOPHOS_LON_DC_CA"
+14. Verify the name of the CA as **SOPHOS-LON-DC-CA**
 
 15. Install the certificate by clicking "Install Certificate..."
 
@@ -186,37 +186,11 @@ https://lon-dc.sophos.local/certsrv
 ```
 23. Now you should see a solid grey padlock that confirms that the connection is secure and that the certificate is now trusted.
 
-24. You can now double check the certificatre being installed in the "Trusted Root Certificate Store"
+24. You can now double check the certificate being installed in the "Trusted Root Certificate Store" using the CertificateConsole shortcut created in step Task8.2 - step 9.
 
+25. Close all the open windows except the MMC console.
 
-18. Now go back to the "Certificate Console"
-
-
-
-
-
-What does this error mean? 
- ____________________________________________
-
-
-5.	How can we resolve this error?
- ____________________________________________
-
-
-6. 
-
-
-
-6.	Use Google Chrome to create the trust with  **SOPHOS-LON-DC-CA** Certificate Authority for the User account and Computer account. To connect, use the following link: 
-```bash
-https://lon-dc.sophos.local/certsrv
-```
-
-7.	Use the MMC console and verify that **SOPHOS-LON-DC-CA**, is trusted for both the **User Account** and **Computer Account**. 
-
-8.  Close all the open windows except the MMC console.
-
-#### ![check](JPG/pngegg%20(1).png) You have successfully established a trust with a Private CA and Google Chrome Browser. 
+#### ![check](JPG/pngegg%20(1).png) You have successfully established a trust with a Private CA and the user "jsmith" 
 
 
 ***
