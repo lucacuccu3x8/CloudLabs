@@ -4,9 +4,8 @@
 Upon successful completion of this lab, you will be able to: 
  
 * Understand the difference between the connection to an untrusted site and to a trusted site.
-* Verify if a certificate is trusted in Windows (Computer?)
-* Create a trust with a Private CA.
-* Generate a Certificate Signing Request (CSR) 
+* Verify if a certificate is trusted in Windows
+* Create a trust with a Private root CA.
 * Packet Sniffing for Passwords
 
 ### Lab Diagram:
@@ -284,9 +283,8 @@ Telnet should be used strictly in isolated and secured networks and **never to b
 
 You have now successfully: 
 * Understood the difference between the connection to an untrusted site and to a trusted site.
-* Verified if a certificate is trusted in Windows (Computer?)
-* Created a trust with a Private CA.
-* Generated a Certificate Signing Request (CSR) 
+* Verified if a certificate is trusted in Windows
+* Created a trust with a Private Root CA.
 * Packet Sniffing for Passwords
 
 
