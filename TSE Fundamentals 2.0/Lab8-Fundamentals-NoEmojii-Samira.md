@@ -119,7 +119,7 @@ This will launch the "**Management Console**", which provides system administrat
 
 ## **Task 8.3:** Create a trust with a Private CA.
 
-In this scenario, you have been assigned to use the Domain Controller as a trusted private certification authority, so that all its certificates issued are automatically trusted by the client.
+In this scenario, you have been assigned to use the LON-DC as a trusted private certification authority, so that all its certificates issued are automatically trusted by the client.
 
 1. Login in the London Client as "**jsmith**":
 * User: `SOPHOS\jsmith`
@@ -134,7 +134,11 @@ https://lon-dc.sophos.local/certsrv .
 3. The browser will show you the Privacy error:
 ![](JPG/Connection%20isn't%20private.jpg)
 
-4.	What does this error mean? 
+
+4. Now click "Not secure" > Certificate is not Valid >
+![](JPG/Certificate%20Error.jpg)
+
+What does this error mean? 
  ____________________________________________
 
 
@@ -142,8 +146,7 @@ https://lon-dc.sophos.local/certsrv .
  ____________________________________________
 
 
-6.  H3
-0
+6. 
 
 
 
