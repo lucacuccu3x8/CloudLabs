@@ -127,19 +127,25 @@ In this scenario, you have been assigned to use the Domain Controller as a trust
 
 ![](JPG/London%20Client.png)
 
-2. 
-
-3.	Open Google Chrome and type the following URL: 
+2.	Open Google Chrome and type the following URL: 
+```bash
 https://lon-dc.sophos.local/certsrv . 
-
-The browser will show you the Privacy error:
+```
+3. The browser will show you the Privacy error:
 ![](JPG/Connection%20isn't%20private.jpg)
 
 4.	What does this error mean? 
  ____________________________________________
 
+
 5.	How can we resolve this error?
  ____________________________________________
+
+
+6.  H3
+0
+
+
 
 6.	Use Google Chrome to create the trust with  **SOPHOS-LON-DC-CA** Certificate Authority for the User account and Computer account. To connect, use the following link: 
 ```bash
