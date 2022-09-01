@@ -94,20 +94,30 @@ This will launch the "**Management Console**", which provides system administrat
 9. Click Save
 
 
-10.	Expand **"Certificates - Current User"** in the management console, 
+10. Minimize the  Console, 
 
-11. Browse on Trusted Root Certification Authorities > Certificates 
+11. Open the browser and type this URL:  
+**https://sophos.com/**
+
+12. Note the Root CA for **https://sophos.com/**
+
+13. Go back to the Certificate Console, 
+
+14.	Expand **"Certificates - Current User"** in the management console, 
+
+15. Browse on **Trusted Root Certification Authorities > Certificates** 
 ![](JPG/Console4.jpg)
 
+16. Note down the root CA for **https://sophos.com/** _____________________________________________________
 
-11. Browse around all the entries and try to locate the certificate of the **Root CA** used by **https://sophostest.com/**
-![](JPG/Console1.png)
-9. Take note of your findings.
+17. Repeat the steps to verify if the root CA is also added in the "Trusted Root Certification Authorities" in the Certificates (local computer) 
 
 #### ![check](JPG/pngegg%20(1).png) You have successfully verified if a certificate is trusted in Windows 
 
 
 ***
+
+
 ## **Task 8.3:** Create a trust with a Private CA.
 
 In this scenario, you have been assigned to use the Domain Controller as a trusted private certification authority, so that all its certificates issued are automatically trusted by the client.
