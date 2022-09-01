@@ -66,10 +66,12 @@ https://sophostest.com/
 
 ---
 
-## **Task 8.2:** Verify if a certificate is trusted in Windows (Computer?)
+## **Task 8.2:** Verify if a certificate is trusted in Windows.
 
 
 1. Connect to the **London Client**:
+* User: `SOPHOS\jsmith`
+* Password: `Sophos1985`
 
 ![](JPG/London%20Client.png)
 
@@ -79,9 +81,11 @@ This will launch the "**Management Console**", which provides system administrat
 
 3.	On the File menu, click **Add/Remove Snap-in**.
 
-4.	Select "**Certificates**", click **Add**, select "**Computer account**", and then click **Next**.
-![](JPG/Add%20Remove%20Snap%20ins.png)
-5.	Select **Local computer** (the computer this console is running on), and then click **Finish**.
+4.	Select "**Certificates**", click **Add**, select "**My user account**", and then click **Finish**.
+
+5.	Select "**Certificates**", click **Add**, select "**Computer account**", and then click **Next**.
+![![](JPG/Add%20Remove%20Snap%20ins.png)](JPG/Console3.jpg)
+6.	Select **Local computer** (the computer this console is running on), and then click **Finish**.
 ![](JPG/Local%20Computer.png)
 6.	On the "**Add or Remove Snap-ins**" click **OK**.
 7.	Expand **"Certificates"** (Local Computer) in the management console, 
