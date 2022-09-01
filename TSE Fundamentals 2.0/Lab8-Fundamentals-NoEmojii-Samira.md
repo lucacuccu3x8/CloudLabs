@@ -186,6 +186,7 @@ https://lon-dc.sophos.local/certsrv
 ```
 23. Now you should see a solid grey padlock that confirms that the connection is secure and that the certificate is now trusted.
 
+24. You can now double check the certificatre being installed in the "Trusted Root Certificate Store"
 
 
 18. Now go back to the "Certificate Console"
