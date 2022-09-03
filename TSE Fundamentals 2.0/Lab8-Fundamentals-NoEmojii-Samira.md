@@ -88,14 +88,17 @@ This will launch the "**Management Console**", which provides system administrat
 ![![](JPG/Add%20Remove%20Snap%20ins.png)](JPG/Console3.jpg)
 7.	On the "**Add or Remove Snap-ins**" click **OK**.
 
-8. Click File > Save > Desktop > CertificateConsole.msc
+8. Click **File > Save > Desktop > CertificateConsole.msc**
 
-9. Click Save
+9. Click **Save**
 
 
 10. Minimize the  Console, 
 
-11. Open the browser and type this URL: **https://sophos.com/**
+11. Open the browser and type this URL: 
+```bash
+**https://sophos.com/**
+```
 
 12. Note the Root CA for **https://sophos.com/**
 
@@ -108,7 +111,7 @@ This will launch the "**Management Console**", which provides system administrat
 
 16. Note down the root CA for **https://sophos.com/** _____________________________________________________
 
-17. Repeat the steps to verify if the root CA is also added in the "Trusted Root Certification Authorities" in the Certificates (local computer) 
+17. Repeat the steps to verify if the root CA is also added in the "**Trusted Root Certification Authorities**" in the Certificates (local computer) 
 
 #### ![check](JPG/pngegg%20(1).png) You have successfully verified if a certificate is trusted in Windows 
 
@@ -126,22 +129,22 @@ In this scenario, you have been assigned to use the LON-DC as a trusted private 
 
 ![](JPG/London%20Client.png)
 
-2.	Open Google Chrome and type the following URL: 
+2.	Open **Google Chrome** and type the following URL: 
 ```bash
 https://lon-dc.sophos.local/certsrv . 
 ```
-3. The browser will show you the Privacy error:
+3. The browser will show you the **Privacy error**:
 ![](JPG/Connection%20isn't%20private.jpg)
 
 
-4. Now click "Not secure" > Certificate is not Valid >
+4. Now click "**Not secure**" > **Certificate is not Valid** >
 ![](JPG/Certificate%20Error.jpg)
 
-5. Note down the fields of 
-* "Issued to" 
-* "Issued by"
+5. Note down the fields for: 
+* `"Issued to"` 
+* `"Issued by"`
 
-6. Hit "Certification Path" tab and click the **"SOPHOS-LON-DC-CA"** (This is the root CA)
+6. Hit "**Certification Path**" tab and click the **"SOPHOS-LON-DC-CA"** (This is the root CA)
 ![](JPG/Certificate%20error%202.jpg)
 
 
@@ -149,13 +152,13 @@ https://lon-dc.sophos.local/certsrv .
 ![](JPG/Certificate%20error%203.jpg)
 
 
-8. Click ok
+8. Click **OK**
 
 9. Back to the browser, click **"Advanced"**
 
 10. Click on `"Proceed to lon-dc-sophos.local (unsafe)"`
 
-11. Select the task: "Download a CA certificate , certificate chain , or CRL"
+11. Select the task: "**Download a CA certificate , certificate chain , or CRL**"
 
 12. Click **"Install CA Certificate"**, that will download the certificate
 ![](JPG/Install%20a%20certificate.jpg)
@@ -166,18 +169,18 @@ https://lon-dc.sophos.local/certsrv .
 
 15. Install the certificate by clicking "**Install Certificate...**"
 
-16. Select "Current User" and then hit "Next"
+16. Select "**Current User**" and then hit "**Next**"
 
-17. Select "Place all certificates in the following store" and then hit "Next"
+17. Select "**Place all certificates in the following store**" and then hit "**Next**"
 
-18. Hit "Browse", select "Trusted Root Certification Authority" and press "OK"
+18. Hit "**Browse**", select "**Trusted Root Certification Authority**" and press "**OK**"
 
-19. Hit "Next" and "Finish" and a dialog box should appear.
+19. Hit "**Next**" and "**Finish**" and a dialog box should appear.
 
-20. Click "Yes" on the security warning to install the Certificate in the Trusted Root Certificate Store" 
+20. Click "**Yes**" on the security warning to install the Certificate in the "**Trusted Root Certificate Store**" 
 ![](JPG/Import%20Success.jpg)
 
-21. Click "Ok" and then close and reopen the browser
+21. Click "**Ok**" and then close and reopen the browser
 
 22. Reopen the same URL:
 ```bash
@@ -185,7 +188,7 @@ https://lon-dc.sophos.local/certsrv
 ```
 23. Now you should see a solid grey padlock that confirms that the connection is secure and that the certificate is now trusted.
 
-24. You can now double check the certificate being installed in the "Trusted Root Certificate Store" using the CertificateConsole shortcut created in step Task8.2 - step 9.
+24. You can now double check the certificate being installed in the "**Trusted Root Certificate Store**" using the CertificateConsole shortcut created in step **Task8.2 - step 9**.
 
 25. Close all the open windows except the MMC console.
 
