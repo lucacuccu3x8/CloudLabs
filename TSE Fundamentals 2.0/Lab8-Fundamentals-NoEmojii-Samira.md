@@ -84,8 +84,10 @@ This will launch the "**Management Console**", which provides system administrat
 
 5.	Select "**Certificates**", click **Add**, select "**Computer account**", and then click **Next**.
 ![](JPG/Local%20Computer.png)
+
 6.	Select **Local computer** (the computer this console is running on), and then click **Finish**.
 ![![](JPG/Add%20Remove%20Snap%20ins.png)](JPG/Console3.jpg)
+
 7.	On the "**Add or Remove Snap-ins**" click **OK**.
 
 8. Click **File > Save > Desktop > CertificateConsole.msc**
@@ -96,9 +98,11 @@ This will launch the "**Management Console**", which provides system administrat
 10. Minimize the  Console, 
 
 11. Open the browser and type this URL: 
+
 ```bash
-**https://sophos.com/**
+https://sophos.com/
 ```
+
 
 12. Note the Root CA for **https://sophos.com/**
 
