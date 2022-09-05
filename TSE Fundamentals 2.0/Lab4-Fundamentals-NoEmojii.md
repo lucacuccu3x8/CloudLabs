@@ -76,8 +76,11 @@ A customer has created a test script ‘`Script.ps1`’ and wants to validate it
 ![](JPG/London%20Client.png)
  
 5. Open the File Explorer and navigate into the `C:\` folder.
-6. Double click the **script.ps1** file
-> You should see nothing happening.
+>**Note:** Check the "File name Extensions" in the File Explorer to find the exact names of the files and associations
+![](JPG/Extensions.jpg)
+
+6. Find and Double click the **script.ps1** file
+>**Note:** After clicking it, You should see nothing happening...
 
 7. Open a **PowerShell terminal** and execute the script by running the command:  
 
@@ -92,8 +95,10 @@ A customer has created a test script ‘`Script.ps1`’ and wants to validate it
  
  
 9. Write down how you resolved the issue 
+>**Hint:** Check for clues here: https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.2
 
-#### ![check](JPG/pngegg%20(1).png)  You have resolved an issue where PowerShell Scripts were not executing 
+
+#### ![check](JPG/pngegg%20(1).png)  You have identify and resolved an issue where PowerShell Scripts were not executing 
 
 ***
 

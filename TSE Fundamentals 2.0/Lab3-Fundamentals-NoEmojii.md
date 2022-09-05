@@ -68,11 +68,11 @@ You have been asked to troubleshoot the following task in Active Directory
 1. List the **distinguished name** for **‘UserA’** and **‘UserD’**.
 
 ***
-#### How to find the **"distinguishedName"** of an OU**</u>:
+#### ![](JPG/Knowledge%203.png) How to find the **"distinguishedName"** of an **OU**:
 
 > * In the "**Active Directory Users and Computers**" console, select **View > Advanced Features**.
 ![](JPG/Advanced%20View.png)
-> * Navigate and right-click the **OU** where you want to read users information, then select **Properties**.
+> * Navigate and right-click the **OU** where you want to read users information, e.g. **UserA**; Then select **Properties**.
 > * In the **OU Properties**, select the **Attribute Editor** tab.   
 > * Click on **distinguishedName** to highlight it, then click **View**
 > * Example: ![](JPG/Attreibutes.png)
