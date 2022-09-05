@@ -118,13 +118,14 @@ Once complete, you must then search the file using a string and make a final lin
 
 1. Open PuTTY and SSH to the **Linux Client**: `172.17.17.22`
 as the **user** `sophos` and **password** `Sophos1985`
+![](JPG/putty.jpg)
 
 2. Append the following lines to the bottom of `/var/file1b.log` using **vi** and save the file, **respecting the case sensitivity**: 
 
 ```csharp
 This is Line 3 
- This is LINE 4 This 
- is line 5
+This is LINE 4 This 
+is line 5
 ```
 
 3. While still in the **vi** text editor, press the keys `Ctrl+c` and type `/line` to run a search within the file and hit enter. 
