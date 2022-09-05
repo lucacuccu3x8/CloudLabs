@@ -45,7 +45,7 @@ You have been asked to debug information using the command prompt with the help 
 
 ![Process Explorer](JPG/Process%20Explorer.jpeg)
 
-2. Open the Windows CMD prompt.
+2. Open the Windows **CMD** prompt and minimize it to the taskbar.
 
 3. Back in the **Process Explorer**, now find the Command Prompt process, right click and select "**Properties**" to check all the information about **PID**, **Company Name**, **CPU**, **Memory Usage** 
 
@@ -77,6 +77,7 @@ Start practicing using the advanced **Wireshark Display-Filters** to quickly ana
 
 ![London DC](JPG/London%20DC%204.png)
 1. Open **Wireshark**, and start a packet capture from the "**Ethernet**" interface.
+![](JPG/Ethernet.jpg)
 
 2. Now, open **Chrome or Firefox** and attempt to access any **HTTPs** based Website.
 > **e.g.,** `https://www.sophos.com`

@@ -39,6 +39,7 @@ route print
 |8.8.8.8 |	?  |
 
 3. Open PuTTY and SSH to the ‘**Linux Client**’ `172.17.17.22`:
+![](JPG/putty.jpg)
 
 |   |   |
 |---------|----------|
@@ -182,30 +183,33 @@ Look and familiarize yourself with the available options.
 ***
 Now, moving back to the London Client:
 ![](JPG/London%20Client.png)
-13.	Disable interface **‘Ethernet 3’** 
+13.	Enable or/and Disable the interface **‘Ethernet 3’** 
+>**Note:** Please do not disable "Ethernet" interface
 
-> **Note** here is a useful link:  
-<a href="https://winaero.com/disable-network-adapter-windows-10/" target="_blank">https://winaero.com/disable-network-adapter-windows-10/</a>
 
-or in **cmd prompt** type: 
+14. in **cmd prompt** type: 
 ```bash
 netsh interface show interface
 netsh interface set interface “Ethernet 3” disable/enable
 ```
  ‌‌ 
   
-or with **PowerShell** type:
+15. or with **PowerShell** type:
 ```Powershell
 get-net-adapter
 Disable-Netadapter -Name “Ethernet 3”
 Enable-NetAdapter -Name "[your adapter name]"
 ```
  ‌‌ 
- ‌‌ 
- 
- or with the Control Panel:
+
+16. or with the Control Panel:
 **Control Panel > Network and Internet > Network Connections**
 ![](JPG/Disable%20ethernet3.png)
+
+![](JPG/Knowledge%203.png) **Tip:** here is a useful link:  
+https://winaero.com/disable-network-adapter-windows-10
+
+
 
 ##### ![check](JPG/pngegg%20(1).png)  You have now successfully analyzed DHCP requests and created a DHCP scope 
 
@@ -222,11 +226,11 @@ You have been given a task to display the routing table on two clients to valida
  
 2. Open a command prompt and experiment with the DNS queries listed below using **nslookup** utility: 
  
-|Destination |	Record Type | 	Query Used |
+|  Destination |	Record Type | 	Query Used      |
 |----------|------------------------------------|
 | sophos.local |	A |	 Nslookup -type A Sophos.local |
-|sophos.local using DNS 8.8.8.8 |	A 	| Nslookup -type A 8.8.8.8|
-| sophos.com |	TXT 	 |Nslookup -type TXT Sophos.com|
+| sophos.local using DNS 8.8.8.8 |	A 	| Nslookup -type A 8.8.8.8 |
+| sophos.com |	TXT 	 | Nslookup -type TXT Sophos.com |
 
 3. **Stop** the **Wireshark** capture and run a **Display-filter** to display only **DNS queries**
 
