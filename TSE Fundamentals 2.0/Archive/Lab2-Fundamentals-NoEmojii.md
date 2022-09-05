@@ -22,13 +22,13 @@ You have recently been given access to the Domain Controller. Your task is to fo
 3. Keep **‘Role-based or feature-based installation’** selected and click **Next** twice  
 
 4. Note down the server roles installed on this server.   
-> You want to make sure that "Active Directory Domain Service" role is active.
+> You want to make sure that "**Active Directory Domain Service**" role is active.
 
 5. Click **Cancel** to exit out of Add Roles and Features 
 
 6. From the same **Server Manager**, navigate in **Tools** and open **Group Policy Management** 
 
-![Group Policy Management](JPG/Group%20Policy%20Management.png)
+![](JPG/GroupPolicy1.jpg)
 
 7. Navigate into the Forest: `SOPHOS.LOCAL > Domains > SOPHOS.LOCAL`
 
@@ -37,9 +37,10 @@ You have recently been given access to the Domain Controller. Your task is to fo
 
 9. In the **‘Name’** field enter **"Password policy"** then hit **OK**   
  
-10. Right-click Password policy and select **Edit…**  
+10. On the left pane of the Group Policy Management Console, Right-click "**Password policy**" and select **Edit…**. This will open the **Group Policy Editor**.
+![](JPG/GroupPolicy2.jpg)
 
-11. in the left-hand panel, select:  
+11. Now in the Group Policy Editor **left-hand panel**, select:  
  `Computer Configuration > Policies > Windows Settings > Security Settings > Account Policies > Password Policy`
 
 12. Double click **"Minimum password length"**

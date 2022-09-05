@@ -28,16 +28,21 @@ You have recently been given access to the Domain Controller. Your task is disab
 
 6. From the same **Server Manager**, navigate in **Tools** and open **Group Policy Management** 
 
-![Group Policy Management](JPG/Group%20Policy%20Management.png)
+
 
 7. Navigate into the Forest: `SOPHOS.LOCAL > Domains > SOPHOS.LOCAL`
 
 8. Right-click `SOPHOS.LOCAL` and select:   
 **Create a GPO in this domain and link it here…**  
+![](JPG/GroupPolicy1.jpg)
 
 9. In the **‘Name’** field enter **"Password policy"** then hit **OK**   
+
+
  
 10. Right-click Password policy and select **Edit…**  
+![](JPG/GroupPolicy2.jpg)
+
 
 11. in the left-hand panel, select: 
 `User Configuration > Policies > Administrative Templates > Control Panel`
