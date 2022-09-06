@@ -152,15 +152,14 @@ msiexec /x <Product Code> /L*v C:\Windows\Temp\SophosConnectUninstall.txt
 
 ***
 
-<div style='page-break-after: always'></div>
-
-
-## **Task 1.2: Registry Editor**
-![Registry Editor](JPG/Regstry_Editor.png)
+## **Task 1.2: Registry Editor** 
+![](JPG/registry-icon-11.jpg) 
 
 In this task we will create and modify a registry key as well as perform
 a backup and restore.
 
+
+#### Connect to the LondonDC VM
 ![](JPG/London%20DC%204.png)
 1. Open Registry by typing `regedit` in the **Run** window
 2. Navigate to: `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\`
