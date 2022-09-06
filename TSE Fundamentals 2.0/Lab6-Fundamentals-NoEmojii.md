@@ -84,6 +84,7 @@ ipconfig /all
 > **Note** some values may differ a little in your Lab.
 
 3. Now, Take notes of the interface details of `Ethernet 3`
+> **Note:** If no details are shown, it means that Ethernet 3 is not activated.
 4. Also, Review the:
 >* Autoconfiguration IPv4 Address, 
 >* Default Gateway, 
@@ -93,7 +94,7 @@ ipconfig /all
 5. **Run Wireshark as Administrator** and start a capture on **‘Ethernet 3’** 
 
 > ![](JPG/output-onlinepngtools.png)**Note:** In case the `Ethernet 3` is not available you'd need to enable it in:
-> Control Panel > Network and Internet > Network Connections
+> `Control Panel > Network and Internet > Network Connections`
 
 
 #### Now, move to another Virtual Machine:
@@ -184,7 +185,6 @@ Look and familiarize yourself with the available options.
 Now, moving back to the London Client:
 ![](JPG/London%20Client.png)
 13.	Enable or/and Disable the interface **‘Ethernet 3’** 
->**Note:** Please do not disable "Ethernet" interface
 
 
 14. in **cmd prompt** type: 
