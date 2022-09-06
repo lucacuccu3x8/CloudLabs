@@ -2,8 +2,8 @@
 
 ## Objectives
 Upon successful completion of this lab, you will be able to: 
-1.	Review roles installed on a Windows Server 
-2.	Apply password complexity requirements using Group Policies 
+1. Review roles installed on a Windows Server
+2. Apply password complexity requirements using Group Policies 
 
 
 ### Lab Diagram:
@@ -11,7 +11,7 @@ Upon successful completion of this lab, you will be able to:
 
 ***
 
-## **Task 2.1** Group Policies
+## **Task 2.1** Review Roles
 You have recently been given access to the Domain Controller. Your task is disable Control Panel for users.
 
 ![](JPG/London%20DC%204.png)
@@ -25,6 +25,10 @@ You have recently been given access to the Domain Controller. Your task is disab
 > You want to make sure that "Active Directory Domain Service" role is active.
 
 5. Click **Cancel** to exit out of Add Roles and Features 
+
+
+----
+## **Task 2.2** Modify Group Policies
 
 6. From the same **Server Manager**, navigate in **Tools** and open **Group Policy Management** 
 
@@ -53,7 +57,7 @@ You have recently been given access to the Domain Controller. Your task is disab
 13. Set the policy to **"Enabled"** and Click **OK**
 
 14. Login in the London Client as:
-* User: `jsmith`
+* User: `SOPHOS\jsmith`
 * Password: `Sophos1985`
 
 ![](JPG/London%20Client.png)
