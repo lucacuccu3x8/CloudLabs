@@ -94,7 +94,7 @@ ipconfig /all
 5. **Run Wireshark as Administrator** and start a capture on **‘Ethernet 3’** 
 
 > ![](JPG/output-onlinepngtools.png)**Note:** In case the `Ethernet 3` is not available you'd need to enable it in:
-> `Control Panel > Network and Internet > Network Connections`
+> `Control Panel > Network and Internet > Network Connections` and restart Wireshark as Administrator.
 
 
 #### Now, move to another Virtual Machine:
