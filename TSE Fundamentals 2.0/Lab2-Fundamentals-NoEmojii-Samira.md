@@ -41,15 +41,16 @@ You have recently been given access to the Domain Controller. Your task is disab
 ![](JPG/GroupPolicy1.jpg)
 
 4. In the **‘Name’** field enter **"Control Panel Policy"** then hit **OK**   
-
+![](JPG/Control%20Panel%20Policy.jpg)
 
  
-5. Right-click Password policy and select **Edit…**  
-![](JPG/GroupPolicy2.jpg)
+5. Right-click **"Control Panel Policy"** and select **Edit…**  
+![](JPG/Control%20Panel%20Policy%202.jpg)
 
 
 6. in the left-hand panel, select: 
 `User Configuration > Policies > Administrative Templates > Control Panel`
+![](JPG/Control%20Panel%20Policy%203.jpg)
 
 7. Double click **"Prohibit access to Control Panel and PC settings"**
 ![](JPG/2.1.12B.png)
