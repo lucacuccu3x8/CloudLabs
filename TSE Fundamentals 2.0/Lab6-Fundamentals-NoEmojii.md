@@ -20,7 +20,7 @@ Login in the London Client with:
 
 |   |   |
 |---------|----------|
-|User: `jsmith` | Password: `Sophos1985`|
+|User: `SOPHOS\jsmith` | Password: `Sophos1985`|
 
 ![London Client](JPG/London%20Client.png)
 1. Open a command prompt and type in the following:
