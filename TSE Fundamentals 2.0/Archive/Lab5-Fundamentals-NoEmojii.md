@@ -36,8 +36,40 @@ use the shortcut in the Desktop: "**Procmon64**"
 
 ***
 
+## **Task 5.2:** <small>Debug with Process Explorer</small> 
+You have been asked to debug information using the command prompt with the help of the Process Explorer tool  
 
-## **Task 5.2:** <small>Wireshark Debugging</small> 
+
+![](JPG/London%20DC%204.png)  
+1. Open the **Process Explorer** using the shortcut from the Desktop.
+
+![Process Explorer](JPG/Process%20Explorer.jpeg)
+
+2. Open the Windows **CMD** prompt and minimize it to the taskbar.
+
+3. Back in the **Process Explorer**, now find the Command Prompt process, right click and select "**Properties**" to check all the information about **PID**, **Company Name**, **CPU**, **Memory Usage** 
+
+![](JPG/ProcessExplorer2.png)
+
+
+4. Review all the available options and tabs from the dialog box
+
+> These options include:
+> * Kill Process, 
+> * Create Dump, 
+> * Virus Total check (Brand New Feature!) 
+> * Restart, Suspend a process
+> * Verify Image Signatures 
+
+
+5. Save the filtered capture for Command prompt in Process Explorer Data (**.txt**) **format** 
+
+#### ![check](JPG/pngegg%20(1).png)  You have successfully performed a debug using Process Explorer 
+
+
+***
+
+## **Task 5.3:** <small>Wireshark Debugging</small> 
 
 You have been asked to obtain information about active peers in the network from a Wireshark capture.  
 Start practicing using the advanced **Wireshark Display-Filters** to quickly analyze and extract valuable information about network traffic.
@@ -73,7 +105,7 @@ Start practicing using the advanced **Wireshark Display-Filters** to quickly ana
 
 
 ***
-## **Task 5.3:** <small>Wireshark for Image Capture and Extraction</small> 
+## **Task 5.4:** <small>Wireshark for Image Capture and Extraction</small> 
 Through traffic capture, Wireshark can be used to view and record all information during transit,
 if this data is unencrypted such as images flowing to a device, Wireshark will record them and save the traffic information which can be extracted into Jpeg formats to be later collected for forensic evidences.  
 In this task, We will browse the internet to an HTTP site while capturing the traffic with Wireshark. We'll then review the captured packets and extract the images which were sent from the website to the London-Client.
