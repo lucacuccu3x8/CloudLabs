@@ -102,6 +102,8 @@ Username: **administrator**
 
 Password: **Sophos1985**
 
+![Lab1-DCAuthentication](JPG/Lab1-DCAuthentication.png)
+
 1. Open a web browser and navigate to `https://172.16.16.16:4444`
 
     >**Note:** Proceed through any warnings you receive
