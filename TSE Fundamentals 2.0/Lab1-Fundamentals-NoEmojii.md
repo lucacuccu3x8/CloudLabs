@@ -89,17 +89,19 @@ Upon successful completion of this lab, you will be able to:
 
 ## **Task 1.1: MSI logging**
 
-In this task we will be looking at MSI files, their logs as well as use Windows
-Installer to uninstall.
+In this task, we’ll be looking at the MSI files, and their logs as well as using Windows Installer to uninstall. 
 
 Access the Lab environment by either using **Hyper-V** or the **"Remote Desktop Connection Manager"**
 
-The first Nested virtual machine you'll be working on is the **"London DC"**
-
->username: `administrator`
-password: `Sophos1985`
 
 ![](JPG/London%20DC%204.png)
+
+Logon on London-DC using the following:
+
+Username: **administrator**
+
+Password: **Sophos1985**
+
 1. Open a web browser and navigate to `https://172.16.16.16:4444`
 
     >**Note:** Proceed through any warnings you receive
