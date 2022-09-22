@@ -81,6 +81,8 @@ Upon successful completion of this lab, you will be able to:
 1. Install and remove applications
 2. Perform a registry backup and restore
 3. Create a scheduled task to run a script
+4. Verifying Windows Services
+5. Creating Custom view in Event Viewer 
 
 ### Lab Diagram:
 ![London DC](JPG/London%20DC%202.png)
@@ -106,32 +108,31 @@ Password: **Sophos1985**
 
 1. Open a web browser and navigate to `https://172.16.16.16:4444`
 
-    >**Note:** Proceed through any warnings you receive
-2. Login using the username `admin`  
+>**Note:** Proceed through any warnings you receive
 
-    >**Note:** Password is `Sophos@1985`
+2. On the welcome page of Sophos Firewall log in using the following credentials:
+
+> Username: **admin**
+
+> Password: **Sophos@1985**
     
 3. On the left pane, navigate to **Remote Access VPN > IPsec** and click **Download Client**
 ![IPsec](JPG/Download%20IPsec%20Client.png)
+> This will download the zip archive in the downloads folder.
 
 4. Open Windows **File Explorer** and navigate into the folder where the installer was downloaded.  
 
-5. **extract** the content of the **zip archive**.  
+5. Extract the contents of **sophosconnect_installer.zip** in the Downloads folder.
 > **Note:** Inspect the content of the archive and check the file extensions of each object extracted.   In the Windows File-Explorer check in **View > File name Extension**
 ![](JPG/File%20Extensions.png)
 
-6. **Hold shift** and **right click** an empty area and select:  
- `Open Powershell window here`
-7. In PowerShell, Run the following command to install Sophos Connect 2.0:
+6. Navigate to the Downloads folder. Hold **shift** and **right-click** an empty area and select **Open PowerShell window here**.
+7. In PowerShell, Run the following command to install **Sophos Connect 2.0**:
 
 ```Powershell
 msiexec /i 'SophosConnect_2.2.75_(IPsec_and_SSLVPN).msi'  /L*v C:\Windows\Temp\SophosConnectInstall.txt
 ```
-or you can run the similar command in the command prompt:
 
-```bash
-msiexec /i SophosConnect_2.2.75_(IPsec_and_SSLVPN).msi /L*v C:\Windows\Temp\SophosConnectInstall.txt
-```
  >**Note:** The Sophos Connect version in the above command may differ from the current version of the installer.
  > This will start the SophosConnect installer and generate logs into a file named SophosConnectInstall.txt.
 
@@ -144,13 +145,15 @@ msiexec /i SophosConnect_2.2.75_(IPsec_and_SSLVPN).msi /L*v C:\Windows\Temp\Soph
 
  10. Write down the line entry that indicates a successful or failed installation.
  11. Write down the product code of this program.
- 12. Uninstall SophosConnect using the same product code with the msiexec command: 
+ 12. Uninstall SophosConnect using the same product code with the msiexec command using Powerhell: 
 ```bash
 msiexec /x <Product Code> /L*v C:\Windows\Temp\SophosConnectUninstall.txt
 ```
-13. Follow the instructions
+13. Follow the instructions to uninstall the Sophos Connect App.
+
 ![](JPG/Uninstall.png)
-14. Reopen the same log file with Notepad++ and identify any errors while and after uninstalling the application.
+14.  Verify the log file for a successful uninstall.  Close all the open windows.
+
 
 ##### ![check](JPG/pngegg%20(1).png) You have analyzed MSI logs and used Windows Installer to manage SophosConnect.
 
@@ -163,39 +166,57 @@ In this task we will create and modify a registry key as well as perform
 a backup and restore.
 
 
-#### Connect to the LondonDC VM
+#### Connect to the London DC 
 ![](JPG/London%20DC%204.png)
-1. Open Registry by typing `regedit` in the **Run** window
-2. Navigate to: `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\`
-3. Right click **WOW6432Node** and create a new key named `TestRegistry`
-4. Right click **TestRegistry** and create a new String Value named ‘Setting’
-5. Double click **Setting** and in the "**Value data**" add this: `Original data`
-6. Right click **TestRegistry** and create a new `DWORD` Value named `LogLevel`
-7. Double click **LogLevel** and add value data of `3`
-8. Select **TestRegistry** on the left pane 
->**Note:** This creates a backup that only include content under:   
-`HKLM\SOFTWARE\WOW6432Node\TestRegistry`
 
-9. Click on `File` on the top left and select `Export`
-10. Name the file export, accordingly with today's date:  
- `Test Registry Backup <MM-DD-YYYY>`  
- and save this file to the Desktop.
+1. On LON-DC, open Registry by typing **regedit** in the Run window. Navigate to Computer **\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\**
 
-11. Double click the **Settings** registry string and modify the **Value data** to `Modified data`
-12. Delete the **LogLevel** `DWORD` registry
-13. Open the Test Registry Backup file in Notepad++
+2. Right-click **WOW6432Node** and create a new key named ‘**TestRegistry**’
+
+3. Right-click **TestRegistry** and create a new String Value named ‘**Setting**’
+
+4. Double click **Setting**, and in the "Value data" add this: ‘**Original data**’
+
+5. Right-click **TestRegistry** and create a new DWORD Value named ‘**LogLevel**’
+
+6. Double click **LogLevel** and add value data of 3
+
+7. Select **TestRegistry** on the left pane and click **Export**
+
+> Note: This creates a backup that only includes content under: **HKLM\SOFTWARE\WOW6432Node\TestRegistry**
+
+
+8. Save the file to the Desktop  and Name the file export, accordingly to today's date:
+**TestRegistry Backup**
+
+
+9. Double click the **Settings** registry string and change the Value data to ‘**Modified data**’
+
+10. Delete the **LogLevel** DWORD registry.
+
+11. Switch to the desktop and open the **TestRegistry Backup file** in Notepad++
+
+> Note: All registry backup files can be opened in a text editor. You can confirm the contents before importing the keys back into the registry.
+
+
+12. Make a note of the keys that were backed up and Close Notepad++
+
+![](JPG/Registry.png)
+
 
 > **Note:** All registry backup files can be opened in a text editor. You can confirm the contents before importing the keys back into the registry.
 
-14. Note Down the keys that were backed up
-![](JPG/Registry.png)
-15. Close Notepad++
-16. from the Dekstop, Double click the **Test Registry Backup** file to import its contents to the registry. Ignore the Warning and continue.
-17. In Registry Editor, navigate back to the same `HKLM\SOFTWARE\WOW6432Node\`
-18. Note down the value data of the **Setting** registry key.  
-The String and the DWORD should be restored by the backup file.
+13. From the Desktop, Double click the TestRegistry Backup file to import its contents to the registry. Ignore the Warning and continue.
 
+14. In Registry Editor, navigate back to the same **HKLM\SOFTWARE\WOW6432Node\**
+
+Note down the value data of the setting registry key.
+
+
+15. The String and the DWORD should be restored by the backup file.
 ![](JPG/Backup%20restored.png)
+
+16.  Close all the open windows.
 
 ##### ![check](JPG/pngegg%20(1).png) You have successfully backed up and restored a registry key.
 
@@ -243,18 +264,77 @@ echo "Hello World" > C:\Users\Administrator\Desktop\scheduledtask.txt
 #### ![check](JPG/pngegg%20(1).png) You have created a basic scheduled task 
 
 ***
-## **Task 1.4 : Event Viewer** 
+## **Task 1.4 : Verifying Windows Services** 
 
-In this task, you’ll investigate the status of services running on windows.
+In this task, you’ll investigate the status of services running on windows and check their dependency services.
 
 ![](JPG/London%20DC.png)
 
+1. To open services, press the Windows Key + R and type in services.msc.
+This will show you all the services that are available on the endpoint.
 
+2. Observe the different services that are used by Windows Endpoint.
 
+3. Double Click Windows Defender Firewall service
+Make a note of the following:
 
+> Status:
 
+> Log on:
 
+> Dependencies:
 
+4. Close the dialog box.
+
+5. Double Click Windows Defender Advanced Threat Protection Service
+
+Make a note of the following:
+
+> Status:
+
+> Log on:
+
+> Dependencies:
+
+6. Close all open windows.
+
+#### ![check](JPG/pngegg%20(1).png) You have verified services running on windows 
+***
+## **Task 1.5: Custom view in Event Viewer**
+
+![](JPG/London%20DC.png)
+
+In this task, you’ll learn how to use filters to create custom views in the Windows Event Viewer
+
+1. On LON-DC, open Event Viewer by typing **eventvwr** in the Run window..
+
+2. In the Event viewer window, expand Custom Views in the top left
+
+3. Right-Click Custom views and select Create Custom View.. from the menu
+![](JPG/Lab%20Event%20Viewer.png)
+
+4. In the Create Custom View dialog on the Filter tab,
+     
+     4.1 Select Last 12 hours from the drop-down menu.
+     
+     4.2 Event Level select Critical, Error Warning and Information
+     
+     4.3 Select By source and then Services and Service Control Manager from the drop-down menu.
+     ![](JPG/EventViewer%202.png)
+     
+     4.4 Click OK.
+     
+     4.5 In the Save Filter to Custom View dialog, give the new custom view the name “Service Logs’ and click OK. You should be able to see logs related to Services.
+     
+5. Open the Services console using service.msc in the run command.
+
+6. Right- Click the Plug and Play service and Click Restart.
+
+7. Go to the Event viewer and right click the Service log and click refresh. Check for the event on the event logs for Plug and play service.
+![](JPG/EventViewer%203.png)
+
+#### ![check](JPG/pngegg%20(1).png)  You have created a Custom view in Event Viewer
+***
 
 
 ## ![review](JPG/Review%2048.png) Review  ##
@@ -263,6 +343,8 @@ You have now successfully:
 1.	Used MsiExec to install and remove applications 
 2.	Performed a registry backup and restore 
 3.	Created a scheduled task to launch Notepad 
+4. Verifying Windows Services
+5. Creating Custom view in Event Viewer
 
 ***
 ***
