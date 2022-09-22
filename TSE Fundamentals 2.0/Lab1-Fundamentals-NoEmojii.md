@@ -208,7 +208,7 @@ a backup and restore.
 
 13. From the Desktop, Double click the **TestRegistry Backup file** to import its contents to the registry. Ignore the Warning and continue.
 
-14. In Registry Editor, navigate back to the same **HKLM\SOFTWARE\WOW6432Node\**
+14. In Registry Editor, navigate back to the same **HKLM\SOFTWARE\WOW6432Node**
 
 Note down the value data of the setting registry key.
 
