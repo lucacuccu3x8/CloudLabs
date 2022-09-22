@@ -206,7 +206,7 @@ a backup and restore.
 
 > **Note:** All registry backup files can be opened in a text editor. You can confirm the contents before importing the keys back into the registry.
 
-13. From the Desktop, Double click the TestRegistry Backup file to import its contents to the registry. Ignore the Warning and continue.
+13. From the Desktop, Double click the **TestRegistry Backup file** to import its contents to the registry. Ignore the Warning and continue.
 
 14. In Registry Editor, navigate back to the same **HKLM\SOFTWARE\WOW6432Node\**
 
