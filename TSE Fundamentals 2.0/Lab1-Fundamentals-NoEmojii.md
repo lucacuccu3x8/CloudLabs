@@ -243,6 +243,19 @@ echo "Hello World" > C:\Users\Administrator\Desktop\scheduledtask.txt
 #### ![check](JPG/pngegg%20(1).png) You have created a basic scheduled task 
 
 ***
+## **Task 1.4 : Event Viewer** 
+
+In this task, you’ll investigate the status of services running on windows.
+
+![](JPG/London%20DC.png)
+
+
+
+
+
+
+
+
 
 ## ![review](JPG/Review%2048.png) Review  ##
 
