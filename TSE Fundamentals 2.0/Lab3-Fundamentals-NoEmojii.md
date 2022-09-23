@@ -14,7 +14,7 @@ Upon successful completion of this lab, you will be able to:
 
 ## **Task 3.1:** OU, Group and User Configuration 
 
-You have been assigned a task to setup a user, group and an OU in Active Directory: 
+You have been assigned a task to create **Users**, **Groups** and an **OU's** in Active Directory: 
   
 ![](JPG/London%20DC%204.png)
 1. From the **Server Manager > Tools** open the **Active Directory Users and Computers** console, 
