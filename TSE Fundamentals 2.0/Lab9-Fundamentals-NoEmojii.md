@@ -13,11 +13,6 @@ You can find the controls in the "Resource" Tab:
 3. You can now close this page from your browser.
 
 ***
-‌‌ 
-
-***
-This is an edit from Luca.muscas@sophos.com
-![](JPG/knowledge-.png)
 
 
 
