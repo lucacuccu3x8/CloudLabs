@@ -17,15 +17,24 @@ Upon successful completion of this lab, you will be able to:
 You have been assigned a task to create **Users**, **Groups** and an **OU's** in Active Directory: 
   
 ![](JPG/London%20DC%204.png)
-1. From the **Server Manager > Tools** open the **Active Directory Users and Computers** console, 
-![](JPG/Active%20directory%20Users%20and%20Groups.png)
-**right-click** `SOPHOS.LOCAL`, and select **New** to create three **OUs** with the following names: 
+Logon on London-DC using the following:
+
+Username: **administrator**
+
+Password: **Sophos1985**
+
+1. From the **Server Manager > open the **Active Directory Users and Computers** console
+
+2. Right-click `SOPHOS.LOCAL`, and select **New** > **Organizational Unit** with following names ( create all three Ou's):
 >* `UK` 
 >* `Canada`
->* `India` 
+>* `India`
+![](JPG/Active%20directory%20Users%20and%20Groups.png)
+ 
+ 
 
 
-2. Using the same steps above, under the previously created **OUs**, create three new **sub-OUs** with the following names:
+3. Using the same steps above, under the previously created **OUs**, create three new **sub-OUs** with the following names:
   
 | OU | Sub-OU   |
 |----|----------|
@@ -33,7 +42,7 @@ You have been assigned a task to create **Users**, **Groups** and an **OU's** in
 |Canada| `Vancouver` |
 | India | `Ahmedabad` |
 
- 3. Now, create two **users** in each **sub-OU**:
+4. Now, create two **users** in each **sub-OU**:
  
 | OU |	User  |
 |----|--------|
@@ -43,26 +52,26 @@ You have been assigned a task to create **Users**, **Groups** and an **OU's** in
 > **Note:** leave the password field empty and press **Finish** to create the user
 ![](JPG/New%20User2.png)
 
-4. Create the Group "**Sales-UK**" in the "**Abingdon OU**" 
+5. Create the Group "**Sales-UK**" in the "**Abingdon OU**" 
 
-5. Right-click "**UserA**" and select **"Add to a group..."**    
+6. Right-click "**UserA**" and select **"Add to a group..."**    
 Type `Sales-UK` in the search box and confirm with **"Check Names"**
 
-6. Press **OK** twice; a confirm prompt should appear:
+7. Press **OK** twice; a confirm prompt should appear:
 ![](JPG/confirm.png)
 
-7. Use the same steps above to create another Group "**Finance**" in the "**Ahmedabad OU**" and add "**UserF**" to it.
+8. Use the same steps above to create another Group "**Finance**" in the "**Ahmedabad OU**" and add "**UserF**" to it.
 
-8. Leave the "**Active Directory Users and Computers**" console open for the next Task.
+9. Leave the "**Active Directory Users and Computers**" console open for the next Task.
 
 
 
-#### ![check](JPG/pngegg%20(1).png) You have succesfully created OUs, Users, and Groups in Active Directory
+#### ![check](JPG/pngegg%20(1).png) You have successfully created OUs, Users, and Groups in Active Directory
 
 ***
 
-## **Task 3.2:** <small>User and Group Attribute Troubleshooting</small> 
-You have been asked to troubleshoot the following task in Active Directory
+## **Task 3.2:** <small>Verify attributes of Active Directory Objects</small> 
+In this task, you will be verifying the attributes of Active Directory Objects.
 
 ![](JPG/London%20DC%204.png)  
 1. List the **distinguished name** for **‘UserA’** and **‘UserD’**.
@@ -70,12 +79,12 @@ You have been asked to troubleshoot the following task in Active Directory
 ***
 #### ![](JPG/Knowledge%203.png) How to find the **"distinguishedName"** of an **OU**:
 
-> * In the "**Active Directory Users and Computers**" console, select **View > Advanced Features**.
+> a) In the "**Active Directory Users and Computers**" console, select **View > Advanced Features**.
 ![](JPG/Advanced%20View.png)
-> * Navigate and right-click the **OU** where you want to read users information, e.g. **UserA**; Then select **Properties**.
-> * In the **OU Properties**, select the **Attribute Editor** tab.   
-> * Click on **distinguishedName** to highlight it, then click **View**
-> * Example: ![](JPG/Attreibutes.png)
+> b) Click on  the Abingdon OU, **Right-Click** the UserA and then select **Properties**.
+> c) In the Properties, select the **Attribute Editor** tab.   
+> d) Click on **distinguishedName** to highlight it, then click **View**
+> Example: ![](JPG/Attreibutes.png)
 ***
 
 2. Write down the **Mail**, **UserPrincipalName** and the **sAMAccountName** attribute for user ‘**Jane Doe**’:
