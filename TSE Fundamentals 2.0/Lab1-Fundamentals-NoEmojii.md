@@ -160,7 +160,7 @@ msiexec /x <Product Code> /L*v C:\Windows\Temp\SophosConnectUninstall.txt
 ***
 
 ## **Task 1.2: Registry Editor** 
-![](JPG/registry-icon-11.jpg) 
+![](JPG/registry-icon-12.jpg)
 
 In this task we will create and modify a registry key as well as perform
 a backup and restore.
@@ -169,7 +169,7 @@ a backup and restore.
 #### Connect to the London DC 
 ![](JPG/London%20DC%204.png)
 
-1. On LON-DC, open Registry by typing **regedit** in the Run window. Navigate to Computer **\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\**
+1. On LON-DC, open Registry by typing **regedit** in the Run window. Navigate to Computer **Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node**
 
 2. Right-click **WOW6432Node** and create a new key named ‘**TestRegistry**’
 
@@ -270,19 +270,19 @@ In this task, you’ll investigate the status of services running on windows and
 
 ![](JPG/London%20DC.png)
 
-1. To open services, press the Windows Key + R and type in services.msc.
+1. To open services, press the **Windows Key + R** and type in `services.msc`.
 This will show you all the services that are available on the endpoint.
 
 2. Observe the different services that are used by Windows Endpoint.
 
-3. Double Click Windows Defender Firewall service
+3. Double Click **Windows Defender Firewall service**
 Make a note of the following:
 
-> Status:
+> **Status:**
 
-> Log on:
+> **Log on:**
 
-> Dependencies:
+> **Dependencies:**
 
 4. Close the dialog box.
 
@@ -290,11 +290,11 @@ Make a note of the following:
 
 Make a note of the following:
 
-> Status:
+> **Status:**
 
-> Log on:
+> **Log on:**
 
-> Dependencies:
+> **Dependencies:**
 
 6. Close all open windows.
 
@@ -306,31 +306,33 @@ Make a note of the following:
 
 In this task, you’ll learn how to use filters to create custom views in the Windows Event Viewer
 
-1. On LON-DC, open Event Viewer by typing **eventvwr** in the Run window..
+1. On **LON-DC**, open **Event Viewer** by typing `eventvwr` in the Run window..
 
-2. In the Event viewer window, expand Custom Views in the top left
+2. In the Event viewer window, expand **Custom Views** in the top left
 
-3. Right-Click Custom views and select Create Custom View.. from the menu
+3. **Right-Click** Custom views and select **Create Custom View..** from the menu
 ![](JPG/Lab%20Event%20Viewer.png)
 
-4. In the Create Custom View dialog on the Filter tab,
+4. In the **Create Custom View** dialog on the **Filter** tab,
      
-     4.1 Select Last 12 hours from the drop-down menu.
+     4.1 Select `Last 12 hours` from the drop-down menu.
      
-     4.2 Event Level select Critical, Error Warning and Information
+     4.2 Event Level select **Critical**, **Error Warning** and **Information**
      
-     4.3 Select By source and then Services and Service Control Manager from the drop-down menu.
+     4.3 Select **By source** and then **Services** and **Service Control Manager** from the drop-down menu.
      ![](JPG/EventViewer%202.png)
      
-     4.4 Click OK.
+     4.4 Click **OK**.
      
-     4.5 In the Save Filter to Custom View dialog, give the new custom view the name “Service Logs’ and click OK. You should be able to see logs related to Services.
+     4.5 In the **Save Filter to Custom View** dialog, give the new custom view the name `Service Logs` and click **OK**. You should be able to see logs related to Services.
      
-5. Open the Services console using service.msc in the run command.
+5. Open the **Services console** using `service.msc` in the run command.
 
-6. Right- Click the Plug and Play service and Click Restart.
+6. Right- Click the **Plug and Play** service and Click **Restart**.
 
-7. Go to the Event viewer and right click the Service log and click refresh. Check for the event on the event logs for Plug and play service.
+7. Go to the Event viewer and **right click** the Service log and click **refresh**. 
+
+8. Check for the event on the event logs for **Plug and play** service.
 ![](JPG/EventViewer%203.png)
 
 #### ![check](JPG/pngegg%20(1).png)  You have created a Custom view in Event Viewer
