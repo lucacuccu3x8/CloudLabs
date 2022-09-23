@@ -4,6 +4,7 @@
 Upon successful completion of this lab, you will be able to: 
 1. Review roles installed on a Windows Server
 2. Apply administrative settings using Group Policies 
+3. Applying the GPO’s and testing the results
 
 
 ### Lab Diagram:
@@ -45,7 +46,7 @@ Make a note of the installed roles on this server.
 
 
 ----
-## **Task 2.2** Create and Modify Group Policies
+## **Task 2.2** Create and Modify Group Policy
 In this task, you'll see how to apply Group Policy Objects at the domain and verify how the settings are applied.
 1. Open Group Policy Management by navigating to the **Start menu** > **Server Manager**> **Tools**, then select **Group Policy Management**.
 
@@ -73,6 +74,9 @@ In this task, you'll see how to apply Group Policy Objects at the domain and ver
 
 9. Minimize all open windows 
 
+### ![check](JPG/pngegg%20(1).png) You have successfully created the Group Policy Object and modified the settings. 
+
+***
 ## **Task 2.3** Applying and Testing Group Policies
 In this task we will apply the Group policy and testing if the settings are applied.
 ![](JPG/London%20Client.png)
@@ -101,7 +105,8 @@ gpupdate /force
 
 7.	Open **Group Policy Management** console.
 
-8.	Now let's disable the same policy by Right-Click on **Control Panel Policy** untick **Link Enabled**. This will disable the GPO Link and hence won’t apply the GPO settings anymore.
+8.	Now let's disable the same policy by Right-Click on **Control Panel Policy** untick **Link Enabled**. This will disable the GPO Link and hence won’t apply the GPO settings anymore. 
+
 ![](JPG/untick.jpg)
 
 9.	Close **Group Policy Management** console and all the other open windows.
@@ -109,7 +114,7 @@ gpupdate /force
 > Note for more information about the PowerShell command here: https://activedirectorypro.com/gpupdate-command/
 
 
-### ![check](JPG/pngegg%20(1).png) You have successfully noted down the installed features on a server and created a group policy
+### ![check](JPG/pngegg%20(1).png) You have successfully tested the Group Policy settings on the Windows Endpoint.
 
 ***
 
@@ -118,7 +123,7 @@ gpupdate /force
 You have now successfully: 
 *	Reviewed roles installed on a Windows Server
 *	Disable control panel settings using Group Policies
-*	Applying the GPO’s and testing the results.
+*	Applying the GPO’s and testing the results
 
 
 
