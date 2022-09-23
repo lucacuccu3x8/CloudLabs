@@ -8,7 +8,7 @@ Upon successful completion of this lab, you will be able to:
 
 
 ### Lab Diagram:
-![Lab6 Diagram](JPG/Lab6%20Diagram.png)
+![](JPG/Diagram2.png)
 
 ***
 
