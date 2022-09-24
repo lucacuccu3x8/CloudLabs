@@ -27,7 +27,9 @@ You have been given a task where you need to capture all events i.e., Registry a
 
 3. On Procmon64 application click on the "Filter" tab on top, apply a filter for all "chrome.exe" processes and all its subtrees.
 
-> **Note:**  You could also apply a similar filter by right-click "chrome.exe" in the list of all captured processes. ![](JPG/Procmon.png)
+> **Note:**  You could also apply a similar filter by right-click "chrome.exe" in the list of all captured processes. 
+
+![](JPG/Procmon.png)
 
 4. Note down all the PID's used by Google Chrome. 
 
@@ -57,17 +59,27 @@ Start practicing using the advanced **Wireshark Display-Filters** to quickly ana
 
 ![Wireshark](JPG/Wireshark.png)
 
-4. Research and Note down the **Display-Filters** and the respective syntax to quickly highlight and extract the following information:
-*	Wireshark Filter **by IP** 
-*	Wireshark Filter **by Port**  
-*	Wireshark Filter **by IP** and Port 
-*	**Mac Address** Filter 
-*	Filter **by URL** 
-*	**Trace TCP Stream** for website communication 
-*	**Filter out** Destination IP address
+4. On wireshark application click on the **Stop** Option below File TAB at the top to stop the log collection.
 
->**Note:** You can find a useful **cheat list** of Display-Filters here:
-> https://packetlife.net/media/library/13/Wireshark_Display_Filters.pdf
+5. On **"Apply a display filter"** TAB apply the below mentioned filters one by one and press ENTER to filter you logs accordingly. 
+
+     **ip.addr == 172.16.16.10**
+
+> **Note:** This command helps you to filter the wireshark logs based on IP address in general.
+      
+     **ip.src == 172.16.16.10**
+     
+> **Note:** This command helps you to filter the wireshark logs based on source IP address.
+
+    **ip.dst == 172.16.16.10**
+     
+> **Note:** This Command helps you to filter the wireshark logs based on destination IP address.
+
+     **tcp.port == 80 || udp.port == 80**
+     
+> **Note:** This command helps you to filter the wireshark logs based on traffic in and out from TCP Port 80 and UDP Port 80. (The || means an AND operator on the command). 
+
+> **Note:** You can refer to the below mentioned URL to find other list of filters which can be used for log analysis: https://packetlife.net/media/library/13/Wireshark_Display_Filters.pdf
  
 5. Save the capture in **PCAP format** after validating.
 
@@ -267,8 +279,8 @@ http://10.1.1.250
 
 ##### Another useful feature provided by tcpdump is the ability to save the capture to a file so you can analyze the results later. This allows you to capture packets in batch mode overnight, for example, and verify the results in the morning. It also helps when there are too many packets to analyze since real-time capture can occur too fast.
 
-17. To **save packets to a file** instead of displaying them on screen, use the option `-w` (for write).  
-In the terminal type:
+17. To **save packets to a file** instead of displaying them on screen, 
+use the option `-w` (for write).  In the terminal type:
 
 ```bash
 sudo tcpdump -i any -c20 -nn src 172.17.17.22 -w capture.pcap
