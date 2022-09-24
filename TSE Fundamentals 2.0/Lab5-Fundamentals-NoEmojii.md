@@ -63,7 +63,7 @@ Start practicing using the advanced **Wireshark Display-Filters** to quickly ana
 
 5. On **"Apply a display filter"** TAB apply the below mentioned filters one by one and press ENTER to filter you logs accordingly. 
 
-     **ip.addr == 172.16.16.10**
+   **ip.addr == 172.16.16.10**
 
 > **Note:** This command helps you to filter the wireshark logs based on IP address in general.
       
