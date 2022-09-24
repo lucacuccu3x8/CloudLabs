@@ -63,19 +63,27 @@ Start practicing using the advanced **Wireshark Display-Filters** to quickly ana
 
 5. On **"Apply a display filter"** TAB apply the below mentioned filters one by one and press ENTER to filter you logs accordingly. 
 
-   **ip.addr == 172.16.16.10**
+```bash
+ip.addr == 172.16.16.10
+```
 
 > **Note:** This command helps you to filter the wireshark logs based on IP address in general.
-      
-     **ip.src == 172.16.16.10**
-     
+
+```powershell
+ip.src == 172.16.16.10
+```
+
 > **Note:** This command helps you to filter the wireshark logs based on source IP address.
 
-    **ip.dst == 172.16.16.10**
-     
+```powershell
+ip.dst == 172.16.16.10
+```
+
 > **Note:** This Command helps you to filter the wireshark logs based on destination IP address.
 
-     **tcp.port == 80 || udp.port == 80**
+```powershell
+tcp.port == 80 || udp.port == 80
+```
      
 > **Note:** This command helps you to filter the wireshark logs based on traffic in and out from TCP Port 80 and UDP Port 80. (The || means an AND operator on the command). 
 
