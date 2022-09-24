@@ -18,44 +18,50 @@ In this exercise, you are tasked with understanding and learning what requiremen
 
 
 
-### Let's begin:
+### 
 ![London Client](JPG/London%20Client.png)
-1. Login in the London Client as "**John Smith**":
-* User: `SOPHOS\jsmith`
-* Password: `Sophos1985`
+ Connect to the **London Client**:
+>  User: `SOPHOS\jsmith`
+>  Password: `Sophos1985`
 
-2. Open **Google Chrome** and navigate to: 
+
+
+1. Open **Google Chrome** and navigate to: 
 ```csharp
 https://expired.badssl.com/
 ```
 
-3.	Note down the **warning** being received and hit **"Advanced"**:
+2.	Note down the **warning** being received and hit **"Advanced"**:
  
-4.	Click on Not secure and write down the reason for the certificate warning.
+3.	Click on Not secure and write down the reason for the certificate warning.
 
 
-5.	Write down the:
+4.	Verify the following details on the certificate:
 
-* **signature algorithm**, 
-* **expiration date** , and 
-* **how many bits** were used for the signing CA of **“*.badssl.com”**
+* **Certificate Signature Algorithm** 
+* **Validity**
+* **Subject's Public Key**  
 
-6.	Click Proceed to **expired.badssl.com** (unsafe)
-![](JPG/badssl.png)
+5.	Click Proceed to **expired.badssl.com** (unsafe)
 
-7.	Now, open another tab in Google Chrome and type 
+
+6.	Now, open another tab in Google Chrome and type 
 ```csharp
 https://sophostest.com/
 ```
 
-8.	Click on the **Padlock** -> **Connection is secure** -> **Certificate is valid**
+7.	Click on the **Padlock** -> **Connection is secure** -> **Certificate is valid**
 ![](JPG/Sophos%20Certificate%20is%20Secure.png)
 
-9.	Write down the **CA** that issued the certificate.
+8.	Write down the **CA** that issued the certificate.
 
-10.	Verify the **purpose**, **validity**, and **version** of the certificate.
+9.	Verify the following details on the certificate:
 
-11.	Out of the both the sites,  assess which of the two gets a **Trusted/Untrusted Connection**: 
+* **Certificate Signature Algorithm** 
+* **Validity**
+* **Subject's Public Key**
+
+10.	Which of the two sites can be considered a secure and unsecured connection?
 
 
 
@@ -63,61 +69,66 @@ https://sophostest.com/
 
 * `Untrusted Connection`: 
 
+11. Close all open Windows.
+
 ---
 
 ## **Task 8.2:** Verify if a certificate is trusted in Windows.
+In this exercise, you will learn how to verify how certificates and CA are trusted on a Windows Endpoint.
 
 
-1. Connect to the **London Client**:
-* User: `SOPHOS\jsmith`
-* Password: `Sophos1985`
+
 
 ![](JPG/London%20Client.png)
+ Connect to the **London Client**:
+>  User: `SOPHOS\jsmith`
+>  Password: `Sophos1985`
 
-2.	Click **Start** > **Run**, type `MMC` and then press Enter.
+1.	Click **Start** > **Run**, type `MMC` and then press Enter.
 ![](JPG/Console2.png)
 This will launch the "**Management Console**", which provides system administrators and advanced users with an interface for configuring and monitoring the system with administration tools called "**snap-ins**."
 
-3.	On the File menu, click **Add/Remove Snap-in**.
+2.	On the File menu, click **Add/Remove Snap-in**.
 
-4.	Select "**Certificates**", click **Add**, select "**My user account**", and then click **Finish**.
+3.	Select "**Certificates**", click **Add**, select "**My user account**", and then click **Finish**.
 
-5.	Select "**Certificates**", click **Add**, select "**Computer account**", and then click **Next**.
+4.	Select "**Certificates**", click **Add**, select "**Computer account**", and then click **Next**.
 ![](JPG/Local%20Computer.png)
 
-6.	Select **Local computer** (the computer this console is running on), and then click **Finish**.
+5.	Select **Local computer** (the computer this console is running on), and then click **Finish**.
 ![![](JPG/Add%20Remove%20Snap%20ins.png)](JPG/Console3.jpg)
 
-7.	On the "**Add or Remove Snap-ins**" click **OK**.
+6.	On the "**Add or Remove Snap-ins**" click **OK**.
 
-8. Click **File > Save > Desktop > CertificateConsole.msc**
+7. Click **File > Save > Desktop > CertificateConsole.msc**
 
-9. Click **Save**
+8. Click **Save**
 
 
-10. Minimize the  Console, 
+9. Minimize the  Console, 
 
-11. Open the browser and type this URL: 
+10. Open the browser and type this URL: 
 
 ```bash
 https://sophos.com/
 ```
 
 
-12. Note the Root CA for **https://sophos.com/**
+11. Note the Root CA for **https://sophos.com/**
 
-13. Go back to the Certificate Console, 
+12. Go back to the Certificate Console, 
 
-14.	Expand **"Certificates - Current User"** in the management console, 
+13.	Expand **"Certificates - Current User"** in the management console, 
 
-15. Browse on **Trusted Root Certification Authorities > Certificates** 
+14. Browse on **Trusted Root Certification Authorities > Certificates** 
 ![](JPG/Console4.jpg)
 
-16. Note down the root CA for **https://sophos.com/** _____________________________________________________
+15. Try to locate the Root CA Certificate of **https://sophos.com/** (Noted in step 11) 
+> Note: Since the Root CA certificate is in the Trusted Root Certification Authorities store, the certificates issued by that CA are automatically trusted. 
 
-17. Repeat the steps to verify if the root CA is also added in the "**Trusted Root Certification Authorities**" in the Certificates (local computer) 
+16. Repeat the steps to verify if the root CA is also added in the "**Trusted Root Certification Authorities**" in the Certificates (local computer) 
 
-#### ![check](JPG/pngegg%20(1).png) You have successfully verified if a certificate is trusted in Windows 
+#### ![check](JPG/pngegg%20(1).png) You have successfully verified if a Certificate Authority  is trusted in Windows Endpoint. 
 
 
 ***
@@ -125,42 +136,47 @@ https://sophos.com/
 
 ## **Task 8.3:** Create a trust with a Private CA and the user .
 
-In this scenario, you have been assigned to use the LON-DC as a trusted private certification authority, so that all its certificates issued are automatically trusted by the client.
+In this scenario, you have been assigned to use the LON-DC as a trusted private Certificate Authority, so that all its certificates issued are automatically trusted by the client.
 
-1. Login in the London Client as "**John Smith**":
-* User: `SOPHOS\jsmith`
-* Password: `Sophos1985`
 
 ![](JPG/London%20Client.png)
+ Connect to the **London Client**:
+>  User: `SOPHOS\jsmith`
+>  Password: `Sophos1985`
 
-2.	Open **Google Chrome** and type the following URL: 
+1.	Open **Google Chrome** and type the following URL: 
 ```bash
-https://lon-dc.sophos.local/certsrv . 
+https://lon-dc.sophos.local/certsrv
 ```
-3. The browser will show you the **Privacy error**:
+2. The browser will show you the **Privacy error**:
 ![](JPG/Connection%20isn't%20private.jpg)
 
 
-4. Now click "**Not secure**" > **Certificate is not Valid** >
+3. Now click "**Not secure**" > **Certificate is not Valid** >
 ![](JPG/Certificate%20Error.jpg)
 
-5. Note down the fields for: 
+4. Note down the fields for: 
 * `"Issued to"` 
 * `"Issued by"`
 
-6. Hit "**Certification Path**" tab and click the **"SOPHOS-LON-DC-CA"** (This is the root CA)
+5. Hit "**Certification Path**" tab and click the **"SOPHOS-LON-DC-CA"** (This is the root CA)
 ![](JPG/Certificate%20error%202.jpg)
 
 
-7. Note Down what is written in the **"Certificate Status"** dialog box:
+6. Note Down what is written in the **"Certificate Status"** dialog box:
 ![](JPG/Certificate%20error%203.jpg)
 
 
-8. Click **OK**
+7. Click **OK**
 
-9. Back to the browser, click **"Advanced"**
+8. Back to the browser, click **"Advanced"**
 
-10. Click on `"Proceed to lon-dc-sophos.local (unsafe)"`
+9. Click on `"Proceed to lon-dc-sophos.local (unsafe)"`
+
+10. On the Sign in dialog box, enter the following credentials:
+>  User: `SOPHOS\jsmith`
+>  Password: `Sophos1985`
+
 
 11. Select the task: "**Download a CA certificate , certificate chain , or CRL**"
 
@@ -192,9 +208,22 @@ https://lon-dc.sophos.local/certsrv
 ```
 23. Now you should see a solid grey padlock that confirms that the connection is secure and that the certificate is now trusted.
 
-24. You can now double check the certificate being installed in the "**Trusted Root Certificate Store**" using the CertificateConsole shortcut created in step **Task8.2 - step 9**.
+24. You can now double check the certificate being installed in the "**Trusted Root Certificate Store**" using the CertificateConsole shortcut created in step **Task 8.2 - step 14**.
 
-25. Close all the open windows except the MMC console.
+25. Locate the  Private Root CA certificate that you just trusted. Make note of the following:
+
+> Issued to:
+
+> Issued by:
+
+> Validity:
+
+> Certification path: 
+
+> Note: The Root CA certificate has no hierarchy and is the most trusted certificate in the entire PKI hierarchy.
+
+
+26. Close all the open windows except the MMC console.
 
 #### ![check](JPG/pngegg%20(1).png) You have successfully established a trust with a Private CA.
 
