@@ -169,7 +169,7 @@ of date, please let us know via our support desk so we can implement an update.
 
 ***
 
-## **Task 5.4:** Capturing Packets with tcpdump On Linux 
+## **Task 5.4:** Capturing Packets with tcpdump on Linux 
 
 ![](JPG/Linux%20Client%201.png)
 
