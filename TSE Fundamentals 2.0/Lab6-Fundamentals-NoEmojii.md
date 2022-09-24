@@ -72,13 +72,21 @@ You have been given a task to set up a new DHCP scope for the network 172.16.16.
 
 
 ![London Client](JPG/London%20Client.png) 
-1. Open a windows command prompt and type in the following: 
+
+1. Open Control Panel:**Control Panel > Network and Internet > Network Connections**
+Right Click on **Ethernet3** and **Enable** 
+
+![](JPG/Ethernet31.png)
+
+2. Double click and open Wireshark application from the Desktop  and start a capture on **‘Ethernet 3’**
+
+3. Open a windows command prompt and type in the following command: 
+
 ```javascript
 ipconfig /all 	  
 ```
-> **Note** Ensure interface ‘Ethernet’ is enabled. 
 
-2. Here below is a a screenshoot of the details about the Ethernet adapter `Ethernet`:
+4. Here below is a a screenshoot of the details about the Ethernet adapters 
 
 ![Ethernet Adapter](JPG/ipconfig%20all.png)
 > **Note** some values may differ a little in your Lab.
@@ -91,32 +99,28 @@ ipconfig /all
 >* Subnet Mask, and 
 >* DNS Servers 
 
-5. **Run Wireshark as Administrator** and start a capture on **‘Ethernet 3’** 
 
-> ![](JPG/output-onlinepngtools.png)**Note:** In case the `Ethernet 3` is not available you'd need to enable it in:
-> `Control Panel > Network and Internet > Network Connections` and restart Wireshark as Administrator.
+> ![](JPG/output-onlinepngtools.png) **Note:** In case the `Ethernet 3` is not available you'd need to enable it in:
+ `Control Panel > Network and Internet > Network Connections` and restart Wireshark as Administrator.
 
-
-#### Now, move to another Virtual Machine:
 
 ![London DC](JPG/London%20DC%204.png)
 
+Open London DC 
+
 6. Open the Windows **‘Administrative Tools’** from the Windows Start menu and select **DHCP**  
+
  ![](JPG/Administrative%20Tools.png)
+ 
 7. Under the IPv4 dropdown, right click and **create a new scope**. 
 Using the following information: 
 
 > * Name: `Task6` 
-
 > * Description: ***`[Optional]`***
- 
->* Start IP address: **172.16.16.1** 
->* End IP address: **172.16.16.50** 
- 
+>* Start IP address: **172.16.16.100** 
+>* End IP address: **172.16.16.150** 
 >* Subnet mask: **255.255.255.0** 
- 
 >* Exclusions/Delay: ***[Skip]*** 
- 
 >* Lease Duration: **8 days** 
  
 ##### In DHCP Options configure only the following: 
@@ -124,19 +128,11 @@ Using the following information:
 >*	DNS Parent domain: **SOPHOS.LOCAL** 
 >*	DNS Servers: **8.8.8.8**  
 
-8. Within Scope [**172.16.16.0**] Task6, select **Scope Options** 
+8. Click on Scope [**172.16.16.100**] -> **Scope Options** you would see the configuration you have made.
 
-9. then right click and select **Configure Options**.   
-Look and familiarize yourself with the available options.
-
-10. Identify and write down 5 different predefined options and their uses.
-
-#### Moving back to the previous Virtual Machine:
- 
 ![London Client](JPG/London%20Client.png)
  
-
-11. Open up **Wireshark** and filter for the **DHCP traffic only**. Open each packet in the DHCP sequence to be familiar with each type of packet's being requested. 
+9. Open up **Wireshark** application and filter for the **DHCP traffic only**. Open each packet in the DHCP sequence to be familiar with each type of packet's being requested. 
  
 ### ![](JPG/output-onlinepngtools.png) **D.O.R.A.** request: 
 > * **Discovery** – Client sending Broadcast
@@ -146,7 +142,7 @@ Look and familiarize yourself with the available options.
 
 ![](JPG/Dora%20Process.png)
 
-12. Write down what the server replied with for **Option 51**, **Option 6**, and **Option 54**: 
+10. Write down what the server replied with for **Option 51**, **Option 6**, and **Option 54**: 
 
 |           |                                  |
 |----------|------------------------------------|
@@ -155,7 +151,7 @@ Look and familiarize yourself with the available options.
 |Option 54 |e.g.,	 *Specify IP DHCP Server Identity*|
 
  
-13. Write down the source IP, destination IP, source mac address and destination mac address of the DHCP Request: 
+11. Write down the source IP, destination IP, source mac address and destination mac address of the DHCP Request: 
  
 |           |                                  |
 |----------|------------------------------------|
@@ -181,29 +177,9 @@ Look and familiarize yourself with the available options.
 
 > `ff-ff-ff-ff-ff-ff` or `Destination MAC Address` – A frame with a DHCP discovery/request is delivered and flooded to all available devices in the network (broadcast), in hope that a DHCP will reply and acknowledge the request for ip assignment. 
 
-***
-Now, moving back to the London Client:
-![](JPG/London%20Client.png)
-13.	Enable or/and Disable the interface **‘Ethernet 3’** 
+12. Open Control Panel:**Control Panel > Network and Internet > Network Connections**
+Right Click on **Ethernet3** and **Disable** 
 
-
-14. in **cmd prompt** type: 
-```bash
-netsh interface show interface
-netsh interface set interface “Ethernet 3” disable/enable
-```
- ‌‌ 
-  
-15. or with **PowerShell** type:
-```Powershell
-get-net-adapter
-Disable-Netadapter -Name “Ethernet 3”
-Enable-NetAdapter -Name "[your adapter name]"
-```
- ‌‌ 
-
-16. or with the Control Panel:
-**Control Panel > Network and Internet > Network Connections**
 ![](JPG/Disable%20ethernet3.png)
 
 ![](JPG/Knowledge%203.png) **Tip:** here is a useful link:  
