@@ -19,7 +19,8 @@ Upon successful completion of this lab, you will be able to:
 ## **Task 7.1:** Create, copy and rename a file before managing permissions
 You have been given a task to create two separate directories with two identical files. However, one file, ‘**file1b.log**’ requires different permissions than the original file. The ‘**file1b.log**’ requires file owner full permissions, the ‘**games**’ group read and execute permissions, and all others execute permissions only.  
 
-#### Let's get started with the Linux Desktop:
+![](JPG/Linux%20Client%201.png)
+
 1. On the "**Remote Desktop Connection Manager**" left pane, 
 click on the VM "**03 - Linux Client**" 
 
@@ -32,19 +33,20 @@ click on the VM "**03 - Linux Client**"
 > ![](JPG/output-onlinepngtools.png) **Note:** You may want to toggle the "Full-Screen View" in your browser to fit the Linux Desktop in your browser window.
 
 
-### Let's begin with the Lab:
+3. Hoover your pointer to the **Application Dock** on the bottom of the Linux Desktop and launch the **Terminal Emulator**. 
 
-![](JPG/Linux%20Client%201.png)
-
-1. Hoover your pointer to the **Application Dock** on the bottom of the Linux Desktop and launch the **Terminal Emulator**. 
 ![](JPG/Linux%20Terminal.png)
 
-2. Navigate to the `/var` directory with `cd` command and attempt to **create two directories** named `task7a` and `task7b`.
+2. Navigate to the `/var` directory with `cd /var` command and attempt to **create two directories** named `task7a` and `task7b`. using the command "
 
-> **Note:** You will receive an error ‘**Permission denied**’.
+```bash
+mkdir task7a task7b
+```
+
+> **Note:** You will receive ‘**Permission denied Error**’.
 ![](JPG/Error.png)
 
-3. To Set the proper permissions to **allow** the user ‘sophos’ and all others to write in the `/var` directory you will be using the `chmod` command
+3. To Set the proper permissions to allow all users to write in the /var directory we would be using the chmod command
 
 ```csharp
 Chmod 773 /var
@@ -65,18 +67,18 @@ see here: https://kb.iu.edu/d/abdb#change
 ```csharp
  mkdir task7a task7b
 ```
-> **Note:** Make sure you are in the /var Directory.
+> Navigate to the `/var` directory with `cd /var`command
 
-6. As the user ‘sophos’, **create a file** in `/var/task7a/` named: `‘file1.log’`  
+6. As the user ‘sophos’, **create a file** within `/var/task7a/` named: `‘file1.log’`  
+
 with the following content: 
 
 ```csharp
 This content is from file1   
 This is line 2
 ```
-Try to perform this step as efficient as possible
 
-> **e.g.,** You could you use one line command:
+> This step could be performed using an one line command:
 
 ```csharp
 echo -e “This content is from file1\nThis is line 2” > task7a/file1.log
@@ -86,7 +88,7 @@ echo -e “This content is from file1\nThis is line 2” > task7a/file1.log
 7. Create a copy of `/var/task7a/file1.log` and save it to `/var/task7b` 
 Then rename the `/var/task7b/file1.log` to `file1b.log`
 
-> **e.g.,** In the `/var directory`, You could you use one line command:
+> This step could be performed using an one line command:
 
 ```csharp
 cp task7a/file1.log task7b/ && mv task7b/file1.log task7b/file1b.log
@@ -110,22 +112,23 @@ cp task7a/file1.log task7b/ && mv task7b/file1.log task7b/file1b.log
 ***
 
 ## **Task 7.2:** <small>Make Edits and searches using **`vi`**</small> 
-You have been given a task where the administrator requires you to add additional lines to the file `/var/file1b.log` to diagnose an issue. It was suggested to use the **vi text editor** as there is no GUI on the Linux machine.   
+You have been given a task where the administrator requires you to add additional lines to the file `/var/file1b.log` to diagnose an issue. It was suggested to use the **vi text editor** as there is no GUI on the Linux machine. 
+
 Once complete, you must then search the file using a string and make a final line edit.  
 
-#### Move back to the London Client Windows Machine:
 ![London Client](JPG/London%20Client.png) 
 
-1. Open PuTTY and SSH to the **Linux Client**: `172.17.17.22`
+1. Open PuTTY application and SSH to the **Linux Client**: `172.17.17.22`
 as the **user** `sophos` and **password** `Sophos1985`
+
 ![](JPG/putty.jpg)
 
-2. Append the following lines to the bottom of `/var/file1b.log` using **vi** and save the file, **respecting the case sensitivity**: 
+2. Add the following lines to the bottom of `/var/file1b.log` using `vi /var/file1b.log command`, 
 
 ```csharp
 This is Line 3 
-This is LINE 4 This 
-is line 5
+This is LINE 4
+This is line 5
 ```
 
 3. While still in the **vi** text editor, press the keys `Ctrl+c` and type `/line` to run a search within the file and hit enter. 
