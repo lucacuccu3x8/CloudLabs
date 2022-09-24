@@ -134,7 +134,7 @@ https://sophos.com/
 ***
 
 
-## **Task 8.3:** Create a trust with a Private CA and the user .
+## **Task 8.3:** Create a trust with a Private CA and the user.
 
 In this scenario, you have been assigned to use the LON-DC as a trusted private Certificate Authority, so that all its certificates issued are automatically trusted by the client.
 
@@ -227,12 +227,58 @@ https://lon-dc.sophos.local/certsrv
 
 #### ![check](JPG/pngegg%20(1).png) You have successfully established a trust with a Private CA.
 
+## **Task 8.4:** Generate a CSR using OpenSSL to prepare a certificate
 
+You have been tasked to request a user certificate for John Smith, which will be used for authentication, encryption, and email protection. You will be requesting a certificate via browser  installing it and then verifying the certificate.
+
+![](JPG/London%20Client.png)
+ Connect to the **London Client**:
+>  User: `SOPHOS\jsmith`
+>  Password: `Sophos1985`
+
+1. Open **Google Chrome** and type the following URL: 
+```bash
+https://lon-dc.sophos.local/certsrv
+```
+
+2. If prompted with a **Sign in** window log in with John Smith's credentials.
+
+3. Click **Request a certificate** on the CA's web page.
+
+4. Select **advanced certificate request** You will need as Base-64-encoded is already saved on the endpoint in a file C:\CertRequest\Certificate.txt. Open the file Certificate.txt and copy the contents of the file and paste it in the Saved Request box, select User Certificate Template and click **Submit**
+
+5. Click **Download certificate**
+
+6. Click the Certificate in the downloads > **Open**. On the certificate check the following:
+> Purpose: 
+
+> Issued to: 
+
+> Issued by:
+
+> Valid from: 
+
+7. Click on the Certification Path to verify the Root CA
+
+> Note: On the Certification Path we can see the PKI hierarchy and which CA issued the certificate. (You can see the Root CA and Subordinates it there are any)
+
+8. Click **Install Certificate** . Select **Current User** > **Automatically select the certificate store based on the type of certificate** > **Next** > **Finish**.
+
+9. Wait for the Certificate Import Wizard and click **OK**
+
+
+10. Click OK on the Certificate. Minimize Google Chrome.
+
+11. Switch to the CertificateConsole. Click on **Certificates - Current User** > **Personal** > **Certificates**
+
+12. Double-Click on John Smith. Verify the details.
+
+13. Close all open windows.
 
 ***
-## **Task 8.4:** Packet Sniffing for Passwords
+## **Task 8.5:** Packet Sniffing for Passwords
 
-Many protocols display information in plaintext which is not a secure method for
+Many protocols display information in plain text which is not a secure method for
 transmission. Telnet is one of the primary communication and application protocols
 used for establishing a connection to any enabled computing device. Most Routers,
 Switches, and Servers will have this function. However, that doesn’t mean it’s been
