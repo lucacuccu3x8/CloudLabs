@@ -214,102 +214,26 @@ In the output all the packets captured are shown like this:
 6. Tcpdump continues to capture packets until it receives an interrupt signal. 
 Stop the capturing by pressing `Ctrl+C`. 
 
-7. To limit the number of packets captured and stop tcpdump, use the `-c` (for count) option:
-
-```bash
-sudo tcpdump -i any -c 5
-```
-In this case, tcpdump stopped capturing automatically after capturing five packets. 
-![](JPG/TCPDUMP3.png)
-
-> This is useful in different scenarios, for instance, if you're troubleshooting connectivity and capturing a few initial packets is enough. 
-
-8. By default, tcpdump resolves IP addresses and ports into names, as shown in the previous example. When troubleshooting network issues, it is often easier to use the IP addresses and port numbers; disable name resolution by using the option `-n` and port resolution with `-nn`:
-Type the following command:
-
-```bash
-sudo tcpdump -i any -c 5 -nn
-```
-##### Below you can see the two different output with and without name resolution for host-names and port-numbers.
-![](JPG/TCPDUMP4.png)
-
-##### One of tcpdump's most powerful features is its ability to filter the captured packets using a variety of parameters, such as s**ource and destination IP addresses**, **ports**, **protocols**, etc..  
-Let's look at some of the most common ones.
-
-9. To filter packets based on **protocol**, specifying the protocol in the command line. For example, capture **ICMP packets** only by using this command:
-
-```bash
-sudo tcpdump -i any -c5 icmp
-```
-10. In a different terminal, try to **ping** another machine:
-```bash
-ping 172.17.17.20
-```
-Back in the tcpdump capture, notice that tcpdump captures and displays only the **ICMP-related packets**
-
-11. Now, Limit the captures to only packets related to a **specific host** by using the **host filter**:
-
-```bash
-$ sudo tcpdump -i any -c5 -nn host example.com
-```
-In this example, tcpdump captures and displays only packets moving to and from host `example.com`
-
-12. In a different terminal, try to **ping** another machine:
-
-```bash
-ping 93.184.216.34
-```
-In the output you should see that TCPDUMP is only showing packets flowing from **example.com** which resolves into IP address: `93.184.216.34`
-
-![](JPG/TCPDUMP5.png)
-
-
-13. Now, let's filter packets based on the desired **service or port**, and **destination IP address**. For example, capture packets related to a web (**HTTP) service** destined to a specific site hosted elsewhere by using this command:
-
-```bash
-sudo tcpdump -i any -nn port 80 dst 10.1.1.250
-```
-
-14. In the **Applications** Menu, find and launch the Chrome Browser:  
-**Applications > Internet > Chrome**
-
-15. Now in **Chrome** navigate into this Blog site:
-
-```bash 
-http://10.1.1.250
-```
-
-16. Swift back to the terminal and see if TCPDUMP capture other traffic destined to ports and hosts other than the desired port and remote host.
-
-![](JPG/TCPDUMP6.png)
-
-> **Note:** You can also filter by source IP address by using `src` switch instead of `dst` 
-
-##### Another useful feature provided by tcpdump is the ability to save the capture to a file so you can analyze the results later. This allows you to capture packets in batch mode overnight, for example, and verify the results in the morning. It also helps when there are too many packets to analyze since real-time capture can occur too fast.
-
-17. To **save packets to a file** instead of displaying them on screen, 
+7. To **save packets to a file** instead of displaying them on screen, 
 use the option `-w` (for write).  In the terminal type:
 
 ```bash
-sudo tcpdump -i any -c20 -nn src 172.17.17.22 -w capture.pcap
+sudo tcpdump -i any -w capture.pcap
 ```
 This command saves the output in a file named capture.pcap.   
+
 The **.pcap** extension stands for "**packet capture**" and is the convention for this file format.
 
-![](JPG/TCPDUMP7.png)
-As shown in this example, nothing gets displayed on-screen, and the capture finishes after capturing 20 packets, as per the option `-c20`. 
-
-18. If you want some **feedback** to ensure packets are being captured, use the option `-v`.
+8. If you want some **feedback** to ensure packets are being captured, use the option `-v` (optional) .
 Type the following command:
 
 ```bash
-sudo tcpdump -i any -c50 -nn src 172.17.17.22 -w capture2.pcap -v
+sudo tcpdump -i any -w capture2.pcap -v
 ```
-TCPdump will show how many packets are getting captured and finishes after capturing 50 packets, as per the option `-c50` in this case.
 
-
-19. Now that you saved the two captures by creating two files in **binary format** (`capture.pcap`, `capture2.pcap`), you cannot simply open it with a text editor.   
+9. Now that you saved the two captures by creating two files in **binary format** (`capture.pcap`, `capture2.pcap`), you cannot simply open it with a text editor.   
 To read the contents of the files, you can read and open them by executing tcpdump with the `-r` (for read) option.
+
 Since you're no longer capturing the packets directly from the network interface, `sudo` is not required to read the files, tyoe:
 
 ```bash
@@ -319,11 +243,13 @@ Here is the output:
 ![](JPG/TCPDUMP8.png)
 
 
-20. A more convenient way to open and read a pcap file generated by tcpdump is using Wireshark instead of tcpdump. Open the second pcap file by launching Wireshark from the terminal:
+10. A more convenient way to open and read a pcap file generated by tcpdump is using Wireshark instead of tcpdump. Open the second pcap file by launching Wireshark from the terminal:
 
 ```bash
 wireshark capture2.pcap
 ```
+
+
 ![](JPG/TCPDUMP9.png)
 
 These basic features of tcpdump will help you get started with this powerful and versatile tool. 
