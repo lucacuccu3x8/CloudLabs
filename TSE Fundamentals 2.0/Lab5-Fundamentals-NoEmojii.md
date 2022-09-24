@@ -168,10 +168,6 @@ of date, please let us know via our support desk so we can implement an update.
 #### ![check](JPG/pngegg%20(1).png) You have successfully done Packet Sniffing for Image Capture and Extraction with Wireshark.
 
 ***
-
-## **Task 5.4:** Capturing Packets with tcpdump
-
-#### Let's get started with the Linux Desktop:
 1. On the "**Remote Desktop Connection Manager**" left pane, 
 click on the VM "**03 - Linux Client**" 
 
@@ -183,8 +179,6 @@ click on the VM "**03 - Linux Client**"
 
 > ![](JPG/output-onlinepngtools.png) **Note:** You may want to toggle the "Full-Screen View" in your browser to fit the Linux Desktop in your browser window.
 
-
-### Let's begin with the Lab:
 
 ![](JPG/Linux%20Client%201.png)
 
