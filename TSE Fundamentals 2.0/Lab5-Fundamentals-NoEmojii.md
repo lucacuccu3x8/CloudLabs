@@ -168,6 +168,11 @@ of date, please let us know via our support desk so we can implement an update.
 #### ![check](JPG/pngegg%20(1).png) You have successfully done Packet Sniffing for Image Capture and Extraction with Wireshark.
 
 ***
+
+## **Task 5.4:** Capturing Packets with tcpdump On Linux 
+
+![](JPG/Linux%20Client%201.png)
+
 1. On the "**Remote Desktop Connection Manager**" left pane, 
 click on the VM "**03 - Linux Client**" 
 
@@ -180,7 +185,6 @@ click on the VM "**03 - Linux Client**"
 > ![](JPG/output-onlinepngtools.png) **Note:** You may want to toggle the "Full-Screen View" in your browser to fit the Linux Desktop in your browser window.
 
 
-![](JPG/Linux%20Client%201.png)
 
 3. Hoover your pointer to the **Application Dock** on the bottom of the Linux Desktop and launch the **Terminal Emulator**. 
 ![](JPG/Linux%20Terminal.png)
@@ -192,7 +196,7 @@ To begin, use the command:
 ```bash
 sudo tcpdump -D
 ```
-Or you can use: `tcpdump --list-interfaces` (`-D` for short) to see which interfaces are available for capture.
+Or you can use: `tcpdump --list-interfaces` (`-D` for short to see which interfaces are available for capture.)
 
 ![](JPG/TCPDUMP.png)
 In the example above, you can see all the interfaces available in my machine. The special interface any allows capturing in any active interface.
