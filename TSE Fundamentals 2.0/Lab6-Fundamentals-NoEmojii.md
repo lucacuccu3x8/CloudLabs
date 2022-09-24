@@ -15,14 +15,14 @@ Upon successful completion of this lab, you will be able to:
 ## **Task 6.1:** Display and understand routing table
 You have been given a task to review the routing table on two clients to validate which interfaces are in use and what path is taken. It was noticed that some clients were getting unresponsive pages and it is suspected there is a potential routing issue. In order to confirm what path is being taken it was advised to investigate the individual routing tables of two problematic clients as the DHCP server was confirmed to be set correctly. 
 
-#### Let's begin:
-Login in the London Client with:
-
-|   |   |
-|---------|----------|
-|User: `SOPHOS\jsmith` | Password: `Sophos1985`|
-
 ![London Client](JPG/London%20Client.png)
+
+Login into London Client with:
+
+
+> User: `SOPHOS\jsmith`      Password: `Sophos1985`
+
+
 1. Open a command prompt and type in the following:
 
 
@@ -226,11 +226,7 @@ You have been given a task to display the routing table on two clients to valida
  
 2. Open a command prompt and experiment with the DNS queries listed below using **nslookup** utility: 
  
-|  Destination |	Record Type | 	Query Used      |
-|----------|------------------------------------|
-| sophos.local |	A |	 Nslookup -type A Sophos.local |
-| sophos.local using DNS 8.8.8.8 |	A 	| Nslookup -type A 8.8.8.8 |
-| sophos.com |	TXT 	 | Nslookup -type TXT Sophos.com |
+![](JPG/Lab%206%20DNS%20table.png)
 
 3. **Stop** the **Wireshark** capture and run a **Display-filter** to display only **DNS queries**
 
