@@ -14,9 +14,4 @@ You can find the controls in the "Resource" Tab:
 
 ***
 
-This is a new line
-
-This is a new picture   
-![](JPG/Luca%202020.jpg)
-
 
