@@ -1,23 +1,175 @@
-# **Lab 7: Linux**
+# **Lab 5: Tools**
 
 ## Objectives
 Upon successful completion of this lab, you will be able to: 
-* Create, copy, move, and rename files
-* Manage file and folder permissions
-* Make edits to files using the text editor vi
-* Search through files using the text editor vi
-* Search through system files using various grep commands
-
-
-
+1.	Understand the uses of the **Process Monitor** Tool  
+3.	Utilize **Wireshark** to capture and filter traffic 
+4.	Utilize **TCPDUMP** to capture and filter traffic from the command line
 
 ### Lab Diagram:
 ![](JPG/Diagram2.png)
 
+
 ***
 
-## **Task 7.1:** Create, copy and rename a file before managing permissions
-You have been given a task to create two separate directories with two identical files. However, one file, ‘**file1b.log**’ requires different permissions than the original file. The ‘**file1b.log**’ requires file owner full permissions, the ‘**games**’ group read and execute permissions, and all others execute permissions only.  
+## **Task 5.1:** Debugging process ID's with Process Monitor Tool
+
+You have been given a task where you need to capture all events i.e., Registry activity, File System activity, Network activity and Thread activity, while accessing a website from Google Chrome. 
+
+#### 
+![](JPG/London%20DC%204.png)  
+
+1. Double click and open "Procmon64" from the desktop.
+
+![procmon](JPG/procmon-app.png)
+
+2. Open and browse https://www.sophos.com using Google Chrome.
+
+3. On Procmon64 application click on the "Filter" tab on top, apply a filter for all "chrome.exe" processes and all its subtrees.
+
+> **Note:**  You could also apply a similar filter by right-click "chrome.exe" in the list of all captured processes. 
+
+![](JPG/Procmon.png)
+
+4. Note down all the PID's used by Google Chrome. 
+
+5. Click on File and Save the filtered capture as a PML file.
+
+##### ![check](JPG/pngegg%20(1).png) You have successfully debugged using the Process Monitor Tool
+
+
+***
+
+
+## **Task 5.2:** Debugging Network activities using Wireshark tool. 
+
+You have been asked to obtain information about active peers in the network from a Wireshark capture.  
+Start practicing using the advanced **Wireshark Display-Filters** to quickly analyze and extract valuable information about network traffic.
+
+
+![London DC](JPG/London%20DC%204.png)
+
+1. Double click and open "Wireshark" tool from the desktop and start a packet capture from the "Ethernet" interface.
+
+![](JPG/Ethernet.jpg)
+
+2. Open and browse **https://www.sophos.com** using Google Chrome.
+
+3. Back on the Wireshark application, we can observe the packets being captured in the "**Packet List Pane**" .
+
+![Wireshark](JPG/Wireshark.png)
+
+4. On wireshark application click on the **Stop** Option below File TAB at the top to stop the log collection.
+
+5. On **"Apply a display filter"** TAB apply the below mentioned filters one by one and press ENTER to filter you logs accordingly. 
+
+```bash
+ip.addr == 172.16.16.10
+```
+
+> **Note:** This command helps you to filter the wireshark logs based on IP address in general.
+
+```powershell
+ip.src == 172.16.16.10
+```
+
+> **Note:** This command helps you to filter the wireshark logs based on source IP address.
+
+```powershell
+ip.dst == 172.16.16.10
+```
+
+> **Note:** This Command helps you to filter the wireshark logs based on destination IP address.
+
+```powershell
+tcp.port == 80 || udp.port == 80
+```
+     
+> **Note:** This command helps you to filter the wireshark logs based on traffic in and out from TCP Port 80 and UDP Port 80. (The || means an AND operator on the command). 
+
+> **Note:** You can refer to the below mentioned URL to find other list of filters which can be used for log analysis: https://packetlife.net/media/library/13/Wireshark_Display_Filters.pdf
+ 
+5. Save the capture in **PCAP format** after validating.
+
+
+#### ![check](JPG/pngegg%20(1).png) You have successfully utilized filters with Wireshark 
+
+
+***
+## **Task 5.3:** Image Capture and Extraction using wireshark
+
+Through traffic capture, Wireshark can be used to view and record all information during transit,
+if this data is unencrypted such as images flowing to a device, Wireshark will record them and save the traffic information which can be extracted into Jpeg formats to be later collected for forensic evidences.  
+In this task, We will browse the internet to an HTTP site while capturing the traffic with Wireshark. We'll then review the captured packets and extract the images which were sent from the website to the London-Client.
+
+>**Note:** Note: In this exercise, you will access external websites, as these websites are
+outside of our control, they are subject to change. If you do notice anything is out
+of date, please let us know via our support desk so we can implement an update.
+
+![](JPG/London%20Client.png)
+
+1. Double click and open "Wireshark" tool from the desktop and start a packet capture from the "Ethernet" interface.
+
+2. Open ans browse http://zero.webappsecurity.com using Google Chrome or Firefox browser.
+
+
+![](JPG/ZeroBanking.png)
+
+>**Note:** It is important to access an HTTP site as the information is transmitted in plaintext.
+
+3. Allow **Chrome** to load all the pictures and content. Browse through the website for sometime.
+
+4. On wireshark application click on the **Stop** Option below File TAB at the top.
+
+![](JPG/zero2.png)
+
+5. We know that the IP address of the **London-Client** is **172.17.17.20**, scrolling through the capture we will see the IP addresses listed on the capture. 
+
+6. Find the "Apply a display filter bar" on top of the tool. Enter the Display-Filter as "HTTP" and hit enter.
+
+![](JPG/zero3.png)
+
+> **Note:** Initially when looking at the capture, we have a lot of information. But we know we were using HTTP traffic. Therefore, within the filter we are presented with only traffic on this protocol now.The majority of which comes from the IP address 172.17.17.20, as this was the main machine accessing the internet.
+
+7. Right-Click on a **source address** of **172.17.17.20** and click on  "Follow > HTTP stream".
+
+8. Type the following into the **Find field:** **jpg** Press Enter to find image details.
+
+![](JPG/zero4.png)
+
+9. We can see many jpeg files on the webpage and we have captured all those which were viewing in the webpage with Chrome.
+
+![](JPG/find.png)
+
+10. Use the "Find Next" button to locate the carousel_2.jpg.
+
+11. Now close the "Follow HTTP Stream" box and on Wireshark application click on File > Export Objects> HTTP.
+
+12. Click "Save All" option and save the content to Documents Folder.
+
+![](JPG/carousel.png)
+
+> **Note:** You can use the "**Find Next**" button to see the `carousel_2.jpg`
+
+13. Open File Manager -> Documents folder.
+
+![](JPG/filebox.png)
+
+14. Here you can see all the objects and jpeg files from that http stream of packets, including the main_carousel_2.jpg file.
+
+![](JPG/carousel2.png)
+
+> **Important Note:** If there is no jpeg files extracted you may want to **clear all the browsing data** data in **Chrome** and repeat the process from Step1.
+![](JPG/clear%20the%20history.png)
+
+16. Observe and all the files extracted from the **HTTP stream**.
+
+
+#### ![check](JPG/pngegg%20(1).png) You have successfully done Packet Sniffing for Image Capture and Extraction with Wireshark.
+
+***
+
+## **Task 5.4:** Capturing Packets with tcpdump on Linux 
 
 ![](JPG/Linux%20Client%201.png)
 
@@ -33,214 +185,95 @@ click on the VM "**03 - Linux Client**"
 > ![](JPG/output-onlinepngtools.png) **Note:** You may want to toggle the "Full-Screen View" in your browser to fit the Linux Desktop in your browser window.
 
 
-3. Hoover your pointer to the **Application Dock** on the bottom of the Linux Desktop and launch the **Terminal Emulator**. 
 
+3. Hoover your pointer to the **Application Dock** on the bottom of the Linux Desktop and launch the **Terminal Emulator**. 
 ![](JPG/Linux%20Terminal.png)
 
-2. Navigate to the `/var` directory with `cd /var` command and attempt to **create two directories** named `task7a` and `task7b`. using the command "
+
+
+4. To capture packets for troubleshooting or analysis, tcpdump requires elevated permissions, so in the following examples most commands are prefixed with `sudo`.  
+To begin, use the command:
+```bash
+sudo tcpdump -D
+```
+Or you can use: `tcpdump --list-interfaces` (`-D` for short to see which interfaces are available for capture.)
+
+![](JPG/TCPDUMP.png)
+In the example above, you can see all the interfaces available in my machine. The special interface any allows capturing in any active interface.
+
+5. Let's use it to start capturing some packets. Capture all packets in any interface by running this command:
 
 ```bash
-mkdir task7a task7b
+sudo tcpdump --interface any
+```
+In the output all the packets captured are shown like this:
+![](JPG/TCPDUMP2.png)
+
+6. Tcpdump continues to capture packets until it receives an interrupt signal. 
+Stop the capturing by pressing `Ctrl+C`. 
+
+7. To **save packets to a file** instead of displaying them on screen, 
+use the option `-w` (for write).  In the terminal type:
+
+```bash
+sudo tcpdump -i any -w capture.pcap
+```
+This command saves the output in a file named capture.pcap.   
+
+The **.pcap** extension stands for "**packet capture**" and is the convention for this file format.
+
+8. If you want some **feedback** to ensure packets are being captured, use the option `-v` (optional) .
+Type the following command:
+
+```bash
+sudo tcpdump -i any -w capture2.pcap -v
 ```
 
-> **Note:** You will receive ‘**Permission denied Error**’.
-![](JPG/Error.png)
+9. Now that you saved the two captures by creating two files in **binary format** (`capture.pcap`, `capture2.pcap`), you cannot simply open it with a text editor.   
+To read the contents of the files, you can read and open them by executing tcpdump with the `-r` (for read) option.
 
-3. To Set the proper permissions to allow all users to write in the /var directory we would be using the chmod command
+Since you're no longer capturing the packets directly from the network interface, `sudo` is not required to read the files, tyoe:
 
-```csharp
-Chmod 773 /var
+```bash
+tcpdump -r capture.pcap
 ```
-> ![](JPG/output-onlinepngtools.png) **Note:** You must login as the file owner or root user to modify the permissions of a file or directory. The Password for **root** is `Sophos1985`
-You could simply elevate your shell typing: `sudo` before the command.  
-**e.g.,** `sudo chmod xxx /directory` 
+Here is the output:
+![](JPG/TCPDUMP8.png)
 
 
-4. Write down the **alternative chmod command(s)** you could use to give sufficient permissions to the `/var` directory.
+10. A more convenient way to open and read a pcap file generated by tcpdump is using Wireshark instead of tcpdump. Open the second pcap file by launching Wireshark from the terminal:
 
-> ![](JPG/output-onlinepngtools.png)**Hint:** You previously used the **"Absolute Form"** with `chmod`, you could now try to achieve the same results using the **"Symbolic form"**.   
-see here: https://kb.iu.edu/d/abdb#change
-
-
-5. Now, that we have the proper permission, attempt to create the **two directories** in the same parent `/var` directory: 
-
-```csharp
- mkdir task7a task7b
-```
-> Navigate to the `/var` directory with `cd /var`command
-
-6. As the user ‘sophos’, **create a file** within `/var/task7a/` named: `‘file1.log’`  
-
-with the following content: 
-
-```csharp
-This content is from file1   
-This is line 2
+```bash
+wireshark capture2.pcap
 ```
 
-> This step could be performed using an one line command:
 
-```csharp
-echo -e “This content is from file1\nThis is line 2” > task7a/file1.log
-```
-> **Note:** `\n` Indicates to write in a new line.
+![](JPG/TCPDUMP9.png)
 
-7. Create a copy of `/var/task7a/file1.log` and save it to `/var/task7b` 
-Then rename the `/var/task7b/file1.log` to `file1b.log`
+These basic features of tcpdump will help you get started with this powerful and versatile tool. 
+To learn more, consult the tcpdump website and man pages:
 
-> This step could be performed using an one line command:
+https://www.tcpdump.org/
 
-```csharp
-cp task7a/file1.log task7b/ && mv task7b/file1.log task7b/file1b.log
-```
+https://manpages.debian.org/stretch/tcpdump/tcpdump.8.en.html
 
-8. Write down the command(s) used to copy the file;
-9. Write down the command(s) used to rename the file;
+![](JPG/TCPDUMP99.png)
 
-10. Set the permissions of the file `‘file1b.log’` to the following parameters: 
-![](JPG/Screenshot_3.png)
-
-
->![](JPG/output-onlinepngtools.png)**Note:** To modify the file you must elevate your shell with `sudo` or login as the file owner or group owner. 
-
-11. Write down the command(s) used to set the permissions of `file1b.log` 
- 
-
-##### ![check](JPG/pngegg%20(1).png) You have successfully created, copied, renamed, and modified file permissions. 
+The **tcpdump** command line interface provides **great flexibility** for capturing and analyzing network traffic. If you need a graphical tool to understand more complex flows, Wireshark is the choice.
+  
+One benefit of Wireshark is that it can read **.pcap** files captured by tcpdump. You can use tcpdump to capture packets in a remote machine that does not have a GUI and analyze the result file with Wireshark, but that is a topic for another day and support course.
 
 
 ***
-
-## **Task 7.2:** <small>Make Edits and searches using **`vi`**</small> 
-You have been given a task where the administrator requires you to add additional lines to the file `/var/file1b.log` to diagnose an issue. It was suggested to use the **vi text editor** as there is no GUI on the Linux machine. 
-
-Once complete, you must then search the file using a string and make a final line edit.  
-
-![London Client](JPG/London%20Client.png) 
-
-1. Open PuTTY application and SSH to the **Linux Client**: `172.17.17.22`
-as the **user** `sophos` and **password** `Sophos1985`
-
-![](JPG/putty.jpg)
-
-2. Add the following lines to the bottom of `/var/file1b.log` using `vi /var/file1b.log command`, 
-
-```csharp
-This is Line 3 
-This is LINE 4
-This is line 5
-```
-
-3. While still in the **vi** text editor, press the keys `Ctrl+c` and type `/line` to run a search within the file and hit enter. 
-
-4. Note the highlights in the text you typed in the file.  
-The searches are all sensitive and only line with the exact string match will be shown.
-
-5. Try other searches with different Case matches, observe and take note of the cursor position. 
-
-> ![](JPG/output-onlinepngtools.png) **Note:** The **vi** text editor has various mode, to type into a file you will need to use the **"Entry mode"** by combining the following keys: `Alt + I`.
-> To exit and save the file you will need to use the **"Command mode"** by combining the the `Ctrl+c` keys. Find out more about these modes here: https://www.redhat.com/sysadmin/introduction-vi-editor
-
- 
-6. Edit line 1 using **vi editor** and change the first line to: 
-
-```csharp
-This content is from file1b.log
-```
-
- 
-7. Write the changes and quit **vi editor** with `Ctrl+c` and type `:wq!` and hit enter.
-> **Note:** `:wq!` tells the **vi editor** to **Write** and **Quit**.
-
-8. Confirm the changes were successfully made and have been saved with the following command:
-
-```bash
-cat /var/file1b.log
-```
-
-##### ![check](JPG/pngegg%20(1).png) You have successfully appended lines, searched, and made file content updates using vi. 
-
-***
-
-## **Task 7.3:** <small>Search using various **`grep`** commands through system files </small> 
-You have been asked to gather all system logs for an event on January 22nd. The issue was reported at 7:15 AM but to ensure all the relevant logs are collected, you were tasked to gather everything that occurred on between 0700 and 0759. Understanding that it is your first-time searching content, your manager has provided you with a series of grep commands for practice. 
-
-
-#### Using the same London Client VM:
-![![London ](JPG/London%20Client.png)](JPG/London%20Client.png)
-
-1. Open PuTTY and SSH to the **Linux Client**: `172.17.17.22`
-as the **user** `sophos` and **password** `Sophos1985`
-
-2. Through the terminal, navigate and change directory to `/var/task7b` 
-
-3. Run the following commands and take note of the different output from each: 
- 
-```csharp
-grep 'line 4' file1b.log
-```
-> **Output:** None, grep is case sensitive!	
- 	
-```csharp
-grep -i 'line 4' file1b.log
-```
-
-> **Output:** `-i` tells grep to skip case sensitive search in arguments
-
-```csharp
-grep -v 'line 4' file1b.log
-```
-
-> **Output:** the search for everything else excluding the matching argument. case/string
-
-```csharp
-grep -e 'line' -e 'LINE' file1b.log
-```
-
-> **Output:** Show multiple matching searches in one command.	
- 
-	
-4. Run a search to find all the files named `syslog` with:
-```bash
-find / -type f -name syslog* 2>/dev/null
-```
->![](JPG/output-onlinepngtools.png) **Note** `2>/dev/null` It prevents from showing too many errors in the search that could overpopulate your terminal. 
-
-5. In your **search output** there should be a `syslog.tar` archive containing some relevant log files necessary for the next step. 
-![](JPG/tar.png)
-**Extract** or **"Untar"** **the content of the archive** in the Documents directory using the following command:
-
-```bash
-tar -xvf </var/archive name> /home/sophos/Documents
-```
-6. Now within the terminal, navigate where you extracted the files and **perform a search** using the **grep** command to find all the syslog messages that occurred on **22 January at the 7th hour**. Send this output to a file called `syslogJan22.log` by typing the following command:
-```csharp
-grep “Jan 22 07:[0-5][0-9]:[0-5][0-9]" <file or directory location> > syslogJan22.log
-```
-> ![](JPG/output-onlinepngtools.png)**Note the syntax:** `[0-5][0-9]` indicates to include all the possible matches in the time spawn of 59 minutes and 59 seconds, which corresponds to exactly 1 hour between 07:00 to 08:00.
-
-7. Confirm this file only contains syslog messages between 7 AM to 8 AM on Jan 22nd only.  
-
-> **Hint:** Use `cat` to quickly inspect the content of `syslogJan22.log`:  
-
-![](JPG/syslog22.png)‌ 
-
-#### ![check](JPG/pngegg%20(1).png) You have now successfully searched files using grep and saved search results to a file. 
-
-***
-
 ## ![review](JPG/Review%2048.png) Review  ##
 
-You have now successfully: 
-1.	Created, copied, moved, and renamed files 
-2.	Managed file and folder permissions 
-3.	Made edits to files using text editor vi 
-4.	Searched through files using text editor vi 
-5.	Searched through system files using various grep commands 
+In this Lab you have: 
+1.	Understand the uses of the **Process Monitor** Tool  
+2.	Utilize **Wireshark** to capture and filter traffic 
+3.	Utilize **TCPDUMP** to capture and filter traffic from the command line
 
 ***
 ***
-
 ### Before closing this page:
 > Please remember to "Deallocate" the "HostVM" in the "Resource Tab" before closing this LAB, 
 ![](JPG/Deallocate%20the%20VM.png)
