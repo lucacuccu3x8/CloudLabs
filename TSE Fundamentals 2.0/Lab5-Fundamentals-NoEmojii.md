@@ -1,4 +1,4 @@
-# **Lab 7: Linux**
+# **Lab 5: Linux**
 
 ## Objectives
 Upon successful completion of this lab, you will be able to: 
@@ -16,7 +16,7 @@ Upon successful completion of this lab, you will be able to:
 
 ***
 
-## **Task 7.1:** Create, copy and rename a file before managing permissions
+## **Task 5.1:** Create, copy and rename a file before managing permissions
 You have been given a task to create two separate directories with two identical files. However, one file, ‘**file1b.log**’ requires different permissions than the original file. The ‘**file1b.log**’ requires file owner full permissions, the ‘**games**’ group read and execute permissions, and all others execute permissions only.  
 
 ![](JPG/Linux%20Client%201.png)
@@ -111,7 +111,7 @@ cp task7a/file1.log task7b/ && mv task7b/file1.log task7b/file1b.log
 
 ***
 
-## **Task 7.2:** <small>Make Edits and searches using **`vi`**</small> 
+## **Task 5.2:** <small>Make Edits and searches using **`vi`**</small> 
 You have been given a task where the administrator requires you to add additional lines to the file `/var/file1b.log` to diagnose an issue. It was suggested to use the **vi text editor** as there is no GUI on the Linux machine. 
 
 Once complete, you must then search the file using a string and make a final line edit.  
@@ -162,7 +162,7 @@ cat /var/file1b.log
 
 ***
 
-## **Task 7.3:** <small>Search using various **`grep`** commands through system files </small> 
+## **Task 5.3:** <small>Search using various **`grep`** commands through system files </small> 
 You have been asked to gather all system logs for an event on January 22nd. The issue was reported at 7:15 AM but to ensure all the relevant logs are collected, you were tasked to gather everything that occurred on between 0700 and 0759. Understanding that it is your first-time searching content, your manager has provided you with a series of grep commands for practice. 
 
 
