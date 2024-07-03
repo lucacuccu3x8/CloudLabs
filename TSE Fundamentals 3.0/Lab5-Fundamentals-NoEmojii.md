@@ -1,259 +1,276 @@
-# **Lab 5: Networking**
+# **Lab 5: Tools**
 
 ## Objectives
 Upon successful completion of this lab, you will be able to: 
-*	Display the routing table from a Windows and Linux client 
-*	Configure a DHCP server and observe the various negotiations and behavior in various scenarios. 
-*	Lookup and resolve several types of DNS records using nslookup 
-
+1.	Understand the uses of the **Process Monitor** Tool  
+3.	Utilize **Wireshark** to capture and filter traffic 
+4.	Utilize **TCPDUMP** to capture and filter traffic from the command line
 
 ### Lab Diagram:
 ![](JPG/Diagram2.png)
 
+
 ***
 
-## **Task 5.1:** Display and understand routing table
-You have been given a task to review the routing table on two clients to validate which interfaces are in use and what path is taken. It was noticed that some clients were getting unresponsive pages and it is suspected there is a potential routing issue. In order to confirm what path is being taken it was advised to investigate the individual routing tables of two problematic clients as the DHCP server was confirmed to be set correctly. 
+## **Task 5.1:** Debugging process ID's with Process Monitor Tool
 
-![London Client](JPG/London%20Client.png)
+You have been given a task where you need to capture all events i.e., Registry activity, File System activity, Network activity and Thread activity, while accessing a website from Google Chrome. 
 
-Login into London Client with:
+#### 
+![](JPG/London%20DC%204.png)  
 
+1. Double click and open "Procmon64" from the desktop.
 
-> User: `SOPHOS\jsmith`      Password: `Sophos1985`
+![procmon](JPG/procmon-app.png)
 
+2. Open and browse https://www.sophos.com using Google Chrome.
 
-1. Open a command prompt and type in the following:
+3. On Procmon64 application click on the "Filter" tab on top, apply a filter for all "chrome.exe" processes and all its subtrees.
 
+> **Note:**  You could also apply a similar filter by right-click "chrome.exe" in the list of all captured processes. 
 
-```javascript
-route print 
-```
+![](JPG/Procmon.png)
 
-2. Write down what will be the next-hop to reach the following hosts: 
- 
-| Host | 	Next Hop |
-|------|-------------|
-|10.1.40.3 | ? |
-|172.17.17.34 | ?	 |
-|8.8.8.8 |	?  |
+4. Note down all the PID's used by Google Chrome. 
 
-3. Open PuTTY and SSH to the ‘**Linux Client**’ `172.17.17.22`:
-![](JPG/putty.jpg)
+5. Click on File and Save the filtered capture as a PML file.
 
-|   |   |
-|---------|----------|
-|User: `sophos` | Password: `Sophos1985`| 
-
-4. After login, run the following command: 
-```javascript
-ip route
-```
-also, you can run:
-```javascript
-netstat -r
-```
-5. Write down what will be the next-hop to reach the following hosts: 
- 
-|Host| 	Next Hop |
-|----|-----------|
-|10.1.40.3 |	 ?|
-|172.17.17.34 	| ?|
-|8.8.8.8 	 | ?|
-
-
-##### ![check](JPG/pngegg%20(1).png) You have successfully analyzed and understood routing tables on both Linux and Windows. 
+##### ![check](JPG/pngegg%20(1).png) You have successfully debugged using the Process Monitor Tool
 
 
 ***
 
-## **Task 5.2:** <small>Configure a DHCP server</small> 
-You have been given a task to set up a new DHCP scope for the network 172.16.16.0/24 on the local domain controller. After creating the relevant scope, you must confirm the DHCP server was correctly responding to the requests, so evidence must be provided of the DHCP resolution.  
 
+## **Task 5.2:** Debugging Network activities using Wireshark tool. 
 
-![London Client](JPG/London%20Client.png) 
-
-1. Open Control Panel:**Control Panel > Network and Internet > Network Connections**
-Right Click on **Ethernet3** and **Enable** 
-
-![](JPG/Ethernet31.png)
-
-2. Double click and open Wireshark application from the Desktop  and start a capture on **‘Ethernet 3’**
-
-3. Open a windows command prompt and type in the following command: 
-
-```javascript
-ipconfig /all 	  
-```
-
-4. Here below is a a screenshoot of the details about the Ethernet adapters 
-
-![Ethernet Adapter](JPG/ipconfig%20all.png)
-> **Note** some values may differ a little in your Lab.
-
-3. Now, Take notes of the interface details of `Ethernet 3`
-> **Note:** If no details are shown, it means that Ethernet 3 is not activated.
-4. Also, Review the:
->* Autoconfiguration IPv4 Address, 
->* Default Gateway, 
->* Subnet Mask, and 
->* DNS Servers 
-
-
-> ![](JPG/output-onlinepngtools.png) **Note:** In case the `Ethernet 3` is not available you'd need to enable it in:
- `Control Panel > Network and Internet > Network Connections` and restart Wireshark as Administrator.
+You have been asked to obtain information about active peers in the network from a Wireshark capture.  
+Start practicing using the advanced **Wireshark Display-Filters** to quickly analyze and extract valuable information about network traffic.
 
 
 ![London DC](JPG/London%20DC%204.png)
 
-Open London DC 
+1. Double click and open "Wireshark" tool from the desktop and start a packet capture from the "Ethernet" interface.
 
-6. Open the Windows **‘Administrative Tools’** from the Windows Start menu and select **DHCP**  
+![](JPG/Ethernet.jpg)
 
- ![](JPG/Administrative%20Tools.png)
- 
-7. Under the IPv4 dropdown, right click and **create a new scope**. 
-Using the following information: 
+2. Open and browse **https://www.sophos.com** using Google Chrome.
 
-> * Name: `Task6` 
-> * Description: ***`[Optional]`***
->* Start IP address: **172.16.16.100** 
->* End IP address: **172.16.16.150** 
->* Subnet mask: **255.255.255.0** 
->* Exclusions/Delay: ***[Skip]*** 
->* Lease Duration: **8 days** 
- 
-##### In DHCP Options configure only the following: 
->*	Default Gateway (Router): **172.16.16.16** 
->*	DNS Parent domain: **SOPHOS.LOCAL** 
->*	DNS Servers: **8.8.8.8**  
+3. Back on the Wireshark application, we can observe the packets being captured in the "**Packet List Pane**" .
 
-8. Click on Scope [**172.16.16.100**] -> **Scope Options** you would see the configuration you have made.
+![Wireshark](JPG/Wireshark.png)
 
-![London Client](JPG/London%20Client.png)
- 
-9. Open up **Wireshark** application and filter for the **DHCP traffic only**. Open each packet in the DHCP sequence to be familiar with each type of packet's being requested. 
- 
-### ![](JPG/output-onlinepngtools.png) **D.O.R.A.** request: 
-> * **Discovery** – Client sending Broadcast
-> *	**Offer** – Server sending a reply
-> *	**Request** – client requesting ip Broad
-> *	**ACK** – From server
+4. On wireshark application click on the **Stop** Option below File TAB at the top to stop the log collection.
 
-![](JPG/Dora%20Process.png)
+5. On **"Apply a display filter"** TAB apply the below mentioned filters one by one and press ENTER to filter you logs accordingly. 
 
-10. Write down what the server replied with for **Option 51**, **Option 6**, and **Option 54**: 
-
-|           |                                  |
-|----------|------------------------------------|
-| Option 51 |	e.g., *IP Address Lease Time – 8Days* |
-|Option 6 |e.g.,	*Specify the DNS Server 8.8.8.8*|
-|Option 54 |e.g.,	 *Specify IP DHCP Server Identity*|
-
- 
-11. Write down the source IP, destination IP, source mac address and destination mac address of the DHCP Request: 
- 
-|           |                                  |
-|----------|------------------------------------|
-|Source IP|         	?|
-|Destination IP 	|             ?|
-|Source MAC Address |           	 ?|
-|Destination MAC Address |              ?|
-
- ***
-### ![Knowledge](JPG/output-onlinepngtools.png) Why are these addresses used? 
-
-> `0.0.0.0`	means “any” or “unassigned”, since the source mac address (client) does not have an associated/configured IP address.
-
-‌‌ 
-
-> `255.255.255.255` It floods a DHCP Request message over the IP network using a broadcast IP address (255.255. 255.255) in order to deliver the DHCP Request message to all the DHCP servers on the same subnet
-
-‌‌ 
-
-> `Source Mac Address` – The Mac address of the client looking to get an ip assigned by any available DHCP server in the broadcast domain.
-
-‌‌ 
-
-> `ff-ff-ff-ff-ff-ff` or `Destination MAC Address` – A frame with a DHCP discovery/request is delivered and flooded to all available devices in the network (broadcast), in hope that a DHCP will reply and acknowledge the request for ip assignment. 
-
-12. Open Control Panel:**Control Panel > Network and Internet > Network Connections**
-Right Click on **Ethernet3** and **Disable** 
-
-![](JPG/Disable%20ethernet3.png)
-
-![](JPG/Knowledge%203.png) **Tip:** here is a useful link:  
-https://winaero.com/disable-network-adapter-windows-10
-
-
-
-##### ![check](JPG/pngegg%20(1).png)  You have now successfully analyzed DHCP requests and created a DHCP scope 
-
-***
-
-## **Task 5.3:** <small>Lookup and resolve several types of DNS records using nslookup </small> 
-
-You have been given a task to display the routing table on two clients to validate which interfaces are being used. This must be verified on both **London Client** and **Linux Client**. 
-
-##### First, in the London-Client:
-![London Client](JPG/London%20Client.png)
-
-1. **Run Wireshark as administrator** and launch a packet capture on ‘**Ethernet**’ interface. 
- 
-2. Open a command prompt and experiment with the DNS queries listed below using **nslookup** utility: 
- 
-![](JPG/Lab%206%20DNS%20table.png)
-
-3. **Stop** the **Wireshark** capture and run a **Display-filter** to display only **DNS queries**
-
-4. Which DNS server was used to query **sophos.com** for `txt` records? 
- 
-> Server: **LON-DC-SOPHOS.LOCAL**
-
-> Address: `172.16.16.10`
-
-#### ![](JPG/output-onlinepngtools.png)Why was this DNS server used? 
-The first available DNS holding the information, however it is a Non-Authoritative DNS server for the zone.
- 
- 
- 
- 
-5. What server provided the authoritative answer that sophos.local is not responsible when using DNS 8.8.8.8? 
-When querying: 
- ```bash
- Nslookup -type=soa dns.google
- ```
-Querying the non authoritative ns1.zdns.google:
 ```bash
-Nslookup -type=soa ns1.zdns.google
+ip.addr == 172.16.16.10
 ```
-The answer comes from:    
- ```bash
- dns.google
- ```
+
+> **Note:** This command helps you to filter the wireshark logs based on IP address in general.
+
+```powershell
+ip.src == 172.16.16.10
+```
+
+> **Note:** This command helps you to filter the wireshark logs based on source IP address.
+
+```powershell
+ip.dst == 172.16.16.10
+```
+
+> **Note:** This Command helps you to filter the wireshark logs based on destination IP address.
+
+```powershell
+tcp.port == 80 || udp.port == 80
+```
+     
+> **Note:** This command helps you to filter the wireshark logs based on traffic in and out from TCP Port 80 and UDP Port 80. (The || means an AND operator on the command). 
+
+> **Note:** You can refer to the below mentioned URL to find other list of filters which can be used for log analysis: https://packetlife.net/media/library/13/Wireshark_Display_Filters.pdf
  
-## ![](JPG/output-onlinepngtools.png) What does this mean? 
- 
- An authoritative answer is when the DNS server hosting the primary copy of the DNS record responses to your lookup. 
- When nslookup provided results by a server that is not the authoritative (primary) source. Typically, this means the result was provided by a server  that held a cached copy of the DNS record. This is important because the DNS record may have been changed recently and the cached copy may not reflect the most up-to-date information.
+5. Save the capture in **PCAP format** after validating.
 
 
-See more information here:
-https://www.meridianoutpost.com/resources/articles/command-line/nslookup.php#AuthoritativeResponse
- 
- 
- 
-##### ![check](JPG/pngegg%20(1).png) You have now successfully made various DNS request types and analyzed their packets. 
+#### ![check](JPG/pngegg%20(1).png) You have successfully utilized filters with Wireshark 
 
 
 ***
+## **Task 5.3:** Image Capture and Extraction using wireshark
 
+Through traffic capture, Wireshark can be used to view and record all information during transit,
+if this data is unencrypted such as images flowing to a device, Wireshark will record them and save the traffic information which can be extracted into Jpeg formats to be later collected for forensic evidences.  
+In this task, We will browse the internet to an HTTP site while capturing the traffic with Wireshark. We'll then review the captured packets and extract the images which were sent from the website to the London-Client.
+
+>**Note:** Note: In this exercise, you will access external websites, as these websites are
+outside of our control, they are subject to change. If you do notice anything is out
+of date, please let us know via our support desk so we can implement an update.
+
+![](JPG/London%20Client.png)
+
+1. Double click and open "Wireshark" tool from the desktop and start a packet capture from the "Ethernet" interface.
+
+2. Open ans browse http://zero.webappsecurity.com using Google Chrome or Firefox browser.
+
+
+![](JPG/ZeroBanking.png)
+
+>**Note:** It is important to access an HTTP site as the information is transmitted in plaintext.
+
+3. Allow **Chrome** to load all the pictures and content. Browse through the website for sometime.
+
+4. On wireshark application click on the **Stop** Option below File TAB at the top.
+
+![](JPG/zero2.png)
+
+5. We know that the IP address of the **London-Client** is **172.17.17.20**, scrolling through the capture we will see the IP addresses listed on the capture. 
+
+6. Find the "Apply a display filter bar" on top of the tool. Enter the Display-Filter as "HTTP" and hit enter.
+
+![](JPG/zero3.png)
+
+> **Note:** Initially when looking at the capture, we have a lot of information. But we know we were using HTTP traffic. Therefore, within the filter we are presented with only traffic on this protocol now.The majority of which comes from the IP address 172.17.17.20, as this was the main machine accessing the internet.
+
+7. Right-Click on a **source address** of **172.17.17.20** and click on  "Follow > HTTP stream".
+
+8. Type the following into the **Find field:** **jpg** Press Enter to find image details.
+
+![](JPG/zero4.png)
+
+9. We can see many jpeg files on the webpage and we have captured all those which were viewing in the webpage with Chrome.
+
+![](JPG/find.png)
+
+10. Use the "Find Next" button to locate the carousel_2.jpg.
+
+11. Now close the "Follow HTTP Stream" box and on Wireshark application click on File > Export Objects> HTTP.
+
+12. Click "Save All" option and save the content to Documents Folder.
+
+![](JPG/carousel.png)
+
+> **Note:** You can use the "**Find Next**" button to see the `carousel_2.jpg`
+
+13. Open File Manager -> Documents folder.
+
+![](JPG/filebox.png)
+
+14. Here you can see all the objects and jpeg files from that http stream of packets, including the main_carousel_2.jpg file.
+
+![](JPG/carousel2.png)
+
+> **Important Note:** If there is no jpeg files extracted you may want to **clear all the browsing data** data in **Chrome** and repeat the process from Step1.
+![](JPG/clear%20the%20history.png)
+
+16. Observe and all the files extracted from the **HTTP stream**.
+
+
+#### ![check](JPG/pngegg%20(1).png) You have successfully done Packet Sniffing for Image Capture and Extraction with Wireshark.
+
+***
+
+## **Task 5.4:** Capturing Packets with tcpdump on Linux 
+
+![](JPG/Linux%20Client%201.png)
+
+1. On the "**Remote Desktop Connection Manager**" left pane, 
+click on the VM "**03 - Linux Client**" 
+
+![](JPG/Screenshot_2.png)
+
+2. You'll be presented with the "**Ubuntu Log-in screen**"; At the center of the screen, select the user "**Sophos**" and type the password: `Sophos1985`
+
+![](JPG/Ubuntuxxxx.png)
+
+> ![](JPG/output-onlinepngtools.png) **Note:** You may want to toggle the "Full-Screen View" in your browser to fit the Linux Desktop in your browser window.
+
+
+
+3. Hoover your pointer to the **Application Dock** on the bottom of the Linux Desktop and launch the **Terminal Emulator**. 
+![](JPG/Linux%20Terminal.png)
+
+
+
+4. To capture packets for troubleshooting or analysis, tcpdump requires elevated permissions, so in the following examples most commands are prefixed with `sudo`.  
+To begin, use the command:
+```bash
+sudo tcpdump -D
+```
+Or you can use: `tcpdump --list-interfaces` (`-D` for short to see which interfaces are available for capture.)
+
+![](JPG/TCPDUMP.png)
+In the example above, you can see all the interfaces available in my machine. The special interface any allows capturing in any active interface.
+
+5. Let's use it to start capturing some packets. Capture all packets in any interface by running this command:
+
+```bash
+sudo tcpdump --interface any
+```
+In the output all the packets captured are shown like this:
+![](JPG/TCPDUMP2.png)
+
+6. Tcpdump continues to capture packets until it receives an interrupt signal. 
+Stop the capturing by pressing `Ctrl+C`. 
+
+7. To **save packets to a file** instead of displaying them on screen, 
+use the option `-w` (for write).  In the terminal type:
+
+```bash
+sudo tcpdump -i any -w capture.pcap
+```
+This command saves the output in a file named capture.pcap.   
+
+The **.pcap** extension stands for "**packet capture**" and is the convention for this file format.
+
+8. If you want some **feedback** to ensure packets are being captured, use the option `-v` (optional) .
+Type the following command:
+
+```bash
+sudo tcpdump -i any -w capture2.pcap -v
+```
+
+9. Now that you saved the two captures by creating two files in **binary format** (`capture.pcap`, `capture2.pcap`), you cannot simply open it with a text editor.   
+To read the contents of the files, you can read and open them by executing tcpdump with the `-r` (for read) option.
+
+Since you're no longer capturing the packets directly from the network interface, `sudo` is not required to read the files, tyoe:
+
+```bash
+tcpdump -r capture.pcap
+```
+Here is the output:
+![](JPG/TCPDUMP8.png)
+
+
+10. A more convenient way to open and read a pcap file generated by tcpdump is using Wireshark instead of tcpdump. Open the second pcap file by launching Wireshark from the terminal:
+
+```bash
+wireshark capture2.pcap
+```
+
+
+![](JPG/TCPDUMP9.png)
+
+These basic features of tcpdump will help you get started with this powerful and versatile tool. 
+To learn more, consult the tcpdump website and man pages:
+
+https://www.tcpdump.org/
+
+https://manpages.debian.org/stretch/tcpdump/tcpdump.8.en.html
+
+![](JPG/TCPDUMP99.png)
+
+The **tcpdump** command line interface provides **great flexibility** for capturing and analyzing network traffic. If you need a graphical tool to understand more complex flows, Wireshark is the choice.
+  
+One benefit of Wireshark is that it can read **.pcap** files captured by tcpdump. You can use tcpdump to capture packets in a remote machine that does not have a GUI and analyze the result file with Wireshark, but that is a topic for another day and support course.
+
+
+***
 ## ![review](JPG/Review%2048.png) Review  ##
 
-You have now successfully: 
-1.	Displayed the routing table from a Windows and Linux Client  
-2.	Configured a DHCP server and observed the various negotiations and behavior 
-3.	Looked up and resolved several types of DNS records using nslookup 
+In this Lab you have: 
+1.	Understand the uses of the **Process Monitor** Tool  
+2.	Utilize **Wireshark** to capture and filter traffic 
+3.	Utilize **TCPDUMP** to capture and filter traffic from the command line
 
 ***
 ***

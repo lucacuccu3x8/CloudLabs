@@ -1,14 +1,10 @@
-# **Lab 4: Linux**
+# **Lab 4: Networking**
 
 ## Objectives
 Upon successful completion of this lab, you will be able to: 
-* Create, copy, move, and rename files
-* Manage file and folder permissions
-* Make edits to files using the text editor vi
-* Search through files using the text editor vi
-* Search through system files using various grep commands
-
-
+*	Display the routing table from a Windows and Linux client 
+*	Configure a DHCP server and observe the various negotiations and behavior in various scenarios. 
+*	Lookup and resolve several types of DNS records using nslookup 
 
 
 ### Lab Diagram:
@@ -16,231 +12,251 @@ Upon successful completion of this lab, you will be able to:
 
 ***
 
-## **Task 4.1:** Create, copy and rename a file before managing permissions
-You have been given a task to create two separate directories with two identical files. However, one file, ‘**file1b.log**’ requires different permissions than the original file. The ‘**file1b.log**’ requires file owner full permissions, the ‘**games**’ group read and execute permissions, and all others execute permissions only.  
+## **Task 4.1:** Display and understand routing table
+You have been given a task to review the routing table on two clients to validate which interfaces are in use and what path is taken. It was noticed that some clients were getting unresponsive pages and it is suspected there is a potential routing issue. In order to confirm what path is being taken it was advised to investigate the individual routing tables of two problematic clients as the DHCP server was confirmed to be set correctly. 
 
-![](JPG/Linux%20Client%201.png)
+![London Client](JPG/London%20Client.png)
 
-1. On the "**Remote Desktop Connection Manager**" left pane, 
-click on the VM "**03 - Linux Client**" 
-
-![](JPG/Screenshot_2.png)
-
-2. You'll be presented with the "**Ubuntu Log-in screen**"; At the center of the screen, select the user "**Sophos**" and type the password: `Sophos1985`
-
-![](JPG/Ubuntuxxxx.png)
-
-> ![](JPG/output-onlinepngtools.png) **Note:** You may want to toggle the "Full-Screen View" in your browser to fit the Linux Desktop in your browser window.
+Login into London Client with:
 
 
-3. Hoover your pointer to the **Application Dock** on the bottom of the Linux Desktop and launch the **Terminal Emulator**. 
+> User: `SOPHOS\jsmith`      Password: `Sophos1985`
 
-![](JPG/Linux%20Terminal.png)
 
-2. Navigate to the `/var` directory with `cd /var` command and attempt to **create two directories** named `task7a` and `task7b`. using the command "
+1. Open a command prompt and type in the following:
 
-```bash
-mkdir task7a task7b
+
+```javascript
+route print 
 ```
 
-> **Note:** You will receive ‘**Permission denied Error**’.
-![](JPG/Error.png)
-
-3. To Set the proper permissions to allow all users to write in the /var directory we would be using the chmod command
-
-```csharp
-Chmod 773 /var
-```
-> ![](JPG/output-onlinepngtools.png) **Note:** You must login as the file owner or root user to modify the permissions of a file or directory. The Password for **root** is `Sophos1985`
-You could simply elevate your shell typing: `sudo` before the command.  
-**e.g.,** `sudo chmod xxx /directory` 
-
-
-4. Write down the **alternative chmod command(s)** you could use to give sufficient permissions to the `/var` directory.
-
-> ![](JPG/output-onlinepngtools.png)**Hint:** You previously used the **"Absolute Form"** with `chmod`, you could now try to achieve the same results using the **"Symbolic form"**.   
-see here: https://kb.iu.edu/d/abdb#change
-
-
-5. Now, that we have the proper permission, attempt to create the **two directories** in the same parent `/var` directory: 
-
-```csharp
- mkdir task7a task7b
-```
-> Navigate to the `/var` directory with `cd /var`command
-
-6. As the user ‘sophos’, **create a file** within `/var/task7a/` named: `‘file1.log’`  
-
-with the following content: 
-
-```csharp
-This content is from file1   
-This is line 2
-```
-
-> This step could be performed using an one line command:
-
-```csharp
-echo -e “This content is from file1\nThis is line 2” > task7a/file1.log
-```
-> **Note:** `\n` Indicates to write in a new line.
-
-7. Create a copy of `/var/task7a/file1.log` and save it to `/var/task7b` 
-Then rename the `/var/task7b/file1.log` to `file1b.log`
-
-> This step could be performed using an one line command:
-
-```csharp
-cp task7a/file1.log task7b/ && mv task7b/file1.log task7b/file1b.log
-```
-
-8. Write down the command(s) used to copy the file;
-9. Write down the command(s) used to rename the file;
-
-10. Set the permissions of the file `‘file1b.log’` to the following parameters: 
-![](JPG/Screenshot_3.png)
-
-
->![](JPG/output-onlinepngtools.png)**Note:** To modify the file you must elevate your shell with `sudo` or login as the file owner or group owner. 
-
-11. Write down the command(s) used to set the permissions of `file1b.log` 
+2. Write down what will be the next-hop to reach the following hosts: 
  
+| Host | 	Next Hop |
+|------|-------------|
+|10.1.40.3 | ? |
+|172.17.17.34 | ?	 |
+|8.8.8.8 |	?  |
 
-##### ![check](JPG/pngegg%20(1).png) You have successfully created, copied, renamed, and modified file permissions. 
+3. Open PuTTY and SSH to the ‘**Linux Client**’ `172.17.17.22`:
+![](JPG/putty.jpg)
+
+|   |   |
+|---------|----------|
+|User: `sophos` | Password: `Sophos1985`| 
+
+4. After login, run the following command: 
+```javascript
+ip route
+```
+also, you can run:
+```javascript
+netstat -r
+```
+5. Write down what will be the next-hop to reach the following hosts: 
+ 
+|Host| 	Next Hop |
+|----|-----------|
+|10.1.40.3 |	 ?|
+|172.17.17.34 	| ?|
+|8.8.8.8 	 | ?|
+
+
+##### ![check](JPG/pngegg%20(1).png) You have successfully analyzed and understood routing tables on both Linux and Windows. 
 
 
 ***
 
-## **Task 4.2:** <small>Make Edits and searches using **`vi`**</small> 
-You have been given a task where the administrator requires you to add additional lines to the file `/var/file1b.log` to diagnose an issue. It was suggested to use the **vi text editor** as there is no GUI on the Linux machine. 
+## **Task 4.2:** <small>Configure a DHCP server</small> 
+You have been given a task to set up a new DHCP scope for the network 172.16.16.0/24 on the local domain controller. After creating the relevant scope, you must confirm the DHCP server was correctly responding to the requests, so evidence must be provided of the DHCP resolution.  
 
-Once complete, you must then search the file using a string and make a final line edit.  
 
 ![London Client](JPG/London%20Client.png) 
 
-1. Open PuTTY application and SSH to the **Linux Client**: `172.17.17.22`
-as the **user** `sophos` and **password** `Sophos1985`
+1. Open Control Panel:**Control Panel > Network and Internet > Network Connections**
+Right Click on **Ethernet3** and **Enable** 
 
-![](JPG/putty.jpg)
+![](JPG/Ethernet31.png)
 
-2. Add the following lines to the bottom of `/var/file1b.log` using `vi /var/file1b.log command`, 
+2. Double click and open Wireshark application from the Desktop  and start a capture on **‘Ethernet 3’**
 
-```csharp
-This is Line 3 
-This is LINE 4
-This is line 5
+3. Open a windows command prompt and type in the following command: 
+
+```javascript
+ipconfig /all 	  
 ```
 
-3. While still in the **vi** text editor, press the keys `Ctrl+c` and type `/line` to run a search within the file and hit enter. 
+4. Here below is a a screenshoot of the details about the Ethernet adapters 
 
-4. Note the highlights in the text you typed in the file.  
-The searches are all sensitive and only line with the exact string match will be shown.
+![Ethernet Adapter](JPG/ipconfig%20all.png)
+> **Note** some values may differ a little in your Lab.
 
-5. Try other searches with different Case matches, observe and take note of the cursor position. 
+3. Now, Take notes of the interface details of `Ethernet 3`
+> **Note:** If no details are shown, it means that Ethernet 3 is not activated.
+4. Also, Review the:
+>* Autoconfiguration IPv4 Address, 
+>* Default Gateway, 
+>* Subnet Mask, and 
+>* DNS Servers 
 
-> ![](JPG/output-onlinepngtools.png) **Note:** The **vi** text editor has various mode, to type into a file you will need to use the **"Entry mode"** by combining the following keys: `Alt + I`.
-> To exit and save the file you will need to use the **"Command mode"** by combining the the `Ctrl+c` keys. Find out more about these modes here: https://www.redhat.com/sysadmin/introduction-vi-editor
+
+> ![](JPG/output-onlinepngtools.png) **Note:** In case the `Ethernet 3` is not available you'd need to enable it in:
+ `Control Panel > Network and Internet > Network Connections` and restart Wireshark as Administrator.
+
+
+![London DC](JPG/London%20DC%204.png)
+
+Open London DC 
+
+6. Open the Windows **‘Administrative Tools’** from the Windows Start menu and select **DHCP**  
+
+ ![](JPG/Administrative%20Tools.png)
+ 
+7. Under the IPv4 dropdown, right click and **create a new scope**. 
+Using the following information: 
+
+> * Name: `Task6` 
+> * Description: ***`[Optional]`***
+>* Start IP address: **172.16.16.100** 
+>* End IP address: **172.16.16.150** 
+>* Subnet mask: **255.255.255.0** 
+>* Exclusions/Delay: ***[Skip]*** 
+>* Lease Duration: **8 days** 
+ 
+##### In DHCP Options configure only the following: 
+>*	Default Gateway (Router): **172.16.16.16** 
+>*	DNS Parent domain: **SOPHOS.LOCAL** 
+>*	DNS Servers: **8.8.8.8**  
+
+8. Click on Scope [**172.16.16.100**] -> **Scope Options** you would see the configuration you have made.
+
+![London Client](JPG/London%20Client.png)
+ 
+9. Open up **Wireshark** application and filter for the **DHCP traffic only**. Open each packet in the DHCP sequence to be familiar with each type of packet's being requested. 
+ 
+### ![](JPG/output-onlinepngtools.png) **D.O.R.A.** request: 
+> * **Discovery** – Client sending Broadcast
+> *	**Offer** – Server sending a reply
+> *	**Request** – client requesting ip Broad
+> *	**ACK** – From server
+
+![](JPG/Dora%20Process.png)
+
+10. Write down what the server replied with for **Option 51**, **Option 6**, and **Option 54**: 
+
+|           |                                  |
+|----------|------------------------------------|
+| Option 51 |	e.g., *IP Address Lease Time – 8Days* |
+|Option 6 |e.g.,	*Specify the DNS Server 8.8.8.8*|
+|Option 54 |e.g.,	 *Specify IP DHCP Server Identity*|
 
  
-6. Edit line 1 using **vi editor** and change the first line to: 
-
-```csharp
-This content is from file1b.log
-```
-
+11. Write down the source IP, destination IP, source mac address and destination mac address of the DHCP Request: 
  
-7. Write the changes and quit **vi editor** with `Ctrl+c` and type `:wq!` and hit enter.
-> **Note:** `:wq!` tells the **vi editor** to **Write** and **Quit**.
+|           |                                  |
+|----------|------------------------------------|
+|Source IP|         	?|
+|Destination IP 	|             ?|
+|Source MAC Address |           	 ?|
+|Destination MAC Address |              ?|
 
-8. Confirm the changes were successfully made and have been saved with the following command:
+ ***
+### ![Knowledge](JPG/output-onlinepngtools.png) Why are these addresses used? 
 
-```bash
-cat /var/file1b.log
-```
+> `0.0.0.0`	means “any” or “unassigned”, since the source mac address (client) does not have an associated/configured IP address.
 
-##### ![check](JPG/pngegg%20(1).png) You have successfully appended lines, searched, and made file content updates using vi. 
+‌‌ 
+
+> `255.255.255.255` It floods a DHCP Request message over the IP network using a broadcast IP address (255.255. 255.255) in order to deliver the DHCP Request message to all the DHCP servers on the same subnet
+
+‌‌ 
+
+> `Source Mac Address` – The Mac address of the client looking to get an ip assigned by any available DHCP server in the broadcast domain.
+
+‌‌ 
+
+> `ff-ff-ff-ff-ff-ff` or `Destination MAC Address` – A frame with a DHCP discovery/request is delivered and flooded to all available devices in the network (broadcast), in hope that a DHCP will reply and acknowledge the request for ip assignment. 
+
+12. Open Control Panel:**Control Panel > Network and Internet > Network Connections**
+Right Click on **Ethernet3** and **Disable** 
+
+![](JPG/Disable%20ethernet3.png)
+
+![](JPG/Knowledge%203.png) **Tip:** here is a useful link:  
+https://winaero.com/disable-network-adapter-windows-10
+
+
+
+##### ![check](JPG/pngegg%20(1).png)  You have now successfully analyzed DHCP requests and created a DHCP scope 
 
 ***
 
-## **Task 4.3:** <small>Search using various **`grep`** commands through system files </small> 
-You have been asked to gather all system logs for an event on January 22nd. The issue was reported at 7:15 AM but to ensure all the relevant logs are collected, you were tasked to gather everything that occurred on between 0700 and 0759. Understanding that it is your first-time searching content, your manager has provided you with a series of grep commands for practice. 
+## **Task 4.3:** <small>Lookup and resolve several types of DNS records using nslookup </small> 
 
+You have been given a task to display the routing table on two clients to validate which interfaces are being used. This must be verified on both **London Client** and **Linux Client**. 
 
-#### Using the same London Client VM:
-![![London ](JPG/London%20Client.png)](JPG/London%20Client.png)
+##### First, in the London-Client:
+![London Client](JPG/London%20Client.png)
 
-1. Open PuTTY and SSH to the **Linux Client**: `172.17.17.22`
-as the **user** `sophos` and **password** `Sophos1985`
-
-2. Through the terminal, navigate and change directory to `/var/task7b` 
-
-3. Run the following commands and take note of the different output from each: 
+1. **Run Wireshark as administrator** and launch a packet capture on ‘**Ethernet**’ interface. 
  
-```csharp
-grep 'line 4' file1b.log
-```
-> **Output:** None, grep is case sensitive!	
- 	
-```csharp
-grep -i 'line 4' file1b.log
-```
-
-> **Output:** `-i` tells grep to skip case sensitive search in arguments
-
-```csharp
-grep -v 'line 4' file1b.log
-```
-
-> **Output:** the search for everything else excluding the matching argument. case/string
-
-```csharp
-grep -e 'line' -e 'LINE' file1b.log
-```
-
-> **Output:** Show multiple matching searches in one command.	
+2. Open a command prompt and experiment with the DNS queries listed below using **nslookup** utility: 
  
-	
-4. Run a search to find all the files named `syslog` with:
+![](JPG/Lab%206%20DNS%20table.png)
+
+3. **Stop** the **Wireshark** capture and run a **Display-filter** to display only **DNS queries**
+
+4. Which DNS server was used to query **sophos.com** for `txt` records? 
+ 
+> Server: **LON-DC-SOPHOS.LOCAL**
+
+> Address: `172.16.16.10`
+
+#### ![](JPG/output-onlinepngtools.png)Why was this DNS server used? 
+The first available DNS holding the information, however it is a Non-Authoritative DNS server for the zone.
+ 
+ 
+ 
+ 
+5. What server provided the authoritative answer that sophos.local is not responsible when using DNS 8.8.8.8? 
+When querying: 
+ ```bash
+ Nslookup -type=soa dns.google
+ ```
+Querying the non authoritative ns1.zdns.google:
 ```bash
-find / -type f -name syslog* 2>/dev/null
+Nslookup -type=soa ns1.zdns.google
 ```
->![](JPG/output-onlinepngtools.png) **Note** `2>/dev/null` It prevents from showing too many errors in the search that could overpopulate your terminal. 
+The answer comes from:    
+ ```bash
+ dns.google
+ ```
+ 
+## ![](JPG/output-onlinepngtools.png) What does this mean? 
+ 
+ An authoritative answer is when the DNS server hosting the primary copy of the DNS record responses to your lookup. 
+ When nslookup provided results by a server that is not the authoritative (primary) source. Typically, this means the result was provided by a server  that held a cached copy of the DNS record. This is important because the DNS record may have been changed recently and the cached copy may not reflect the most up-to-date information.
 
-5. In your **search output** there should be a `syslog.tar` archive containing some relevant log files necessary for the next step. 
-![](JPG/tar.png)
-**Extract** or **"Untar"** **the content of the archive** in the Documents directory using the following command:
 
-```bash
-tar -xvf </var/archive name> /home/sophos/Documents
-```
-6. Now within the terminal, navigate where you extracted the files and **perform a search** using the **grep** command to find all the syslog messages that occurred on **22 January at the 7th hour**. Send this output to a file called `syslogJan22.log` by typing the following command:
-```csharp
-grep “Jan 22 07:[0-5][0-9]:[0-5][0-9]" <file or directory location> > syslogJan22.log
-```
-> ![](JPG/output-onlinepngtools.png)**Note the syntax:** `[0-5][0-9]` indicates to include all the possible matches in the time spawn of 59 minutes and 59 seconds, which corresponds to exactly 1 hour between 07:00 to 08:00.
+See more information here:
+https://www.meridianoutpost.com/resources/articles/command-line/nslookup.php#AuthoritativeResponse
+ 
+ 
+ 
+##### ![check](JPG/pngegg%20(1).png) You have now successfully made various DNS request types and analyzed their packets. 
 
-7. Confirm this file only contains syslog messages between 7 AM to 8 AM on Jan 22nd only.  
-
-> **Hint:** Use `cat` to quickly inspect the content of `syslogJan22.log`:  
-
-![](JPG/syslog22.png)‌ 
-
-#### ![check](JPG/pngegg%20(1).png) You have now successfully searched files using grep and saved search results to a file. 
 
 ***
 
 ## ![review](JPG/Review%2048.png) Review  ##
 
 You have now successfully: 
-1.	Created, copied, moved, and renamed files 
-2.	Managed file and folder permissions 
-3.	Made edits to files using text editor vi 
-4.	Searched through files using text editor vi 
-5.	Searched through system files using various grep commands 
+1.	Displayed the routing table from a Windows and Linux Client  
+2.	Configured a DHCP server and observed the various negotiations and behavior 
+3.	Looked up and resolved several types of DNS records using nslookup 
 
 ***
 ***
-
 ### Before closing this page:
 > Please remember to "Deallocate" the "HostVM" in the "Resource Tab" before closing this LAB, 
 ![](JPG/Deallocate%20the%20VM.png)
