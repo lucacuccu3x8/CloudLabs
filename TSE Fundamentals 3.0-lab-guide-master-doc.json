@@ -1,0 +1,37 @@
+[ 
+{
+  "Name": "Sophos TSE Fundamentals 2.0 Course",
+  "Language": "English",
+  "Files": [
+    
+    {
+      "RawFilePath": "https://raw.githubusercontent.com/lucacuccu3x8/CloudLabs/main/TSE%20Fundamentals%203.0/Lab1-Fundamentals-NoEmojii.md",
+      "Order": 1
+    },
+    {
+      "RawFilePath": "https://raw.githubusercontent.com/lucacuccu3x8/CloudLabs/main/TSE%20Fundamentals%203.0/Lab2-Fundamentals-NoEmojii-Samira.md",
+      "Order": 2
+    },
+    {
+      "RawFilePath": "https://raw.githubusercontent.com/lucacuccu3x8/CloudLabs/main/TSE%20Fundamentals%203.0/Lab3-Fundamentals-NoEmojii.md",
+      "Order": 3
+    },
+    {
+      "RawFilePath": "https://raw.githubusercontent.com/lucacuccu3x8/CloudLabs/main/TSE%20Fundamentals%203.0/Lab4-Fundamentals-NoEmojii.md",
+      "Order": 4
+    },
+    {
+      "RawFilePath": "https://raw.githubusercontent.com/lucacuccu3x8/CloudLabs/main/TSE%20Fundamentals%203.0/Lab5-Fundamentals-NoEmojii.md",
+      "Order": 5
+    },
+    {
+      "RawFilePath": "https://raw.githubusercontent.com/lucacuccu3x8/CloudLabs/main/TSE%20Fundamentals%203.0/Lab6-Fundamentals-NoEmojii.md",
+      "Order": 6
+    },
+    {
+      "RawFilePath": "https://raw.githubusercontent.com/lucacuccu3x8/CloudLabs/main/TSE%20Fundamentals%203.0/Lab7-Fundamentals-NoEmojii.md",
+      "Order": 7
+    }
+  ]
+} 
+]
