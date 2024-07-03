@@ -1,4 +1,4 @@
-# **Lab 6: Networking**
+# **Lab 5: Networking**
 
 ## Objectives
 Upon successful completion of this lab, you will be able to: 
@@ -12,7 +12,7 @@ Upon successful completion of this lab, you will be able to:
 
 ***
 
-## **Task 6.1:** Display and understand routing table
+## **Task 5.1:** Display and understand routing table
 You have been given a task to review the routing table on two clients to validate which interfaces are in use and what path is taken. It was noticed that some clients were getting unresponsive pages and it is suspected there is a potential routing issue. In order to confirm what path is being taken it was advised to investigate the individual routing tables of two problematic clients as the DHCP server was confirmed to be set correctly. 
 
 ![London Client](JPG/London%20Client.png)
@@ -67,7 +67,7 @@ netstat -r
 
 ***
 
-## **Task 6.2:** <small>Configure a DHCP server</small> 
+## **Task 5.2:** <small>Configure a DHCP server</small> 
 You have been given a task to set up a new DHCP scope for the network 172.16.16.0/24 on the local domain controller. After creating the relevant scope, you must confirm the DHCP server was correctly responding to the requests, so evidence must be provided of the DHCP resolution.  
 
 
@@ -191,7 +191,7 @@ https://winaero.com/disable-network-adapter-windows-10
 
 ***
 
-## **Task 6.3:** <small>Lookup and resolve several types of DNS records using nslookup </small> 
+## **Task 5.3:** <small>Lookup and resolve several types of DNS records using nslookup </small> 
 
 You have been given a task to display the routing table on two clients to validate which interfaces are being used. This must be verified on both **London Client** and **Linux Client**. 
 

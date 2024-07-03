@@ -1,4 +1,4 @@
-# **Lab 7: Tools**
+# **Lab 6: Tools**
 
 ## Objectives
 Upon successful completion of this lab, you will be able to: 
@@ -12,7 +12,7 @@ Upon successful completion of this lab, you will be able to:
 
 ***
 
-## **Task 7.1:** Debugging process ID's with Process Monitor Tool
+## **Task 6.1:** Debugging process ID's with Process Monitor Tool
 
 You have been given a task where you need to capture all events i.e., Registry activity, File System activity, Network activity and Thread activity, while accessing a website from Google Chrome. 
 
@@ -41,7 +41,7 @@ You have been given a task where you need to capture all events i.e., Registry a
 ***
 
 
-## **Task 7.2:** Debugging Network activities using Wireshark tool. 
+## **Task 6.2:** Debugging Network activities using Wireshark tool. 
 
 You have been asked to obtain information about active peers in the network from a Wireshark capture.  
 Start practicing using the advanced **Wireshark Display-Filters** to quickly analyze and extract valuable information about network traffic.
@@ -96,7 +96,7 @@ tcp.port == 80 || udp.port == 80
 
 
 ***
-## **Task 7.3:** Image Capture and Extraction using wireshark
+## **Task 6.3:** Image Capture and Extraction using wireshark
 
 Through traffic capture, Wireshark can be used to view and record all information during transit,
 if this data is unencrypted such as images flowing to a device, Wireshark will record them and save the traffic information which can be extracted into Jpeg formats to be later collected for forensic evidences.  
@@ -169,7 +169,7 @@ of date, please let us know via our support desk so we can implement an update.
 
 ***
 
-## **Task 7.4:** Capturing Packets with tcpdump on Linux 
+## **Task 6.4:** Capturing Packets with tcpdump on Linux 
 
 ![](JPG/Linux%20Client%201.png)
 

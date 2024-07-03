@@ -1,4 +1,4 @@
-# **Lab 8: Cryptography**
+# **Lab 7: Cryptography**
 
 ## Objectives
 Upon successful completion of this lab, you will be able to: 
@@ -12,7 +12,7 @@ Upon successful completion of this lab, you will be able to:
 ![](JPG/Lab%20Diagram5.png)
 ***
 
-## **Task 8.1:** Analyze the difference between the connection to an untrusted site and to a trusted site. 
+## **Task 7.1:** Analyze the difference between the connection to an untrusted site and to a trusted site. 
 SSL/TLS certificates can be divided into trusted and untrusted, based on the issuing certification authority. The importance of using a certificate from a trusted certification authority lies in the completely error-free use of the certificate in users' browsers and an incomparably higher level of trust and authentication.  
 In this exercise, you are tasked with understanding and learning what requirements a certificate must meet to be valid.
 
@@ -73,7 +73,7 @@ https://sophostest.com/
 
 ---
 
-## **Task 8.2:** Verify if a certificate is trusted in Windows.
+## **Task 7.2:** Verify if a certificate is trusted in Windows.
 In this exercise, you will learn how to verify how certificates and CA are trusted on a Windows Endpoint.
 
 
@@ -134,7 +134,7 @@ https://sophos.com/
 ***
 
 
-## **Task 8.3:** Create a trust with a Private CA and the user.
+## **Task 7.3:** Create a trust with a Private CA and the user.
 
 In this scenario, you have been assigned to use the LON-DC as a trusted private Certificate Authority, so that all its certificates issued are automatically trusted by the client.
 
@@ -227,7 +227,7 @@ https://lon-dc.sophos.local/certsrv
 
 #### ![check](JPG/pngegg%20(1).png) You have successfully established a trust with a Private CA.
 
-## **Task 8.4:** Generate a CSR using OpenSSL to prepare a certificate
+## **Task 7.4:** Generate a CSR using OpenSSL to prepare a certificate
 
 You have been tasked to request a user certificate for John Smith, which will be used for authentication, encryption, and email protection. You will be requesting a certificate via browser  installing it and then verifying the certificate.
 
@@ -276,7 +276,7 @@ https://lon-dc.sophos.local/certsrv
 13. Close all open windows.
 
 ***
-## **Task 8.5:** Packet Sniffing for Passwords
+## **Task 7.5:** Packet Sniffing for Passwords
 
 Many protocols display information in plain text which is not a secure method for
 transmission. Telnet is one of the primary communication and application protocols
