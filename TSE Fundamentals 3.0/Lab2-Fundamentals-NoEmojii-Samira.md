@@ -125,7 +125,7 @@ You have now successfully:
 *	Disable control panel settings using Group Policies
 *	Applying the GPO’s and testing the results
 
-# **Lab 2.1: Active Directory**
+# **Lab 2.B: Active Directory**
 
 ## Objectives
 Upon successful completion of this lab, you will be able to: 
@@ -139,7 +139,7 @@ Upon successful completion of this lab, you will be able to:
 
 ***
 
-## **Task 2.1.1:** OU, Group and User Configuration 
+## **Task 2.B.1:** OU, Group and User Configuration 
 
 You have been assigned a task to create **Users**, **Groups** and an **OU's** in Active Directory: 
   
@@ -197,7 +197,7 @@ Type `Sales-UK` in the search box and confirm with **"Check Names"**
 
 ***
 
-## **Task 2.1.2:** <small>Verify attributes of Active Directory Objects</small> 
+## **Task 2.B.2:** <small>Verify attributes of Active Directory Objects</small> 
 In this task, you will be verifying the attributes of Active Directory Objects.
 
 ![](JPG/London%20DC%204.png)  
