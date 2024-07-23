@@ -145,7 +145,7 @@ msiexec /i 'SophosConnect_2.2.75_(IPsec_and_SSLVPN).msi'  /L*v C:\Windows\Temp\S
 
  10. Write down the line entry that indicates a successful or failed installation.
  11. Write down the product code of this program.
- 12. Uninstall SophosConnect using the same product code with the msiexec command using Powerhell: 
+ 12. Uninstall SophosConnect using the same product code with the msiexec command using Powerhell:
 ```bash
 msiexec /x "{xxxx-Product Code-xxxx}" /L*v C:\Windows\Temp\SophosConnectUninstall.txt
 ```
